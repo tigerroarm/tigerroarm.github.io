@@ -73,10 +73,6 @@
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
     			
             
-    			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
-    			
-            
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
@@ -205,14 +201,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-          		<p>本文翻译自 <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7" target="_blank" rel="noopener">How To Set Up a Firewall Using FirewallD on CentOS 7</a></p>
-<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>Firewalld是可用于许多Linux发行版的防火墙管理解决方案，它充当Linux内核提供的iptables数据包过滤系统的前端。 在本指南中，我们将介绍如何为服务器设置防火墙，并向您展示使用firewall-cmd管理工具管理防火墙的基本知识（如果您希望在CentOS中使用iptables，请遵循 <a href="https://www.digitalocean.com/community/tutorials/how-to-migrate-from-firewalld-to-iptables-on-centos-7" target="_blank" rel="noopener">这个指南</a>。</p>
           
-        
       
         <p>本文翻译自 <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7" target="_blank" rel="noopener">How To Set Up a Firewall Using FirewallD on CentOS 7</a></p>
 <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>Firewalld是可用于许多Linux发行版的防火墙管理解决方案，它充当Linux内核提供的iptables数据包过滤系统的前端。 在本指南中，我们将介绍如何为服务器设置防火墙，并向您展示使用firewall-cmd管理工具管理防火墙的基本知识（如果您希望在CentOS中使用iptables，请遵循 <a href="https://www.digitalocean.com/community/tutorials/how-to-migrate-from-firewalld-to-iptables-on-centos-7" target="_blank" rel="noopener">这个指南</a>。</p>
+<h2 id="Firewalld-的基本概念"><a href="#Firewalld-的基本概念" class="headerlink" title="Firewalld 的基本概念"></a>Firewalld 的基本概念</h2><p>在开始讨论如何实际使用firewall-cmd实用程序来管理防火墙配置之前，我们应该熟悉该工具引入的一些基本概念。</p>
         
           <a class="article-more-a" href="/2020/01/10/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS%207%E4%B8%8A%E4%BD%BF%E7%94%A8FirewallD%E8%AE%BE%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99/#more">more >></a>
         
@@ -326,13 +319,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-          		<blockquote>
-<p>Edge是微软新一代浏览器。 微软新的 IE 浏览器项目 Project Spartan 在 Build 2015 上正式更名为 Microsoft Edge。最新的 Edge<br><strong>采用了 Chromium 内核</strong>，当然也兼容以前 IE 的功能。</p>
-</blockquote>
-<p>由于最新的Edge采用Chromium内核，对于平时使用Chrome作为使用工具的人来说不会有太大学习成本，基本无缝迁移。最新版本在功耗，性能，UI上都取得了比较不错的表现。</p>
           
-        
       
         <blockquote>
 <p>Edge是微软新一代浏览器。 微软新的 IE 浏览器项目 Project Spartan 在 Build 2015 上正式更名为 Microsoft Edge。最新的 Edge<br><strong>采用了 Chromium 内核</strong>，当然也兼容以前 IE 的功能。</p>
@@ -447,10 +434,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-          		<h1 id="Ubuntu-系统重装并挂载"><a href="#Ubuntu-系统重装并挂载" class="headerlink" title="Ubuntu 系统重装并挂载"></a>Ubuntu 系统重装并挂载</h1><p>昨天一不小心改变了系统/usr的权限，导致grub引导的Ubuntu系统进不去，查找方法失效后，我使用u盘引导的方式重装ubuntu系统，并恢复原有/home 路径下挂载的近74GB文件。挂载的好处就是这种如果系统崩了，还能保存/home下的文件不丢…..</p>
           
-        
       
         <h1 id="Ubuntu-系统重装并挂载"><a href="#Ubuntu-系统重装并挂载" class="headerlink" title="Ubuntu 系统重装并挂载"></a>Ubuntu 系统重装并挂载</h1><p>昨天一不小心改变了系统/usr的权限，导致grub引导的Ubuntu系统进不去，查找方法失效后，我使用u盘引导的方式重装ubuntu系统，并恢复原有/home 路径下挂载的近74GB文件。挂载的好处就是这种如果系统崩了，还能保存/home下的文件不丢…..</p>
         
@@ -573,21 +557,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
       
     
-      
-      
-      
-    
     
 
     <ul style="width: 70%">
     
     
       
-      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
-      
-        
-      
-      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
     </ul>
@@ -672,12 +648,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
 
     
 
-    
-    	<section class="tools-section tools-section-me" q-show="aboutme">
-  	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">A naive student.</div>
-  	  	
-    	</section>
     
   </div>
   
