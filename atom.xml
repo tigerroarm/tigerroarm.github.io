@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://39.107.85.54/"/>
-  <updated>2020-05-04T08:32:28.922Z</updated>
+  <updated>2020-06-04T17:45:47.676Z</updated>
   <id>https://39.107.85.54/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>我的学习笔记目录</title>
+    <link href="https://39.107.85.54/2020/06/05/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/"/>
+    <id>https://39.107.85.54/2020/06/05/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/</id>
+    <published>2020-06-04T17:39:13.320Z</published>
+    <updated>2020-06-04T17:45:47.676Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="我的学习笔记（目录）"><a href="#我的学习笔记（目录）" class="headerlink" title="我的学习笔记（目录）"></a>我的学习笔记（目录）</h1><ul><li><strong>Leetcode ：</strong><ul><li>我的Leetcode题解： <a href="https://tigerroarm.github.io/Leetcode" target="_blank" rel="noopener">https://tigerroarm.github.io/Leetcode</a></li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;我的学习笔记（目录）&quot;&gt;&lt;a href=&quot;#我的学习笔记（目录）&quot; class=&quot;headerlink&quot; title=&quot;我的学习笔记（目录）&quot;&gt;&lt;/a&gt;我的学习笔记（目录）&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Leetcode ：&lt;/strong&gt;&lt;ul&gt;
+
+      
+    
+    </summary>
+    
+    
+      <category term="学习笔记" scheme="https://39.107.85.54/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Vim 随手记</title>
     <link href="https://39.107.85.54/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     <id>https://39.107.85.54/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/</id>
     <published>2020-05-03T16:00:00.000Z</published>
-    <updated>2020-05-04T08:32:28.922Z</updated>
+    <updated>2020-05-08T16:00:00.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><a id="more"></a><ul><li><p>i : insert 光标字符之前</p></li><li><p>a : append 光标字符之后加入</p></li><li><p>o : open a line below 当前行下面开一行</p></li><li><p>A : 在本行最后append</p></li><li><p>O : 本行上面插入一行，开头插入</p></li><li><p>I : 在本行开头插入</p></li></ul><h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><ul><li>normal<ul><li>使用 gi 快速恢复到原始插入位置</li><li>w 下个单词开头，e下个单词结尾</li><li>b 上个单词开头 </li><li>大写跳动到以空白符为间隔的地方</li><li>f+字符，搜索字符, ; 下一个 ,上一个 F+ 字符反过来搜</li><li>0 行首，$ 行尾</li><li>g 移动到开头，G移动到结尾 H/M/L跳转到屏幕的开头，结尾</li><li>ctrl u ctrl d翻页 cltr F/B</li><li>dw 删除一个单词 delete a world x删除字符</li><li>r replalce一个字符 s 删除当前字符进入插入模式 </li><li>R 不断地替换 S 整行删除，进入插入模式</li><li>c(change) aw 删掉一个词进入插入 C 删除整行进入插入模式 ct” 删除整个“”中的内容</li><li>? / 进行反向前向搜索，n/N下一个上一个 # * 当前单词向上搜索/向下搜索</li></ul></li><li>insert<ul><li>ctrl + w 删除word</li><li>ctrl + u 删除行</li><li>ctrl + h 删除上一个字符</li><li>用ctrl + [ 代替esc</li></ul></li><li>command <ul><li>:vs(vertical split) 竖分屏（左右）</li><li>:sp(split) 上下分屏</li><li>set nu 行号</li><li>% s/word1/word2/g 全局替换</li><li>1,6 s/word1/word2/g 1-6行之间替换</li><li>1,6 self//n 统计1-6行几个匹配self n指number，报告匹配到的次数</li><li>% s/&lt;quack&gt;/word2/g</li></ul></li><li>visual<ul><li>normal 模式 v</li><li>V选行</li><li>ctrl v选方块</li></ul></li></ul>]]></content>
     
