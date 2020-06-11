@@ -5,9 +5,9 @@
   <subtitle>好好学习，天天向上</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="https://39.107.85.54/"/>
+  <link href="https://tigerroarm.github.io/"/>
   <updated>2020-06-04T17:39:13.320Z</updated>
-  <id>https://39.107.85.54/</id>
+  <id>https://tigerroarm.github.io/</id>
   
   <author>
     <name>tigerroarm</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>我的学习笔记目录</title>
-    <link href="https://39.107.85.54/2020/06/05/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/"/>
-    <id>https://39.107.85.54/2020/06/05/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/</id>
+    <link href="https://tigerroarm.github.io/2020/06/05/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/"/>
+    <id>https://tigerroarm.github.io/2020/06/05/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/</id>
     <published>2020-06-04T17:39:13.320Z</published>
     <updated>2020-06-04T17:39:13.320Z</updated>
     
@@ -44,15 +44,15 @@
     </summary>
     
     
-      <category term="学习笔记" scheme="https://39.107.85.54/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="https://tigerroarm.github.io/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
   </entry>
   
   <entry>
     <title>Vim 随手记</title>
-    <link href="https://39.107.85.54/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
-    <id>https://39.107.85.54/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/</id>
+    <link href="https://tigerroarm.github.io/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
+    <id>https://tigerroarm.github.io/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/</id>
     <published>2020-05-03T16:00:00.000Z</published>
     <updated>2020-05-08T16:00:00.000Z</updated>
     
@@ -65,21 +65,21 @@
     </summary>
     
     
-      <category term="Tools" scheme="https://39.107.85.54/categories/Tools/"/>
+      <category term="Tools" scheme="https://tigerroarm.github.io/categories/Tools/"/>
     
     
-      <category term="vim" scheme="https://39.107.85.54/tags/vim/"/>
+      <category term="vim" scheme="https://tigerroarm.github.io/tags/vim/"/>
     
-      <category term="Linux" scheme="https://39.107.85.54/tags/Linux/"/>
+      <category term="Linux" scheme="https://tigerroarm.github.io/tags/Linux/"/>
     
-      <category term="随手记" scheme="https://39.107.85.54/tags/%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
+      <category term="随手记" scheme="https://tigerroarm.github.io/tags/%E9%9A%8F%E6%89%8B%E8%AE%B0/"/>
     
   </entry>
   
   <entry>
     <title>如何在CentOS 7上使用FirewallD设置防火墙</title>
-    <link href="https://39.107.85.54/2020/01/10/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS%207%E4%B8%8A%E4%BD%BF%E7%94%A8FirewallD%E8%AE%BE%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99/"/>
-    <id>https://39.107.85.54/2020/01/10/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS%207%E4%B8%8A%E4%BD%BF%E7%94%A8FirewallD%E8%AE%BE%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99/</id>
+    <link href="https://tigerroarm.github.io/2020/01/10/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS%207%E4%B8%8A%E4%BD%BF%E7%94%A8FirewallD%E8%AE%BE%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99/"/>
+    <id>https://tigerroarm.github.io/2020/01/10/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS%207%E4%B8%8A%E4%BD%BF%E7%94%A8FirewallD%E8%AE%BE%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99/</id>
     <published>2020-01-10T11:40:44.000Z</published>
     <updated>2020-05-04T08:33:06.038Z</updated>
     
@@ -92,19 +92,19 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://39.107.85.54/categories/Linux/"/>
+      <category term="Linux" scheme="https://tigerroarm.github.io/categories/Linux/"/>
     
     
-      <category term="CentOS" scheme="https://39.107.85.54/tags/CentOS/"/>
+      <category term="CentOS" scheme="https://tigerroarm.github.io/tags/CentOS/"/>
     
-      <category term="FirewallD" scheme="https://39.107.85.54/tags/FirewallD/"/>
+      <category term="FirewallD" scheme="https://tigerroarm.github.io/tags/FirewallD/"/>
     
   </entry>
   
   <entry>
     <title>微软新 Edge 浏览器--带给你Chrome一致的体验 安装教程和上手体验</title>
-    <link href="https://39.107.85.54/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/"/>
-    <id>https://39.107.85.54/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/</id>
+    <link href="https://tigerroarm.github.io/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/"/>
+    <id>https://tigerroarm.github.io/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/</id>
     <published>2019-12-16T02:52:37.000Z</published>
     <updated>2020-05-04T08:32:54.737Z</updated>
     
@@ -119,17 +119,17 @@
     </summary>
     
     
-      <category term="Tools" scheme="https://39.107.85.54/categories/Tools/"/>
+      <category term="Tools" scheme="https://tigerroarm.github.io/categories/Tools/"/>
     
     
-      <category term="MicroSoft" scheme="https://39.107.85.54/tags/MicroSoft/"/>
+      <category term="MicroSoft" scheme="https://tigerroarm.github.io/tags/MicroSoft/"/>
     
   </entry>
   
   <entry>
     <title>Git 实战</title>
-    <link href="https://39.107.85.54/2018/07/09/git%20%E5%AE%9E%E6%88%98/"/>
-    <id>https://39.107.85.54/2018/07/09/git%20%E5%AE%9E%E6%88%98/</id>
+    <link href="https://tigerroarm.github.io/2018/07/09/git%20%E5%AE%9E%E6%88%98/"/>
+    <id>https://tigerroarm.github.io/2018/07/09/git%20%E5%AE%9E%E6%88%98/</id>
     <published>2018-07-08T16:00:00.000Z</published>
     <updated>2020-05-04T08:32:45.231Z</updated>
     
@@ -145,19 +145,19 @@
     </summary>
     
     
-      <category term="Tools" scheme="https://39.107.85.54/categories/Tools/"/>
+      <category term="Tools" scheme="https://tigerroarm.github.io/categories/Tools/"/>
     
     
-      <category term="Git" scheme="https://39.107.85.54/tags/Git/"/>
+      <category term="Git" scheme="https://tigerroarm.github.io/tags/Git/"/>
     
-      <category term="实战" scheme="https://39.107.85.54/tags/%E5%AE%9E%E6%88%98/"/>
+      <category term="实战" scheme="https://tigerroarm.github.io/tags/%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
   <entry>
     <title>ubuntu 16.04 home挂载 系统重装</title>
-    <link href="https://39.107.85.54/2018/06/09/ubuntu%2016.04%20home%E6%8C%82%E8%BD%BD%20%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85/"/>
-    <id>https://39.107.85.54/2018/06/09/ubuntu%2016.04%20home%E6%8C%82%E8%BD%BD%20%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85/</id>
+    <link href="https://tigerroarm.github.io/2018/06/09/ubuntu%2016.04%20home%E6%8C%82%E8%BD%BD%20%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85/"/>
+    <id>https://tigerroarm.github.io/2018/06/09/ubuntu%2016.04%20home%E6%8C%82%E8%BD%BD%20%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85/</id>
     <published>2018-06-09T05:39:30.000Z</published>
     <updated>2020-05-04T08:32:40.771Z</updated>
     
@@ -170,12 +170,12 @@
     </summary>
     
     
-      <category term="Linux" scheme="https://39.107.85.54/categories/Linux/"/>
+      <category term="Linux" scheme="https://tigerroarm.github.io/categories/Linux/"/>
     
     
-      <category term="ubuntu" scheme="https://39.107.85.54/tags/ubuntu/"/>
+      <category term="ubuntu" scheme="https://tigerroarm.github.io/tags/ubuntu/"/>
     
-      <category term="挂载" scheme="https://39.107.85.54/tags/%E6%8C%82%E8%BD%BD/"/>
+      <category term="挂载" scheme="https://tigerroarm.github.io/tags/%E6%8C%82%E8%BD%BD/"/>
     
   </entry>
   
