@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.difan.tech/"/>
-  <updated>2020-06-04T17:39:13.320Z</updated>
+  <updated>2020-10-08T16:00:00.000Z</updated>
   <id>https://blog.difan.tech/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>TMUX</title>
+    <link href="https://blog.difan.tech/2020/10/09/TMUX/"/>
+    <id>https://blog.difan.tech/2020/10/09/TMUX/</id>
+    <published>2020-10-08T16:00:00.000Z</published>
+    <updated>2020-10-08T16:00:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul><li>维护管理终端正在运行的程序</li><li>执行多个任务</li><li>远程使用时尤其方便，断开连接也不会挂掉正在跑的东西</li></ul><h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul><li>Sessions 包含多个windows，表示一个工作区</li><li>Windows 相当于浏览器的tabs</li><li>Panes 一个window分割成几个视觉上分开的Panes</li></ul><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul><li>session<ul><li>tmux 开启新session</li><li>tmux new -s NAME </li><li>tmux ls 列出现存的session</li><li><C-b> d 分离当前的session</li><li>tmux a 继续上一个session </li><li>tmux a -t 0 指定session 0</li></ul></li><li>window<ul><li><C-b> c 创建window</li><li><C-b> + number 去 第几 window</li><li><C-b> p 上一个window</li><li><C-b> n 下一个window</li><li><C-b> w 列出现有的windows</li></ul></li><li>pane<ul><li><C-b> “ （我这里是 | ）水平方向分割</li><li><C-b> % （我这里是 - ）竖直方向分割</li><li><C-b> z 全屏，然后再按一次恢复</li><li><C-b> <C> ← →来改变pane大小</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;维护管理终端正在运行的程序&lt;/li&gt;
+&lt;li&gt;执行多个任务&lt;/li&gt;
+&lt;li&gt;远程使用时尤其方便，断开连接也不会
+      
+    
+    </summary>
+    
+    
+      <category term="Tools" scheme="https://blog.difan.tech/categories/Tools/"/>
+    
+    
+      <category term="tmux" scheme="https://blog.difan.tech/tags/tmux/"/>
+    
+  </entry>
   
   <entry>
     <title>我的学习笔记目录</title>
