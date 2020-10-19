@@ -23,17 +23,14 @@
     <published>2020-10-08T16:00:00.000Z</published>
     <updated>2020-10-08T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul><li>维护管理终端正在运行的程序</li><li>执行多个任务</li><li>远程使用时尤其方便，断开连接也不会挂掉正在跑的东西</li></ul><h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul><li>Sessions 包含多个windows，表示一个工作区</li><li>Windows 相当于浏览器的tabs</li><li>Panes 一个window分割成几个视觉上分开的Panes</li></ul><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul><li>session<ul><li>tmux 开启新session</li><li>tmux new -s NAME </li><li>tmux ls 列出现存的session</li><li><C-b> d 分离当前的session</li><li>tmux a 继续上一个session </li><li>tmux a -t 0 指定session 0</li></ul></li><li>window<ul><li><C-b> c 创建window</li><li><C-b> + number 去 第几 window</li><li><C-b> p 上一个window</li><li><C-b> n 下一个window</li><li><C-b> w 列出现有的windows</li></ul></li><li>pane<ul><li><C-b> “ （我这里是 | ）水平方向分割</li><li><C-b> % （我这里是 - ）竖直方向分割</li><li><C-b> z 全屏，然后再按一次恢复</li><li><C-b> <C> ← →来改变pane大小</li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul><li>维护管理终端正在运行的程序</li><li>执行多个任务</li><li>远程使用时尤其方便，断开连接也不会挂掉正在跑的东西<a id="more"></a></li></ul><h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul><li>Sessions 包含多个windows，表示一个工作区</li><li>Windows 相当于浏览器的tabs</li><li>Panes 一个window分割成几个视觉上分开的Panes</li></ul><h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul><li>session<ul><li>tmux 开启新session</li><li>tmux new -s NAME </li><li>tmux ls 列出现存的session</li><li><C-b> d 分离当前的session</li><li>tmux a 继续上一个session </li><li>tmux a -t 0 指定session 0</li></ul></li><li>window<ul><li><C-b> c 创建window</li><li><C-b> + number 去 第几 window</li><li><C-b> p 上一个window</li><li><C-b> n 下一个window</li><li><C-b> w 列出现有的windows</li></ul></li><li>pane<ul><li><C-b> “ （我这里是 | ）水平方向分割</li><li><C-b> % （我这里是 - ）竖直方向分割</li><li><C-b> z 全屏，然后再按一次恢复</li><li><C-b> <C> ← →来改变pane大小</li></ul></li></ul>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;ul&gt;
+      &lt;h2 id=&quot;使用场景&quot;&gt;&lt;a href=&quot;#使用场景&quot; class=&quot;headerlink&quot; title=&quot;使用场景&quot;&gt;&lt;/a&gt;使用场景&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;维护管理终端正在运行的程序&lt;/li&gt;
 &lt;li&gt;执行多个任务&lt;/li&gt;
-&lt;li&gt;远程使用时尤其方便，断开连接也不会
-      
+&lt;li&gt;远程使用时尤其方便，断开连接也不会挂掉正在跑的东西
     
     </summary>
     
@@ -52,11 +49,11 @@
     <published>2020-06-04T17:39:13.320Z</published>
     <updated>2020-06-04T17:39:13.320Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="我的学习笔记（目录）"><a href="#我的学习笔记（目录）" class="headerlink" title="我的学习笔记（目录）"></a>我的学习笔记（目录）</h1><ul><li><p><strong>Leetcode ：</strong></p><ul><li>我的Leetcode题解： <a href="https://tigerroarm.github.io/Leetcode" target="_blank" rel="noopener">https://tigerroarm.github.io/Leetcode</a></li></ul></li><li><p><strong>深入理解计算机系统：</strong></p><ul><li>笔记： <a href="https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/" target="_blank" rel="noopener">https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/</a></li><li>实验： <a href="https://tigerroarm.github.io/LearningNotes/csapp/lab/" target="_blank" rel="noopener">https://tigerroarm.github.io/LearningNotes/csapp/lab/</a></li></ul></li></ul><a id="more"></a>]]></content>
+    <content type="html"><![CDATA[<ul><li><p><strong>Leetcode ：</strong></p><ul><li>我的Leetcode题解： <a href="https://tigerroarm.github.io/Leetcode" target="_blank" rel="noopener">https://tigerroarm.github.io/Leetcode</a></li></ul></li><li><p><strong>深入理解计算机系统：</strong></p><ul><li>笔记： <a href="https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/" target="_blank" rel="noopener">https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/</a></li><li>实验： <a href="https://tigerroarm.github.io/LearningNotes/csapp/lab/" target="_blank" rel="noopener">https://tigerroarm.github.io/LearningNotes/csapp/lab/</a></li></ul></li></ul><a id="more"></a>]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;我的学习笔记（目录）&quot;&gt;&lt;a href=&quot;#我的学习笔记（目录）&quot; class=&quot;headerlink&quot; title=&quot;我的学习笔记（目录）&quot;&gt;&lt;/a&gt;我的学习笔记（目录）&lt;/h1&gt;&lt;ul&gt;
+      &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;strong&gt;Leetcode ：&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;我的Leetcode题解： &lt;a href=&quot;https://tigerroarm.github.io/Leetcode&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://tigerroarm.github.io/Leetcode&lt;/a&gt;&lt;/li&gt;
