@@ -18,8 +18,8 @@
   
   <entry>
     <title>无线网络物理层</title>
-    <link href="https://blog.difan.tech/2020/12/20/%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E7%89%A9%E7%90%86%E5%B1%82/"/>
-    <id>https://blog.difan.tech/2020/12/20/%E6%97%A0%E7%BA%BF%E7%BD%91%E7%BB%9C%E7%89%A9%E7%90%86%E5%B1%82/</id>
+    <link href="https://blog.difan.tech/2020/12/20/Wireless%20Physical%20Layer/"/>
+    <id>https://blog.difan.tech/2020/12/20/Wireless%20Physical%20Layer/</id>
     <published>2020-12-19T16:00:00.000Z</published>
     <updated>2020-12-19T16:00:00.000Z</updated>
     
@@ -49,7 +49,7 @@
     <published>2020-11-11T13:34:28.953Z</published>
     <updated>2020-11-11T13:34:28.953Z</updated>
     
-    <content type="html"><![CDATA[<ul><li><strong>深入理解计算机系统：</strong><ul><li>笔记： <a href="https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/" target="_blank" rel="noopener">https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/</a></li><li>实验： <a href="https://tigerroarm.github.io/LearningNotes/csapp/lab/" target="_blank" rel="noopener">https://tigerroarm.github.io/LearningNotes/csapp/lab/</a></li></ul></li><li><strong>Leetcode ：</strong><ul><li>我的Leetcode题解： [<a href="https://tigerroarm.github.io/Leetcode]" target="_blank" rel="noopener">https://tigerroarm.github.io/Leetcode]</a>(<a href="https://tigerroarm.github.io/Leetcode" target="_blank" rel="noopener">https://tigerroarm.github.io/Leetcode</a></li></ul></li></ul><a id="more"></a><ul><li><strong>Signal Processing</strong><ul><li>Digital Signal Processing : A Computer-Based Approach: <a href="https://tigerrroarm.github.io" target="_blank" rel="noopener">https://tigerrroarm.github.io</a></li></ul></li><li><strong>Wireless Communications</strong><ul><li>Part01:  无线通信建模的基本概念和仿真代码  <a href="https://tigerroarm.github.io" target="_blank" rel="noopener">https://tigerroarm.github.io</a></li><li>Part02：OFDM的基本概念和仿真代码</li><li>Part03：MIMO技术基本概念和仿真代码，包括信道容量、空间分集和空时码、空间复用MIMO，预编码，天线选择技术，多用户MIMO</li></ul></li></ul>]]></content>
+    <content type="html"><![CDATA[<ul><li><strong>深入理解计算机系统：</strong><ul><li>笔记： <a href="https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/" target="_blank" rel="noopener">https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/</a></li><li>实验： <a href="https://tigerroarm.github.io/LearningNotes/csapp/lab/" target="_blank" rel="noopener">https://tigerroarm.github.io/LearningNotes/csapp/lab/</a></li></ul></li><li><strong>Leetcode ：</strong><ul><li>我的Leetcode题解： [<a href="https://tigerroarm.github.io/Leetcode]" target="_blank" rel="noopener">https://tigerroarm.github.io/Leetcode]</a>(<a href="https://tigerroarm.github.io/Leetcode" target="_blank" rel="noopener">https://tigerroarm.github.io/Leetcode</a></li></ul></li></ul><a id="more"></a><ul><li><strong>Signal Processing</strong><ul><li>Digital Signal Processing : A Computer-Based Approach: <a href="https://tigerrroarm.github.io" target="_blank" rel="noopener">https://tigerrroarm.github.io</a></li></ul></li><li><strong>Wireless Communications</strong><ul><li>Part01:  无线通信建模的基本概念和仿真代码  <a href="https://tigerroarm.github.io" target="_blank" rel="noopener">https://tigerroarm.github.io/2020/12/20/</a></li><li>Part02：OFDM的基本概念和仿真代码</li><li>Part03：MIMO技术基本概念和仿真代码，包括信道容量、空间分集和空时码、空间复用MIMO，预编码，天线选择技术，多用户MIMO</li></ul></li></ul>]]></content>
     
     <summary type="html">
     
