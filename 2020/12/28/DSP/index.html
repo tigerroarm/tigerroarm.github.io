@@ -6,18 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://tigerroarm.github.io">
-  <title>Archives: 2020/5 | tigerroarm的博客</title>
+  <title>数字信号处理 -- 基于计算机方法 | tigerroarm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="tigerroarm的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tigerroarm的博客">
-<meta property="og:url" content="https://tigerroarm.github.io/archives/2020/05/index.html">
+  <meta name="description" content="[TOC]   本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版  信号与信号处理信号信号分类 振幅 时间 连续时间信号 振幅也连续：模拟信号   离散时间信号 振幅离散：数字信号      复数信号和解析信号复数信号 Why? 信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理   希尔伯特变换 HT $h_{HT} &#x3D; \frac{1}{\">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数字信号处理 -- 基于计算机方法">
+<meta property="og:url" content="https://tigerroarm.github.io/2020/12/28/DSP/index.html">
 <meta property="og:site_name" content="tigerroarm的博客">
-<meta property="og:description" content="tigerroarm的博客">
+<meta property="og:description" content="[TOC]   本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版  信号与信号处理信号信号分类 振幅 时间 连续时间信号 振幅也连续：模拟信号   离散时间信号 振幅离散：数字信号      复数信号和解析信号复数信号 Why? 信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理   希尔伯特变换 HT $h_{HT} &#x3D; \frac{1}{\">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tigerroarm.github.io/2020/12/28/DSP/.%5CImage%5C2-1-01.png">
+<meta property="og:image" content="https://tigerroarm.github.io/2020/12/28/DSP/Image/2-1-02.png">
+<meta property="article:published_time" content="2020-12-28T05:44:48.665Z">
+<meta property="article:modified_time" content="2020-12-28T05:44:48.665Z">
 <meta property="article:author" content="tigerroarm">
-<meta property="article:tag" content="tigerroarm的博客">
+<meta property="article:tag" content="DSP">
+<meta property="article:tag" content="Math">
+<meta property="article:tag" content="SignalProcessing">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tigerroarm.github.io/2020/12/28/DSP/.%5CImage%5C2-1-01.png">
   
     <link rel="alternative" href="/atom.xml" title="tigerroarm的博客" type="application/atom+xml">
   
@@ -161,79 +168,338 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-DSP" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-05-03T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-04</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/">Vim 随手记</a>
+    <h1 class="article-title" itemprop="name">
+      数字信号处理 -- 基于计算机方法
     </h1>
   
 
-        <div class="article-info info-on-right">
+        
+        <a href="/2020/12/28/DSP/" class="archive-article-date">
+  	<time datetime="2020-12-28T05:44:48.665Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-28</time>
+</a>
+        <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">798字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
           
+        <!-- 添加完成 -->
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+      
+        <p>[TOC]</p>
+<hr>
+<blockquote>
+<p>本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版</p>
+</blockquote>
+<h1 id="信号与信号处理"><a href="#信号与信号处理" class="headerlink" title="信号与信号处理"></a>信号与信号处理</h1><h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><h3 id="信号分类"><a href="#信号分类" class="headerlink" title="信号分类"></a>信号分类</h3><ul>
+<li>振幅</li>
+<li>时间<ul>
+<li>连续时间信号<ul>
+<li>振幅也连续：模拟信号</li>
+</ul>
+</li>
+<li>离散时间信号<ul>
+<li>振幅离散：数字信号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="复数信号和解析信号"><a href="#复数信号和解析信号" class="headerlink" title="复数信号和解析信号"></a>复数信号和解析信号</h3><h4 id="复数信号"><a href="#复数信号" class="headerlink" title="复数信号"></a>复数信号</h4><ul>
+<li>Why?<ul>
+<li>信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理</li>
+</ul>
+</li>
+<li>希尔伯特变换 HT<ul>
+<li>$h_{HT} = \frac{1}{\pi t}$</li>
+<li>$$H_{HT}(j\Omega) = \left{  \begin{aligned} -j \ \ \Omega &gt; 0 \ j \ \  \Omega &lt; 0  \end{aligned}  \right. $$</li>
+</ul>
+</li>
+</ul>
+<h4 id="实数信号"><a href="#实数信号" class="headerlink" title="实数信号"></a>实数信号</h4><ul>
+<li>实数信号<ul>
+<li>FT性质 =&gt; 幅度偶对称，相位奇对称</li>
+<li>正频率 + 负频率 $X(j\Omega) = X_p(j\Omega)+X_n(j\Omega)$</li>
+<li>经过HT =&gt; $\hat{X}(j\Omega) = -j X_p(j\Omega)+jX_n(j\Omega)$  =&gt; $\hat{x}(t)$也是实数信号</li>
+</ul>
+</li>
+</ul>
+<h4 id="解析信号"><a href="#解析信号" class="headerlink" title="解析信号"></a>解析信号</h4><p>=&gt; 解析信号  $y(t) = x(t) + j\hat{x}(t)$ </p>
+<p>$x(t), \hat{x}(t)$ 为<strong>同相分量</strong>和<strong>正交分量</strong></p>
+<p>$Y(j\Omega) = X(j\Omega)+j\hat{X}(j\Omega) = 2 X_p(j\Omega)$</p>
+<p>我们可以看出<em>解析信号只包含正频率的部分</em></p>
+<h2 id="信号运算"><a href="#信号运算" class="headerlink" title="信号运算"></a>信号运算</h2><ul>
+<li>简单运算<ul>
+<li>衰减</li>
+<li>延迟 $y(t) = x(t-t_0)$ </li>
+<li>相加，相乘</li>
+<li>积分 $y(t) = \int_{-\infin}^{t}x(\tau) d\tau$ </li>
+<li>微分 $y(t) = \frac{dx(t)}{dt}$</li>
+<li>傅里叶变换Fourier Transform(FT)  $X(j\Omega) = \int_{-\infin}^{+\infin}x(t) e^{-j\Omega t} dt$</li>
+</ul>
+</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li>滤波<ul>
+<li>$y(t) = \int_{-\infin}^{+\infin} h(t-\tau)x(\tau)d\tau$</li>
+<li>低通，高通，带通</li>
+<li>带阻（陷波器3）</li>
+<li>多频带滤波器：多个通带阻带</li>
+<li>梳状滤波器：阻断某个低频的整数倍</li>
+</ul>
+</li>
+</ul>
+<h3 id="调制"><a href="#调制" class="headerlink" title="调制"></a>调制</h3><ul>
+<li>Why?<ul>
+<li>低频信号无法直接用于传输</li>
+<li>调制到高频进行传输- 原理：利用信号的振幅、相位、频率表示信号</li>
+</ul>
+</li>
+</ul>
+<h1 id="时域离散时间信号"><a href="#时域离散时间信号" class="headerlink" title="时域离散时间信号"></a>时域离散时间信号</h1><p>离散时间信号， Why？</p>
+<blockquote>
+<p> 现代计算机、微处理器、嵌入式设备都是处理数字信号的，但是我们的物理世界充斥着连续信号（模拟信号），如声音信号等。而直接处理模拟信号是比较困难的（1G通信），设备器件做的很大（大哥大），而且不便于加密（你树根天线就能窃听到隔壁老王在电话里说什么）。这就涉及到<em>模拟信号数字化</em>（<strong>采样，或者抽样</strong>），转换为数字信号进行处理。</p>
+</blockquote>
+<h2 id="时域表示"><a href="#时域表示" class="headerlink" title="时域表示"></a>时域表示</h2><p>采样： $x[n] = x_a{(t)}|_{t = nT} = x_a(nT)$</p>
+<p>采样频率（抽样频率）： $F_t = \frac{1}{T}$</p>
+<p>采样得到的值由于ADC（数模转换器）的精度问题（例如12 Bit ADC）有<strong>舍入的问题</strong>。</p>
+<p><strong>例子2.1：集合平均</strong></p>
+<p>$s[n]=2[n(0.9)^n]$ 和噪声$d(n)$，受干扰后的集合平均可以减少干扰影响</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Program_2_1</span></span><br><span class="line"><span class="comment">% Generation of the ensemble average</span></span><br><span class="line">N = <span class="number">50</span>; <span class="comment">% total number</span></span><br><span class="line">n = <span class="number">0</span> : N<span class="number">-1</span>;</span><br><span class="line">s = <span class="number">2</span>*(n.*<span class="number">0.9</span>.^n); <span class="comment">% generate the original signal s[n]</span></span><br><span class="line">rng();</span><br><span class="line">d = <span class="built_in">rand</span>(N, <span class="number">1</span>) - <span class="number">0.5</span>; <span class="comment">% generate the noise signal d[n]</span></span><br><span class="line"></span><br><span class="line">x1 = s+d'; <span class="comment">% the corrupted signal</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the corrupted signal</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">stem(n, x1);</span><br><span class="line">xlabel(<span class="string">'Time Index n'</span>)</span><br><span class="line">ylabel(<span class="string">'Amplitude'</span>)</span><br><span class="line">title(<span class="string">'The Corrupted Signal'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the Noise Signal</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">stem(n, d)</span><br><span class="line">xlabel(<span class="string">'Time Index n'</span>)</span><br><span class="line">ylabel(<span class="string">'Amplitude'</span>)</span><br><span class="line">title(<span class="string">'The Noise Signal'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Ensemble average</span></span><br><span class="line"><span class="keyword">for</span> m = <span class="number">1</span>:<span class="number">50</span></span><br><span class="line">    rng();</span><br><span class="line">    noise = <span class="built_in">rand</span>(N,<span class="number">1</span>) - <span class="number">0.5</span>;</span><br><span class="line">    x = s + noise';</span><br><span class="line">    x1 = x1 + x;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">x1 = x1 / N;</span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the ensemble average signal</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">stem(n, x1);</span><br><span class="line">xlabel(<span class="string">'Time Index n'</span>)</span><br><span class="line">ylabel(<span class="string">'Amplitude'</span>)</span><br><span class="line">title(<span class="string">'The Ensemble Average Signal'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src=".%5CImage%5C2-1-01.png" alt="2-1-01"></p>
+<p><img src="./Image/2-1-02.png" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vim</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DSP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Math</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">随手记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SignalProcessing</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Tools//" class="article-tag-list-link color1">Tools</a>
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://tigerroarm.github.io/2020/12/28/DSP/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/12/20/Wireless%20Physical%20Layer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">无线网络物理层</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#信号与信号处理"><span class="toc-number">1.</span> <span class="toc-text">信号与信号处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#信号"><span class="toc-number">1.1.</span> <span class="toc-text">信号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#信号分类"><span class="toc-number">1.1.1.</span> <span class="toc-text">信号分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复数信号和解析信号"><span class="toc-number">1.1.2.</span> <span class="toc-text">复数信号和解析信号</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#复数信号"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">复数信号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实数信号"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">实数信号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解析信号"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">解析信号</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信号运算"><span class="toc-number">1.2.</span> <span class="toc-text">信号运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#调制"><span class="toc-number">1.2.1.</span> <span class="toc-text">调制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#时域离散时间信号"><span class="toc-number">2.</span> <span class="toc-text">时域离散时间信号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#时域表示"><span class="toc-number">2.1.</span> <span class="toc-text">时域表示</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
   
 
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    var notify = 'true' == true ? true : false;
+    var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "duV4iQcArqFCXlvAyXjRXiHW-MdYXbMMI",
+            app_key: "x8NqpHwaMVDQjA3m8JQfXMUj",
+            placeholder: "输入您的评论",
+            avatar:""
+        });
+    }
+
+    document.body.addEventListener('click', function(e) {
+    if (e.target.classList.contains('vsubmit')) {
+        const email = document.querySelector('input[type=email]');
+        const nick = document.querySelector('input[name=nick]');
+        const reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        if (!email.value || !nick.value || !reg.test(email.value)) {
+            const str = `<div class="valert txt-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>`;
+            const vmark = document.querySelector('.vmark');
+            vmark.innerHTML = str;
+            vmark.style.display = 'block';
+
+            setTimeout(function() {
+                vmark.style.display = 'none';
+                vmark.innerHTML = '';
+            }, 2500);
+        }
+    }
+    });
+</script>
+      </section>
     
+
 
 
           </div>
@@ -257,8 +523,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,

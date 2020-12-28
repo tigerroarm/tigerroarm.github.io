@@ -5,13 +5,13 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://blog.difan.tech">
+  <link rel="dns-prefetch" href="https://tigerroarm.github.io">
   <title>tigerroarm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="tigerroarm的博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="tigerroarm的博客">
-<meta property="og:url" content="https://blog.difan.tech/index.html">
+<meta property="og:url" content="https://tigerroarm.github.io/index.html">
 <meta property="og:site_name" content="tigerroarm的博客">
 <meta property="og:description" content="tigerroarm的博客">
 <meta property="og:locale" content="en_US">
@@ -186,7 +186,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">139字</span>
+        <span class="post-count">143字</span>
       </span>
     </span>
 
@@ -250,6 +250,178 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/11/11/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-DSP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/12/28/DSP/">数字信号处理 -- 基于计算机方法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/12/28/DSP/" class="archive-article-date">
+  	<time datetime="2020-12-28T05:44:48.665Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-28</time>
+</a>
+        <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">798字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+      
+        <p>[TOC]</p>
+<hr>
+<blockquote>
+<p>本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版</p>
+</blockquote>
+<h1 id="信号与信号处理"><a href="#信号与信号处理" class="headerlink" title="信号与信号处理"></a>信号与信号处理</h1><h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><h3 id="信号分类"><a href="#信号分类" class="headerlink" title="信号分类"></a>信号分类</h3><ul>
+<li>振幅</li>
+<li>时间<ul>
+<li>连续时间信号<ul>
+<li>振幅也连续：模拟信号</li>
+</ul>
+</li>
+<li>离散时间信号<ul>
+<li>振幅离散：数字信号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="复数信号和解析信号"><a href="#复数信号和解析信号" class="headerlink" title="复数信号和解析信号"></a>复数信号和解析信号</h3><h4 id="复数信号"><a href="#复数信号" class="headerlink" title="复数信号"></a>复数信号</h4><ul>
+<li>Why?<ul>
+<li>信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理</li>
+</ul>
+</li>
+<li>希尔伯特变换 HT<ul>
+<li>$h_{HT} = \frac{1}{\pi t}$</li>
+<li>$$H_{HT}(j\Omega) = \left{  \begin{aligned} -j \ \ \Omega &gt; 0 \ j \ \  \Omega &lt; 0  \end{aligned}  \right. $$</li>
+</ul>
+</li>
+</ul>
+<h4 id="实数信号"><a href="#实数信号" class="headerlink" title="实数信号"></a>实数信号</h4><ul>
+<li>实数信号<ul>
+<li>FT性质 =&gt; 幅度偶对称，相位奇对称</li>
+<li>正频率 + 负频率 $X(j\Omega) = X_p(j\Omega)+X_n(j\Omega)$</li>
+<li>经过HT =&gt; $\hat{X}(j\Omega) = -j X_p(j\Omega)+jX_n(j\Omega)$  =&gt; $\hat{x}(t)$也是实数信号</li>
+</ul>
+</li>
+</ul>
+<h4 id="解析信号"><a href="#解析信号" class="headerlink" title="解析信号"></a>解析信号</h4><p>=&gt; 解析信号  $y(t) = x(t) + j\hat{x}(t)$ </p>
+<p>$x(t), \hat{x}(t)$ 为<strong>同相分量</strong>和<strong>正交分量</strong></p>
+<p>$Y(j\Omega) = X(j\Omega)+j\hat{X}(j\Omega) = 2 X_p(j\Omega)$</p>
+<p>我们可以看出<em>解析信号只包含正频率的部分</em></p>
+<h2 id="信号运算"><a href="#信号运算" class="headerlink" title="信号运算"></a>信号运算</h2><ul>
+<li>简单运算<ul>
+<li>衰减</li>
+<li>延迟 $y(t) = x(t-t_0)$ </li>
+<li>相加，相乘</li>
+<li>积分 $y(t) = \int_{-\infin}^{t}x(\tau) d\tau$ </li>
+<li>微分 $y(t) = \frac{dx(t)}{dt}$</li>
+<li>傅里叶变换Fourier Transform(FT)  $X(j\Omega) = \int_{-\infin}^{+\infin}x(t) e^{-j\Omega t} dt$</li>
+</ul>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2020/12/28/DSP/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DSP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Math</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">SignalProcessing</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/学习笔记//" class="article-tag-list-link color5">学习笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/12/28/DSP/">展开全文 >></a>
         </p>
       
 
@@ -1238,6 +1410,18 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Wireless Communications</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DSP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SignalProcessing</a>
               </li>
             
             <div class="clearfix"></div>
