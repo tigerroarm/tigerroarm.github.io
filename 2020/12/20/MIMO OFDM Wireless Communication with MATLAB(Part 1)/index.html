@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://blog.difan.tech">
-  <title>Archives: 2019 | tigerroarm的博客</title>
+  <title>MIMO OFDM Wireless Communications with MATLAB | tigerroarm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="tigerroarm的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tigerroarm的博客">
-<meta property="og:url" content="https://blog.difan.tech/archives/2019/index.html">
+  <meta name="description" content="本笔记来源于  无线信道衰落：衰落：信号在时间和频率上的上下浮动 产生原因：  多径（接收端的经多条路径收到发射端发射的信号） 噪声 障碍物（阴影衰落）  分类  大尺度衰落  SISO 模型MIMO模型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MIMO OFDM Wireless Communications with MATLAB">
+<meta property="og:url" content="https://blog.difan.tech/2020/12/20/MIMO%20OFDM%20Wireless%20Communication%20with%20MATLAB(Part%201)/index.html">
 <meta property="og:site_name" content="tigerroarm的博客">
-<meta property="og:description" content="tigerroarm的博客">
+<meta property="og:description" content="本笔记来源于  无线信道衰落：衰落：信号在时间和频率上的上下浮动 产生原因：  多径（接收端的经多条路径收到发射端发射的信号） 噪声 障碍物（阴影衰落）  分类  大尺度衰落  SISO 模型MIMO模型">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-12-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2020-12-19T16:00:00.000Z">
 <meta property="article:author" content="tigerroarm">
-<meta property="article:tag" content="tigerroarm的博客">
+<meta property="article:tag" content="Wireless Communications">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="tigerroarm的博客" type="application/atom+xml">
@@ -161,124 +163,259 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MIMO OFDM Wireless Communication with MATLAB(Part 1)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/" class="archive-article-date">
-  	<time datetime="2019-12-16T02:52:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-16</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/">微软新 Edge 浏览器--带给你Chrome一致的体验 安装教程和上手体验</a>
+    <h1 class="article-title" itemprop="name">
+      MIMO OFDM Wireless Communications with MATLAB
     </h1>
   
 
-        <div class="article-info info-on-right">
+        
+        <a href="/2020/12/20/MIMO%20OFDM%20Wireless%20Communication%20with%20MATLAB(Part%201)/" class="archive-article-date">
+  	<time datetime="2020-12-19T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-20</time>
+</a>
+        <!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">75字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
           
+        <!-- 添加完成 -->
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+      
+        <blockquote>
+<p>本笔记来源于</p>
+</blockquote>
+<h1 id="无线信道"><a href="#无线信道" class="headerlink" title="无线信道"></a>无线信道</h1><h2 id="衰落："><a href="#衰落：" class="headerlink" title="衰落："></a>衰落：</h2><p><em>衰落</em>：信号在时间和频率上的上下浮动</p>
+<p><em>产生原因：</em></p>
+<ul>
+<li>多径（接收端的经多条路径收到发射端发射的信号）</li>
+<li>噪声</li>
+<li>障碍物（阴影衰落）</li>
+</ul>
+<p><em>分类</em></p>
+<ul>
+<li>大尺度衰落</li>
+</ul>
+<h1 id="SISO-模型"><a href="#SISO-模型" class="headerlink" title="SISO 模型"></a>SISO 模型</h1><h1 id="MIMO模型"><a href="#MIMO模型" class="headerlink" title="MIMO模型"></a>MIMO模型</h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">MicroSoft</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Wireless Communications</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/Tools//" class="article-tag-list-link color1">Tools</a>
+        			<a href="/categories/Communications//" class="article-tag-list-link color5">Communications</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://blog.difan.tech/2020/12/20/MIMO%20OFDM%20Wireless%20Communication%20with%20MATLAB(Part%201)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/09/git%20%E5%AE%9E%E6%88%98/" class="archive-article-date">
-  	<time datetime="2019-07-08T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-09</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/11/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的学习笔记目录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/09/git%20%E5%AE%9E%E6%88%98/">Git 实战</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">实战</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Tools//" class="article-tag-list-link color1">Tools</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#无线信道"><span class="toc-number">1.</span> <span class="toc-text">无线信道</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#衰落："><span class="toc-number">1.1.</span> <span class="toc-text">衰落：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SISO-模型"><span class="toc-number">2.</span> <span class="toc-text">SISO 模型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MIMO模型"><span class="toc-number">3.</span> <span class="toc-text">MIMO模型</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
+        
+    </div>
+</aside>
+
+
+
   
 
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" class="comments">
+      <style>
+        .comments{margin:30px;padding:10px;background:#fff}
+        @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+      </style>
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+    var notify = 'true' == true ? true : false;
+    var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "duV4iQcArqFCXlvAyXjRXiHW-MdYXbMMI",
+            app_key: "x8NqpHwaMVDQjA3m8JQfXMUj",
+            placeholder: "输入您的评论",
+            avatar:""
+        });
+    }
+
+    document.body.addEventListener('click', function(e) {
+    if (e.target.classList.contains('vsubmit')) {
+        const email = document.querySelector('input[type=email]');
+        const nick = document.querySelector('input[name=nick]');
+        const reg = /^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        if (!email.value || !nick.value || !reg.test(email.value)) {
+            const str = `<div class="valert txt-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>`;
+            const vmark = document.querySelector('.vmark');
+            vmark.innerHTML = str;
+            vmark.style.display = 'block';
+
+            setTimeout(function() {
+                vmark.style.display = 'none';
+                vmark.innerHTML = '';
+            }, 2500);
+        }
+    }
+    });
+</script>
+      </section>
     
+
 
 
           </div>
@@ -302,8 +439,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
