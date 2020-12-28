@@ -17,23 +17,20 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>MIMO OFDM Wireless Communications with MATLAB</title>
+    <title>无线网络物理层</title>
     <link href="https://blog.difan.tech/2020/12/20/MIMO%20OFDM%20Wireless%20Communication%20with%20MATLAB(Part%201)/"/>
     <id>https://blog.difan.tech/2020/12/20/MIMO%20OFDM%20Wireless%20Communication%20with%20MATLAB(Part%201)/</id>
     <published>2020-12-19T16:00:00.000Z</published>
     <updated>2020-12-19T16:00:00.000Z</updated>
     
-    <content type="html"><![CDATA[<blockquote><p>本笔记来源于</p></blockquote><h1 id="无线信道"><a href="#无线信道" class="headerlink" title="无线信道"></a>无线信道</h1><h2 id="衰落："><a href="#衰落：" class="headerlink" title="衰落："></a>衰落：</h2><p><em>衰落</em>：信号在时间和频率上的上下浮动</p><p><em>产生原因：</em></p><ul><li>多径（接收端的经多条路径收到发射端发射的信号）</li><li>噪声</li><li>障碍物（阴影衰落）</li></ul><p><em>分类</em></p><ul><li>大尺度衰落</li></ul><h1 id="SISO-模型"><a href="#SISO-模型" class="headerlink" title="SISO 模型"></a>SISO 模型</h1><h1 id="MIMO模型"><a href="#MIMO模型" class="headerlink" title="MIMO模型"></a>MIMO模型</h1>]]></content>
+    <content type="html"><![CDATA[<blockquote><p>本笔记来源于书籍《MIMO OFDM Wireless Communications with MATLAB》</p></blockquote><h1 id="无线信道"><a href="#无线信道" class="headerlink" title="无线信道"></a>无线信道</h1><h2 id="衰落："><a href="#衰落：" class="headerlink" title="衰落："></a>衰落：</h2><p><em>衰落</em>：信号在时间和频率上的上下浮动</p><a id="more"></a><p><em>产生原因：</em></p><ul><li>多径（接收端的经多条路径收到发射端发射的信号）</li><li>噪声</li><li>障碍物（阴影衰落）</li></ul><p><em>分类</em></p><ul><li>大尺度衰落</li></ul><h1 id="SISO-模型"><a href="#SISO-模型" class="headerlink" title="SISO 模型"></a>SISO 模型</h1><h1 id="MIMO模型"><a href="#MIMO模型" class="headerlink" title="MIMO模型"></a>MIMO模型</h1>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;本笔记来源于&lt;/p&gt;
+      &lt;blockquote&gt;
+&lt;p&gt;本笔记来源于书籍《MIMO OFDM Wireless Communications with MATLAB》&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;无线信道&quot;&gt;&lt;a href=&quot;#无线信道&quot; class=&quot;headerlink&quot; title=&quot;无线信道&quot;&gt;&lt;/a&gt;无线信道&lt;/h1&gt;&lt;h2 id=&quot;衰落：&quot;&gt;&lt;a href=&quot;#衰
-      
+&lt;h1 id=&quot;无线信道&quot;&gt;&lt;a href=&quot;#无线信道&quot; class=&quot;headerlink&quot; title=&quot;无线信道&quot;&gt;&lt;/a&gt;无线信道&lt;/h1&gt;&lt;h2 id=&quot;衰落：&quot;&gt;&lt;a href=&quot;#衰落：&quot; class=&quot;headerlink&quot; title=&quot;衰落：&quot;&gt;&lt;/a&gt;衰落：&lt;/h2&gt;&lt;p&gt;&lt;em&gt;衰落&lt;/em&gt;：信号在时间和频率上的上下浮动&lt;/p&gt;
     
     </summary>
     
