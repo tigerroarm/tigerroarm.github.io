@@ -8,15 +8,13 @@
   <link rel="dns-prefetch" href="https://tigerroarm.github.io">
   <title>数字信号处理 -- 基于计算机方法 | tigerroarm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[TOC]   本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版  信号与信号处理信号信号分类 振幅 时间 连续时间信号 振幅也连续：模拟信号   离散时间信号 振幅离散：数字信号      复数信号和解析信号复数信号 Why? 信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理   希尔伯特变换 HT $h_{HT} &#x3D; \frac{1}{\">
+  <meta name="description" content="本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版  信号与信号处理信号信号分类 振幅 时间 连续时间信号 振幅也连续：模拟信号   离散时间信号 振幅离散：数字信号      复数信号和解析信号复数信号 Why? 信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理   希尔伯特变换 HT $h_{HT} &#x3D; \frac{1}{\pi t}$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数字信号处理 -- 基于计算机方法">
 <meta property="og:url" content="https://tigerroarm.github.io/2020/12/28/DSP/index.html">
 <meta property="og:site_name" content="tigerroarm的博客">
-<meta property="og:description" content="[TOC]   本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版  信号与信号处理信号信号分类 振幅 时间 连续时间信号 振幅也连续：模拟信号   离散时间信号 振幅离散：数字信号      复数信号和解析信号复数信号 Why? 信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理   希尔伯特变换 HT $h_{HT} &#x3D; \frac{1}{\">
+<meta property="og:description" content="本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版  信号与信号处理信号信号分类 振幅 时间 连续时间信号 振幅也连续：模拟信号   离散时间信号 振幅离散：数字信号      复数信号和解析信号复数信号 Why? 信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理   希尔伯特变换 HT $h_{HT} &#x3D; \frac{1}{\pi t}$">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tigerroarm.github.io/2020/12/28/DSP/.%5CImage%5C2-1-01.png">
-<meta property="og:image" content="https://tigerroarm.github.io/2020/12/28/DSP/Image/2-1-02.png">
 <meta property="article:published_time" content="2020-12-28T05:44:48.665Z">
 <meta property="article:modified_time" content="2020-12-28T05:44:48.665Z">
 <meta property="article:author" content="tigerroarm">
@@ -24,7 +22,6 @@
 <meta property="article:tag" content="Math">
 <meta property="article:tag" content="SignalProcessing">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tigerroarm.github.io/2020/12/28/DSP/.%5CImage%5C2-1-01.png">
   
     <link rel="alternative" href="/atom.xml" title="tigerroarm的博客" type="application/atom+xml">
   
@@ -191,7 +188,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">798字</span>
+        <span class="post-count">797字</span>
       </span>
     </span>
 
@@ -213,8 +210,7 @@
       
           
       
-        <p>[TOC]</p>
-<hr>
+        <hr>
 <blockquote>
 <p>本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版</p>
 </blockquote>
@@ -239,7 +235,7 @@
 </li>
 <li>希尔伯特变换 HT<ul>
 <li>$h_{HT} = \frac{1}{\pi t}$</li>
-<li>$$H_{HT}(j\Omega) = \left{  \begin{aligned} -j \ \ \Omega &gt; 0 \ j \ \  \Omega &lt; 0  \end{aligned}  \right. $$</li>
+<li>$H_{HT}(j\Omega) = \left{  \begin{aligned} -j \ \ \Omega &gt; 0 \ j \ \  \Omega &lt; 0  \end{aligned}  \right. $</li>
 </ul>
 </li>
 </ul>
@@ -260,9 +256,9 @@
 <li>衰减</li>
 <li>延迟 $y(t) = x(t-t_0)$ </li>
 <li>相加，相乘</li>
-<li>积分 $y(t) = \int_{-\infin}^{t}x(\tau) d\tau$ </li>
+<li>积分 $y(t) = \int_{-\infty}^{t}x(\tau) d\tau$ </li>
 <li>微分 $y(t) = \frac{dx(t)}{dt}$</li>
-<li>傅里叶变换Fourier Transform(FT)  $X(j\Omega) = \int_{-\infin}^{+\infin}x(t) e^{-j\Omega t} dt$</li>
+<li>傅里叶变换Fourier Transform(FT)  $X(j\Omega) = \int_{-\infty}^{+\infty}x(t) e^{-j\Omega t} dt$</li>
 </ul>
 </li>
 </ul>
@@ -296,8 +292,8 @@
 <p>$s[n]=2[n(0.9)^n]$ 和噪声$d(n)$，受干扰后的集合平均可以减少干扰影响</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Program_2_1</span></span><br><span class="line"><span class="comment">% Generation of the ensemble average</span></span><br><span class="line">N = <span class="number">50</span>; <span class="comment">% total number</span></span><br><span class="line">n = <span class="number">0</span> : N<span class="number">-1</span>;</span><br><span class="line">s = <span class="number">2</span>*(n.*<span class="number">0.9</span>.^n); <span class="comment">% generate the original signal s[n]</span></span><br><span class="line">rng();</span><br><span class="line">d = <span class="built_in">rand</span>(N, <span class="number">1</span>) - <span class="number">0.5</span>; <span class="comment">% generate the noise signal d[n]</span></span><br><span class="line"></span><br><span class="line">x1 = s+d'; <span class="comment">% the corrupted signal</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the corrupted signal</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">stem(n, x1);</span><br><span class="line">xlabel(<span class="string">'Time Index n'</span>)</span><br><span class="line">ylabel(<span class="string">'Amplitude'</span>)</span><br><span class="line">title(<span class="string">'The Corrupted Signal'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the Noise Signal</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">stem(n, d)</span><br><span class="line">xlabel(<span class="string">'Time Index n'</span>)</span><br><span class="line">ylabel(<span class="string">'Amplitude'</span>)</span><br><span class="line">title(<span class="string">'The Noise Signal'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Ensemble average</span></span><br><span class="line"><span class="keyword">for</span> m = <span class="number">1</span>:<span class="number">50</span></span><br><span class="line">    rng();</span><br><span class="line">    noise = <span class="built_in">rand</span>(N,<span class="number">1</span>) - <span class="number">0.5</span>;</span><br><span class="line">    x = s + noise';</span><br><span class="line">    x1 = x1 + x;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">x1 = x1 / N;</span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the ensemble average signal</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">stem(n, x1);</span><br><span class="line">xlabel(<span class="string">'Time Index n'</span>)</span><br><span class="line">ylabel(<span class="string">'Amplitude'</span>)</span><br><span class="line">title(<span class="string">'The Ensemble Average Signal'</span>)</span><br></pre></td></tr></table></figure>
 
-<p><img src=".%5CImage%5C2-1-01.png" alt="2-1-01"></p>
-<p><img src="./Image/2-1-02.png" alt=""></p>
+
+
 
       
 
@@ -598,6 +594,18 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">DSP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Math</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SignalProcessing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -610,11 +618,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">实战</a>
+                <a href="javascript:void(0)" class="js-tag color4">Wireless Communications</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -638,23 +642,15 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">实战</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">tmux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Wireless Communications</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">DSP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Math</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">SignalProcessing</a>
               </li>
             
             <div class="clearfix"></div>
