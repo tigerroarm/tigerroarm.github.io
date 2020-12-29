@@ -186,7 +186,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">143字</span>
+        <span class="post-count">118字</span>
       </span>
     </span>
 
@@ -210,12 +210,12 @@
       
         <ul>
 <li><strong>深入理解计算机系统：</strong><ul>
-<li>笔记： <a href="https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/">https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/</a></li>
-<li>实验： <a href="https://tigerroarm.github.io/LearningNotes/csapp/lab/">https://tigerroarm.github.io/LearningNotes/csapp/lab/</a></li>
+<li>笔记： <a href="https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/">CSAPP Notes</a></li>
+<li>实验： <a href="https://tigerroarm.github.io/LearningNotes/csapp/lab/">CSAPP Lab</a></li>
 </ul>
 </li>
 <li><strong>Leetcode ：</strong><ul>
-<li>我的Leetcode题解： [<a href="https://tigerroarm.github.io/Leetcode]">https://tigerroarm.github.io/Leetcode]</a>(<a href="https://tigerroarm.github.io/Leetcode">https://tigerroarm.github.io/Leetcode</a></li>
+<li>我的Leetcode题解： <a href="https://tigerroarm.github.io/Leetcode">LeetCode Solution</a></li>
 </ul>
 </li>
 </ul>
@@ -302,7 +302,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">995字</span>
+        <span class="post-count">999字</span>
       </span>
     </span>
 
@@ -324,7 +324,8 @@
       
           
       
-        <!-- toc -->
+        <p><strong>目录：</strong></p>
+<!-- toc -->
 
 <ul>
 <li><a href="#信号与信号处理">信号与信号处理</a><ul>
@@ -359,58 +360,8 @@
 <!-- tocstop -->
 
 <blockquote>
-<p>本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版</p>
+<p>本文是我学习《数字信号处理 – 基于计算机的方法》第四版的笔记</p>
 </blockquote>
-<h1 id="信号与信号处理"><a href="#信号与信号处理" class="headerlink" title="信号与信号处理"></a>信号与信号处理</h1><h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><h3 id="信号分类"><a href="#信号分类" class="headerlink" title="信号分类"></a>信号分类</h3><ul>
-<li>振幅</li>
-<li>时间<ul>
-<li>连续时间信号<ul>
-<li>振幅也连续：模拟信号</li>
-</ul>
-</li>
-<li>离散时间信号<ul>
-<li>振幅离散：数字信号</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="复数信号和解析信号"><a href="#复数信号和解析信号" class="headerlink" title="复数信号和解析信号"></a>复数信号和解析信号</h3><h4 id="复数信号"><a href="#复数信号" class="headerlink" title="复数信号"></a>复数信号</h4><ul>
-<li><p>Why?</p>
-<ul>
-<li>信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理</li>
-</ul>
-</li>
-<li><p>希尔伯特变换 HT</p>
-<ul>
-<li>$h_{HT} = \frac{1}{\pi t}$</li>
-<li>$H_{HT}(j\Omega) = \begin{cases} -j &amp; \Omega &gt; 0 \\  j &amp;  \Omega &lt; 0  \end{cases} $<!--这里要用\\\来表示换行-->
-<h4 id="实数信号"><a href="#实数信号" class="headerlink" title="实数信号"></a>实数信号</h4></li>
-</ul>
-</li>
-<li><p>实数信号</p>
-<ul>
-<li>FT性质 =&gt; 幅度偶对称，相位奇对称</li>
-<li>正频率 + 负频率 $X(j\Omega) = X_p(j\Omega)+X_n(j\Omega)$</li>
-<li>经过HT =&gt; $\hat{X}(j\Omega) = -j X_p(j\Omega)+jX_n(j\Omega)$  =&gt; $\hat{x}(t)$也是实数信号</li>
-</ul>
-</li>
-</ul>
-<h4 id="解析信号"><a href="#解析信号" class="headerlink" title="解析信号"></a>解析信号</h4><p>=&gt; 解析信号  $y(t) = x(t) + j\hat{x}(t)$ </p>
-<p>$x(t), \hat{x}(t)$ 为<strong>同相分量</strong>和<strong>正交分量</strong></p>
-<p>$Y(j\Omega) = X(j\Omega)+j\hat{X}(j\Omega) = 2 X_p(j\Omega)$</p>
-<p>我们可以看出<em>解析信号只包含正频率的部分</em></p>
-<h2 id="信号运算"><a href="#信号运算" class="headerlink" title="信号运算"></a>信号运算</h2><ul>
-<li>简单运算<ul>
-<li>衰减</li>
-<li>延迟 $y(t) = x(t-t_0)$ </li>
-<li>相加，相乘</li>
-<li>积分 $y(t) = \int_{-\infty}^{t}x(\tau) d\tau$ </li>
-<li>微分 $y(t) = \frac{dx(t)}{dt}$</li>
-<li>傅里叶变换Fourier Transform(FT)  $X(j\Omega) = \int_{-\infty}^{+\infty}x(t) e^{-j\Omega t} dt$</li>
-</ul>
-</li>
-</ul>
         
           <a class="article-more-a" href="/2020/12/28/DSP/#more">more >></a>
         
@@ -1399,6 +1350,14 @@ MathJax.Hub.Queue(function() {
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Wireless Communications</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DSP</a>
               </li>
              
@@ -1431,7 +1390,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
+                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">挂载</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1440,18 +1403,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">FirewallD</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Wireless Communications</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">ubuntu</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">挂载</a>
               </li>
              
               <li class="article-tag-list-item">
