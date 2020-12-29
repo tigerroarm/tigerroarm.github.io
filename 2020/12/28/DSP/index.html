@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://tigerroarm.github.io">
   <title>数字信号处理 -- 基于计算机方法 | tigerroarm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版  信号与信号处理信号信号分类 振幅 时间 连续时间信号 振幅也连续：模拟信号   离散时间信号 振幅离散：数字信号      复数信号和解析信号复数信号 Why?  信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理   希尔伯特变换 HT  $h_{HT} &#x3D; \frac{1}{\pi t">
+  <meta name="description" content="信号与信号处理 信号 信号分类 复数信号和解析信号 复数信号 实数信号 解析信号     信号运算 调制     时域离散时间信号 时域表示 频域表示 运算 卷积 抽样率转换 序列分类         本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版  信号与信号处理信号信号分类 振幅 时间 连续时间信号 振幅也连续：模拟信号   离散时间信号 振幅离散：数字信号      复数信">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数字信号处理 -- 基于计算机方法">
 <meta property="og:url" content="https://tigerroarm.github.io/2020/12/28/DSP/index.html">
 <meta property="og:site_name" content="tigerroarm的博客">
-<meta property="og:description" content="本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版  信号与信号处理信号信号分类 振幅 时间 连续时间信号 振幅也连续：模拟信号   离散时间信号 振幅离散：数字信号      复数信号和解析信号复数信号 Why?  信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理   希尔伯特变换 HT  $h_{HT} &#x3D; \frac{1}{\pi t">
+<meta property="og:description" content="信号与信号处理 信号 信号分类 复数信号和解析信号 复数信号 实数信号 解析信号     信号运算 调制     时域离散时间信号 时域表示 频域表示 运算 卷积 抽样率转换 序列分类         本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版  信号与信号处理信号信号分类 振幅 时间 连续时间信号 振幅也连续：模拟信号   离散时间信号 振幅离散：数字信号      复数信">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tigerroarm.github.io/images/DSP/2-1-01.png">
 <meta property="og:image" content="https://tigerroarm.github.io/images/DSP/2-1-02.png">
@@ -191,7 +191,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">814字</span>
+        <span class="post-count">995字</span>
       </span>
     </span>
 
@@ -200,7 +200,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -213,11 +213,44 @@
       
           
       
-        <hr>
+        <!-- toc -->
+
+<ul>
+<li><a href="#信号与信号处理">信号与信号处理</a><ul>
+<li><a href="#信号">信号</a><ul>
+<li><a href="#信号分类">信号分类</a></li>
+<li><a href="#复数信号和解析信号">复数信号和解析信号</a><ul>
+<li><a href="#复数信号">复数信号</a></li>
+<li><a href="#实数信号">实数信号</a></li>
+<li><a href="#解析信号">解析信号</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#信号运算">信号运算</a><ul>
+<li><a href="#调制">调制</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#时域离散时间信号">时域离散时间信号</a><ul>
+<li><a href="#时域表示">时域表示</a></li>
+<li><a href="#频域表示">频域表示</a></li>
+<li><a href="#运算">运算</a><ul>
+<li><a href="#卷积">卷积</a></li>
+<li><a href="#抽样率转换">抽样率转换</a></li>
+<li><a href="#序列分类">序列分类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
 <blockquote>
 <p>本文来自于书籍《数字信号处理 – 基于计算机的方法》第四版</p>
 </blockquote>
-<h1 id="信号与信号处理"><a href="#信号与信号处理" class="headerlink" title="信号与信号处理"></a>信号与信号处理</h1><h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><h3 id="信号分类"><a href="#信号分类" class="headerlink" title="信号分类"></a>信号分类</h3><ul>
+<h1><span id="信号与信号处理">信号与信号处理</span></h1><h2><span id="信号">信号</span></h2><h3><span id="信号分类">信号分类</span></h3><ul>
 <li>振幅</li>
 <li>时间<ul>
 <li>连续时间信号<ul>
@@ -231,7 +264,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="复数信号和解析信号"><a href="#复数信号和解析信号" class="headerlink" title="复数信号和解析信号"></a>复数信号和解析信号</h3><h4 id="复数信号"><a href="#复数信号" class="headerlink" title="复数信号"></a>复数信号</h4><ul>
+<h3><span id="复数信号和解析信号">复数信号和解析信号</span></h3><h4><span id="复数信号">复数信号</span></h4><ul>
 <li><p>Why?</p>
 <ul>
 <li>信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理</li>
@@ -241,7 +274,7 @@
 <ul>
 <li>$h_{HT} = \frac{1}{\pi t}$</li>
 <li>$H_{HT}(j\Omega) = \begin{cases} -j &amp; \Omega &gt; 0 \\  j &amp;  \Omega &lt; 0  \end{cases} $<!--这里要用\\\来表示换行-->
-<h4 id="实数信号"><a href="#实数信号" class="headerlink" title="实数信号"></a>实数信号</h4></li>
+<h4><span id="实数信号">实数信号</span></h4></li>
 </ul>
 </li>
 <li><p>实数信号</p>
@@ -252,11 +285,11 @@
 </ul>
 </li>
 </ul>
-<h4 id="解析信号"><a href="#解析信号" class="headerlink" title="解析信号"></a>解析信号</h4><p>=&gt; 解析信号  $y(t) = x(t) + j\hat{x}(t)$ </p>
+<h4><span id="解析信号">解析信号</span></h4><p>=&gt; 解析信号  $y(t) = x(t) + j\hat{x}(t)$ </p>
 <p>$x(t), \hat{x}(t)$ 为<strong>同相分量</strong>和<strong>正交分量</strong></p>
 <p>$Y(j\Omega) = X(j\Omega)+j\hat{X}(j\Omega) = 2 X_p(j\Omega)$</p>
 <p>我们可以看出<em>解析信号只包含正频率的部分</em></p>
-<h2 id="信号运算"><a href="#信号运算" class="headerlink" title="信号运算"></a>信号运算</h2><ul>
+<h2><span id="信号运算">信号运算</span></h2><ul>
 <li>简单运算<ul>
 <li>衰减</li>
 <li>延迟 $y(t) = x(t-t_0)$ </li>
@@ -279,30 +312,36 @@
 </ul>
 </li>
 </ul>
-<h3 id="调制"><a href="#调制" class="headerlink" title="调制"></a>调制</h3><ul>
+<h3><span id="调制">调制</span></h3><ul>
 <li>Why?<ul>
 <li>低频信号无法直接用于传输</li>
 <li>调制到高频进行传输- 原理：利用信号的振幅、相位、频率表示信号</li>
 </ul>
 </li>
 </ul>
-<h1 id="时域离散时间信号"><a href="#时域离散时间信号" class="headerlink" title="时域离散时间信号"></a>时域离散时间信号</h1><p>离散时间信号， Why？</p>
+<h1><span id="时域离散时间信号">时域离散时间信号</span></h1><p>离散时间信号， Why？</p>
 <blockquote>
 <p> 现代计算机、微处理器、嵌入式设备都是处理数字信号的，但是我们的物理世界充斥着连续信号（模拟信号），如声音信号等。而直接处理模拟信号是比较困难的（1G通信），设备器件做的很大（大哥大），而且不便于加密（你树根天线就能窃听到隔壁老王在电话里说什么）。这就涉及到<em>模拟信号数字化</em>（<strong>采样，或者抽样</strong>），转换为数字信号进行处理。</p>
 </blockquote>
-<h2 id="时域表示"><a href="#时域表示" class="headerlink" title="时域表示"></a>时域表示</h2><p>采样： $x[n] = x_a{(t)}|_{t = nT} = x_a(nT)$</p>
+<h2><span id="时域表示">时域表示</span></h2><p>采样： $x[n] = x_a{(t)}|_{t = nT} = x_a(nT)$</p>
 <p>采样频率（抽样频率）： $F_t = \frac{1}{T}$</p>
 <p>采样得到的值由于ADC（数模转换器）的精度问题（例如12 Bit ADC）有<strong>舍入的问题</strong>。</p>
-<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p><strong>例子2.1：集合平均</strong></p>
+<h2><span id="频域表示">频域表示</span></h2><p>归一化角频率：$\omega_c$ 为归一化角频率，因为样本$n$是无量纲的，所以应该是弧度/样本，且<br>$$<br>\omega = 2\pi f<br>$$<br>$f$ 是归一化角频率， 单位是周期/样本，即一个样本多少周期</p>
+<h2><span id="运算">运算</span></h2><p><strong>例子2.1：集合平均</strong></p>
 <p>$s[n]=2[n(0.9)^n]$ 和噪声$d(n)$，受干扰后的集合平均可以减少干扰影响</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Program_2_1</span></span><br><span class="line"><span class="comment">% Generation of the ensemble average</span></span><br><span class="line">N = <span class="number">50</span>; <span class="comment">% total number</span></span><br><span class="line">n = <span class="number">0</span> : N<span class="number">-1</span>;</span><br><span class="line">s = <span class="number">2</span>*(n.*<span class="number">0.9</span>.^n); <span class="comment">% generate the original signal s[n]</span></span><br><span class="line">rng();</span><br><span class="line">d = <span class="built_in">rand</span>(N, <span class="number">1</span>) - <span class="number">0.5</span>; <span class="comment">% generate the noise signal d[n]</span></span><br><span class="line"></span><br><span class="line">x1 = s+d'; <span class="comment">% the corrupted signal</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the corrupted signal</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">stem(n, x1);</span><br><span class="line">xlabel(<span class="string">'Time Index n'</span>)</span><br><span class="line">ylabel(<span class="string">'Amplitude'</span>)</span><br><span class="line">title(<span class="string">'The Corrupted Signal'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the Noise Signal</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">stem(n, d)</span><br><span class="line">xlabel(<span class="string">'Time Index n'</span>)</span><br><span class="line">ylabel(<span class="string">'Amplitude'</span>)</span><br><span class="line">title(<span class="string">'The Noise Signal'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Ensemble average</span></span><br><span class="line"><span class="keyword">for</span> m = <span class="number">1</span>:<span class="number">50</span></span><br><span class="line">    rng();</span><br><span class="line">    noise = <span class="built_in">rand</span>(N,<span class="number">1</span>) - <span class="number">0.5</span>;</span><br><span class="line">    x = s + noise';</span><br><span class="line">    x1 = x1 + x;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">x1 = x1 / N;</span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the ensemble average signal</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">stem(n, x1);</span><br><span class="line">xlabel(<span class="string">'Time Index n'</span>)</span><br><span class="line">ylabel(<span class="string">'Amplitude'</span>)</span><br><span class="line">title(<span class="string">'The Ensemble Average Signal'</span>)</span><br></pre></td></tr></table></figure>
 
 
 
 
-<p><img src="/images/DSP/2-1-01.png" alt=""></p>
-<p><img src="/images/DSP/2-1-02.png" alt=""></p>
-<h3 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h3><p>使用函数<code>conv</code>即可作为卷积运算</p>
+<p><img src="/images/DSP/2-1-01.png" alt></p>
+<p><img src="/images/DSP/2-1-02.png" alt></p>
+<h3><span id="卷积">卷积</span></h3><p>使用函数<code>conv</code>即可作为卷积运算</p>
+<h3><span id="抽样率转换">抽样率转换</span></h3><p><strong>抽样率转换比:</strong>  $\frac{F_T^{‘}}{F_T} = R$, $F_T$ 是原本的抽样率, 再拿$F_T^{‘}$ 去抽样</p>
+<h3><span id="序列分类">序列分类</span></h3><ul>
+<li>周期、非周期</li>
+<li>能量信号、功率信号</li>
+</ul>
 
       
 
@@ -434,7 +473,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#信号与信号处理"><span class="toc-number">1.</span> <span class="toc-text">信号与信号处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#信号"><span class="toc-number">1.1.</span> <span class="toc-text">信号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#信号分类"><span class="toc-number">1.1.1.</span> <span class="toc-text">信号分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复数信号和解析信号"><span class="toc-number">1.1.2.</span> <span class="toc-text">复数信号和解析信号</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#复数信号"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">复数信号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#实数信号"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">实数信号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#解析信号"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">解析信号</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#信号运算"><span class="toc-number">1.2.</span> <span class="toc-text">信号运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#调制"><span class="toc-number">1.2.1.</span> <span class="toc-text">调制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#时域离散时间信号"><span class="toc-number">2.</span> <span class="toc-text">时域离散时间信号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#时域表示"><span class="toc-number">2.1.</span> <span class="toc-text">时域表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运算"><span class="toc-number">2.2.</span> <span class="toc-text">运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#卷积"><span class="toc-number">2.2.1.</span> <span class="toc-text">卷积</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">信号与信号处理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">1.1.</span> <span class="toc-text">信号</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">1.1.1.</span> <span class="toc-text">信号分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">1.1.2.</span> <span class="toc-text">复数信号和解析信号</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">复数信号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">实数信号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">解析信号</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">1.2.</span> <span class="toc-text">信号运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">1.2.1.</span> <span class="toc-text">调制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">时域离散时间信号</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.1.</span> <span class="toc-text">时域表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.2.</span> <span class="toc-text">频域表示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number">2.3.</span> <span class="toc-text">运算</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">2.3.1.</span> <span class="toc-text">卷积</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">2.3.2.</span> <span class="toc-text">抽样率转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">2.3.3.</span> <span class="toc-text">序列分类</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -615,10 +654,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -639,6 +674,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">FirewallD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Wireless Communications</a>
               </li>
              
@@ -648,14 +695,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">挂载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">FirewallD</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -212,9 +212,9 @@
         <p>本文翻译自 <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7" target="_blank" rel="noopener">How To Set Up a Firewall Using FirewallD on CentOS 7</a></p>
 <a id="more"></a>
 
-<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>Firewalld是可用于许多Linux发行版的防火墙管理解决方案，它充当Linux内核提供的iptables数据包过滤系统的前端。 在本指南中，我们将介绍如何为服务器设置防火墙，并向您展示使用firewall-cmd管理工具管理防火墙的基本知识（如果您希望在CentOS中使用iptables，请遵循 <a href="https://www.digitalocean.com/community/tutorials/how-to-migrate-from-firewalld-to-iptables-on-centos-7" target="_blank" rel="noopener">这个指南</a>。</p>
-<h2 id="Firewalld-的基本概念"><a href="#Firewalld-的基本概念" class="headerlink" title="Firewalld 的基本概念"></a>Firewalld 的基本概念</h2><p>在开始讨论如何实际使用firewall-cmd实用程序来管理防火墙配置之前，我们应该熟悉该工具引入的一些基本概念。</p>
-<h3 id="Zones-区域"><a href="#Zones-区域" class="headerlink" title="Zones(区域)"></a>Zones(区域)</h3><p>Firewalld守护程序使用称为“区域”的实体管理规则组。 区域基本上是一组规则，它们决定了允许哪些流量，具体取决于您对计算机所连接的网络的信任程度。 为网络接口分配一个Zone来指示防火墙应允许和拒绝哪些行为。</p>
+<h3><span id="引言">引言</span></h3><p>Firewalld是可用于许多Linux发行版的防火墙管理解决方案，它充当Linux内核提供的iptables数据包过滤系统的前端。 在本指南中，我们将介绍如何为服务器设置防火墙，并向您展示使用firewall-cmd管理工具管理防火墙的基本知识（如果您希望在CentOS中使用iptables，请遵循 <a href="https://www.digitalocean.com/community/tutorials/how-to-migrate-from-firewalld-to-iptables-on-centos-7" target="_blank" rel="noopener">这个指南</a>。</p>
+<h2><span id="firewalld-的基本概念">Firewalld 的基本概念</span></h2><p>在开始讨论如何实际使用firewall-cmd实用程序来管理防火墙配置之前，我们应该熟悉该工具引入的一些基本概念。</p>
+<h3><span id="zones区域">Zones(区域)</span></h3><p>Firewalld守护程序使用称为“区域”的实体管理规则组。 区域基本上是一组规则，它们决定了允许哪些流量，具体取决于您对计算机所连接的网络的信任程度。 为网络接口分配一个Zone来指示防火墙应允许和拒绝哪些行为。</p>
 <p>对于可能经常在网络之间移动的计算机（例如笔记本电脑），这种灵活性提供了一种根据环境更改规则的好方法。 在公共WiFi网络上运行时，您可能有严格的规则禁止大多数流量，而在连接到家庭网络时允许放宽限制。 对于服务器来说，这些区域并不是那么重要，因为网络环境很少更改。</p>
 <p>无论您的网络环境动态性有多强，熟悉防火墙的每个预定义区域背后的概念仍然很有用。 按从最不信任到最受信任的顺序，firewalld中的预定义区域为：</p>
 <ul>
@@ -238,9 +238,9 @@
 </li>
 </ul>
 <p>要使用防火墙，我们可以创建规则并更改区域的属性，然后将网络接口（network interface）分配给最合适的区域（zones）。</p>
-<h3 id="规则永久性"><a href="#规则永久性" class="headerlink" title="规则永久性"></a>规则永久性</h3><p>在firewalld中，可以将规则指定为<strong>永久规则</strong>或<strong>立即规则</strong>。 如果添加或修改规则，则默认情况下，将修改当前运行的防火墙规则。 下次启动时，旧规则将恢复。</p>
+<h3><span id="规则永久性">规则永久性</span></h3><p>在firewalld中，可以将规则指定为<strong>永久规则</strong>或<strong>立即规则</strong>。 如果添加或修改规则，则默认情况下，将修改当前运行的防火墙规则。 下次启动时，旧规则将恢复。</p>
 <p>大多数<code>firewall-cmd</code>操作都可以使用<code>--permanent</code>标志来指示应永久防火墙规则作为目标。 这将影响在引导时重新加载的规则。 这种分离意味着您可以在活动的防火墙实例中测试规则，然后在出现问题时重新加载。 您还可以使用<code>--permanent</code>标志随着时间的推移建立一套完整的规则，这些规则将在发出<code>reload</code>命令时立即应用。</p>
-<h2 id="安装并启动防火墙"><a href="#安装并启动防火墙" class="headerlink" title="安装并启动防火墙"></a>安装并启动防火墙</h2><p>firewalld默认安装在一些Linux发行版上，包括许多CentOS 7的映像。但是，您可能需要自己安装firewalld:</p>
+<h2><span id="安装并启动防火墙">安装并启动防火墙</span></h2><p>firewalld默认安装在一些Linux发行版上，包括许多CentOS 7的映像。但是，您可能需要自己安装firewalld:</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install firewalld</span><br></pre></td></tr></table></figure>
 
 <p>安装firewalld之后，可以启用服务并重新启动服务器。请记住，启用firewalld将导致服务在引导时启动。最好的做法是<strong>先创建防火墙规则</strong>，并在配置此行为之前对其进行测试，以避免潜在的问题。</p>
@@ -251,8 +251,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --state</span><br></pre></td></tr></table></figure>
 
 <p>这表明我们的防火墙已经启动并使用默认配置运行。</p>
-<h2 id="熟悉当前的防火墙规则"><a href="#熟悉当前的防火墙规则" class="headerlink" title="熟悉当前的防火墙规则"></a>熟悉当前的防火墙规则</h2><p>在开始进行修改之前，我们应该熟悉守护进程提供的默认环境和规则。</p>
-<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><p>我们可以通过输入以下内容来查看当前选择的默认区域：</p>
+<h2><span id="熟悉当前的防火墙规则">熟悉当前的防火墙规则</span></h2><p>在开始进行修改之前，我们应该熟悉守护进程提供的默认环境和规则。</p>
+<h3><span id="默认值">默认值</span></h3><p>我们可以通过输入以下内容来查看当前选择的默认区域：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --get-active-zones</span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">output</span><br><span class="line">public</span><br><span class="line">  interfaces: eth0 eth1</span><br></pre></td></tr></table></figure>
 <p> 在这里，我们可以看到示例服务器具有两个受防火墙控制的网络接口（eth0和eth1）。 目前，它们都根据为public zone定义的规则进行管理。</p>
@@ -260,7 +260,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">output</span><br><span class="line">public (default, active)</span><br><span class="line">  target: default</span><br><span class="line">  icmp-block-inversion: no</span><br><span class="line">  interfaces: eth0 eth1</span><br><span class="line">  sources: </span><br><span class="line">  services: ssh dhcpv6-client</span><br><span class="line">  ports: </span><br><span class="line">  protocols: </span><br><span class="line">  masquerade: no</span><br><span class="line">  forward-ports: </span><br><span class="line">  source-ports: </span><br><span class="line">  icmp-blocks: </span><br><span class="line">  rich rules:</span><br></pre></td></tr></table></figure>
 <p>从输出中可以看出，该区域既是默认区域又是活动区域，并且eth0和eth1接口与此区域相关联（我们已经从之前的查询中了解了所有这些信息）。 但是，我们还可以看到，该区域允许与DHCP客户端（用于IP地址分配）和SSH（用于远程管理）相关的正常操作。</p>
-<h3 id="可替代区"><a href="#可替代区" class="headerlink" title="可替代区"></a>可替代区</h3><p>现在，我们对缺省和活动区域的配置有了很好的了解。我们也可以找到其他区域的信息。要获得可用区域的列表，请输入：</p>
+<h3><span id="可替代区">可替代区</span></h3><p>现在，我们对缺省和活动区域的配置有了很好的了解。我们也可以找到其他区域的信息。要获得可用区域的列表，请输入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --get-zones</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">output</span><br><span class="line">block dmz drop external home internal public trusted work</span><br></pre></td></tr></table></figure>
 
@@ -271,8 +271,8 @@
 <p>您可以使用–list-all-zones选项输出所有区域定义。 您可能希望将输出通过管道以便于查看：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --list-all-zones | less</span><br></pre></td></tr></table></figure>
 
-<h2 id="为接口选择区域"><a href="#为接口选择区域" class="headerlink" title="为接口选择区域"></a>为接口选择区域</h2><p>除非您已经配置了您的网络接口，否则在防火墙启动时，每个接口都将放在默认区域。</p>
-<h3 id="改变接口的区域"><a href="#改变接口的区域" class="headerlink" title="改变接口的区域"></a>改变接口的区域</h3><p>您可以在会话期间使用<code>—zone=</code>参数和<code>—change-interface=</code>参数在区域之间转换接口。与修改防火墙的所有命令一样，您将需要使用sudo。</p>
+<h2><span id="为接口选择区域">为接口选择区域</span></h2><p>除非您已经配置了您的网络接口，否则在防火墙启动时，每个接口都将放在默认区域。</p>
+<h3><span id="改变接口的区域">改变接口的区域</span></h3><p>您可以在会话期间使用<code>—zone=</code>参数和<code>—change-interface=</code>参数在区域之间转换接口。与修改防火墙的所有命令一样，您将需要使用sudo。</p>
 <p>例如，我们可以通过输入以下内容将eth0接口转换到home区域:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;home --change-interface&#x3D;eth0</span><br></pre></td></tr></table></figure>
 
@@ -284,13 +284,13 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">output</span><br><span class="line">home</span><br><span class="line">  interfaces: eth0</span><br><span class="line">public</span><br><span class="line">  interfaces: eth1</span><br></pre></td></tr></table></figure>
 
-<h3 id="调整默认区域"><a href="#调整默认区域" class="headerlink" title="调整默认区域"></a>调整默认区域</h3><p>如果所有接口都可以最好地由单个区域处理，那么只需选择最佳默认区域，然后将其用于配置可能更容易。</p>
+<h3><span id="调整默认区域">调整默认区域</span></h3><p>如果所有接口都可以最好地由单个区域处理，那么只需选择最佳默认区域，然后将其用于配置可能更容易。</p>
 <p>您可以使用 参数更改默认区域。这将立即将默认的接口更改回新区域：<code>--set-default-zone=</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --set-default-zone&#x3D;home</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">output</span><br><span class="line">success</span><br></pre></td></tr></table></figure>
 
-<h2 id="为应用程序设置规则"><a href="#为应用程序设置规则" class="headerlink" title="为应用程序设置规则"></a>为应用程序设置规则</h2><p>为您希望提供的服务定义防火墙的基本方法非常简单。我们将在这里了解基本思想。</p>
-<h3 id="向区域添加服务"><a href="#向区域添加服务" class="headerlink" title="向区域添加服务"></a>向区域添加服务</h3><p>最简单的方法是将所需的服务或端口添加到正在使用的区域。同样，您可以使用以下选项获取可用服务的列表：<code>--get-services</code></p>
+<h2><span id="为应用程序设置规则">为应用程序设置规则</span></h2><p>为您希望提供的服务定义防火墙的基本方法非常简单。我们将在这里了解基本思想。</p>
+<h3><span id="向区域添加服务">向区域添加服务</span></h3><p>最简单的方法是将所需的服务或端口添加到正在使用的区域。同样，您可以使用以下选项获取可用服务的列表：<code>--get-services</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --get-services</span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">output</span><br><span class="line">RH-Satellite-6 amanda-client amanda-k5-client bacula bacula-client bitcoin bitcoin-rpc bitcoin-testnet bitcoin-testnet-rpc ceph ceph-mon cfengine condor-collector ctdb dhcp dhcpv6 dhcpv6-client dns docker-registry dropbox-lansync elasticsearch freeipa-ldap freeipa-ldaps freeipa-replication freeipa-trust ftp ganglia-client ganglia-master high-availability http https imap imaps ipp ipp-client ipsec iscsi-target kadmin kerberos kibana klogin kpasswd kshell ldap ldaps libvirt libvirt-tls managesieve mdns mosh mountd ms-wbt mssql mysql nfs nrpe ntp openvpn ovirt-imageio ovirt-storageconsole ovirt-vmconsole pmcd pmproxy pmwebapi pmwebapis pop3 pop3s postgresql privoxy proxy-dhcp ptp pulseaudio puppetmaster quassel radius rpc-bind rsh rsyncd samba samba-client sane sip sips smtp smtp-submission smtps snmp snmptrap spideroak-lansync squid ssh synergy syslog syslog-tls telnet tftp tftp-client tinc tor-socks transmission-client vdsm vnc-server wbem-https xmpp-bosh xmpp-client xmpp-local xmpp-server</span><br></pre></td></tr></table></figure>
@@ -310,9 +310,9 @@
 <p>现在，您的“公共”区域将允许端口80上的HTTP Web通信。如果您的Web服务器配置为使用SSL / TLS，则还需要添加服务。 我们可以通过以下内容将其添加到当前session和永久规则集合中：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public --add-service&#x3D;https</span><br><span class="line">sudo firewall-cmd --zone&#x3D;public --permanent --add-service&#x3D;https</span><br></pre></td></tr></table></figure>
 
-<h3 id="如果没有合适的服务可用呢"><a href="#如果没有合适的服务可用呢" class="headerlink" title="如果没有合适的服务可用呢?"></a>如果没有合适的服务可用呢?</h3><p>firewalld安装中包含的防火墙服务代表了您可能希望允许访问的应用程序的许多最常见需求。但是，可能会出现这些服务不适合您的需求的情况。</p>
+<h3><span id="如果没有合适的服务可用呢">如果没有合适的服务可用呢?</span></h3><p>firewalld安装中包含的防火墙服务代表了您可能希望允许访问的应用程序的许多最常见需求。但是，可能会出现这些服务不适合您的需求的情况。</p>
 <p>在这种情况下，你有两种选择：</p>
-<h4 id="为你的区域开一个端口"><a href="#为你的区域开一个端口" class="headerlink" title="为你的区域开一个端口"></a>为你的区域开一个端口</h4><p>支持你特定服务最简单的方法就是在合适的区域(zone)内开放一个端口， 这很容易指定端口或端口范围，以及需要打开的端口相关的协议。</p>
+<h4><span id="为你的区域开一个端口">为你的区域开一个端口</span></h4><p>支持你特定服务最简单的方法就是在合适的区域(zone)内开放一个端口， 这很容易指定端口或端口范围，以及需要打开的端口相关的协议。</p>
 <p>比如，如果你的应用在5000端口中使用TCP，<br>你可以在public区域内使用这个参数进行增加，协议可以为tcp，udp：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public --add-port&#x3D;5000&#x2F;tcp</span><br></pre></td></tr></table></figure>
 <p>我们可以通过<code>--list-ports</code>进行确认</p>
@@ -322,7 +322,7 @@
 <p>在测试后，我们想把它们增加为永久的防火墙规则，你可以输入：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public --permanent --add-port&#x3D;5000&#x2F;tcp</span><br><span class="line">sudo firewall-cmd --zone&#x3D;public --permanent --add-port&#x3D;4990-4999&#x2F;udp</span><br><span class="line">sudo firewall-cmd --zone&#x3D;public --permanent --list-ports</span><br></pre></td></tr></table></figure>
 
-<h4 id="定义一个服务"><a href="#定义一个服务" class="headerlink" title="定义一个服务"></a>定义一个服务</h4><p>为您的区域打开端口很容易，但是很难跟踪每个端口的用途。如果您曾经在您的服务器上停止过一个服务，那么您可能很难记住哪些过去被打开了的端口仍然是必需的。为了避免这种情况，可以定义一个服务。</p>
+<h4><span id="定义一个服务">定义一个服务</span></h4><p>为您的区域打开端口很容易，但是很难跟踪每个端口的用途。如果您曾经在您的服务器上停止过一个服务，那么您可能很难记住哪些过去被打开了的端口仍然是必需的。为了避免这种情况，可以定义一个服务。</p>
 <p>服务只是具有相关名称和描述的端口的集合。使用服务比端口更容易管理，但是需要一些前期工作。最简单的启动方式是将现有的脚本复制到防火墙查找非标准定义的目录中。<code>/usr/lib/firewalld/services/etc/firewalld/services</code></p>
 <p>例如，我们可以复制SSH服务定义来使用我们的’example’服务定义，如下所示。文件名减去后缀将指示防火墙服务列表中的服务名称:<code>.xml</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp &#x2F;usr&#x2F;lib&#x2F;firewalld&#x2F;services&#x2F;ssh.xml &#x2F;etc&#x2F;firewalld&#x2F;services&#x2F;example.xml</span><br></pre></td></tr></table></figure>
@@ -339,7 +339,7 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">output:</span><br><span class="line">RH-Satellite-6 amanda-client amanda-k5-client bacula bacula-client bitcoin bitcoin-rpc bitcoin-testnet bitcoin-testnet-rpc ceph ceph-mon cfengine condor-collector ctdb dhcp dhcpv6 dhcpv6-client dns docker-registry dropbox-lansync elasticsearch example freeipa-ldap freeipa-ldaps freeipa-replication freeipa-trust ftp ganglia-client ganglia-master high-availability http https imap imaps ipp ipp-client ipsec iscsi-target kadmin kerberos kibana klogin kpasswd kshell ldap ldaps libvirt libvirt-tls managesieve mdns mosh mountd ms-wbt mssql mysql nfs nrpe ntp openvpn ovirt-imageio ovirt-storageconsole ovirt-vmconsole pmcd pmproxy pmwebapi pmwebapis pop3 pop3s postgresql privoxy proxy-dhcp ptp pulseaudio puppetmaster quassel radius rpc-bind rsh rsyncd samba samba-client sane sip sips smtp smtp-submission smtps snmp snmptrap spideroak-lansync squid ssh synergy syslog syslog-tls telnet tftp tftp-client tinc tor-socks transmission-client vdsm vnc-server wbem-https xmpp-bosh xmpp-client xmpp-local xmpp-server</span><br></pre></td></tr></table></figure>
 <p>我们可以看到example服务已经被成功定义。</p>
-<h2 id="创造属于你自己的区域（zones）"><a href="#创造属于你自己的区域（zones）" class="headerlink" title="创造属于你自己的区域（zones）"></a>创造属于你自己的区域（zones）</h2><p>尽管预定义的区域对于大多数用户来说可能绰绰有余，但是定义自己的区域来描述其功能可能会有所帮助。</p>
+<h2><span id="创造属于你自己的区域zones">创造属于你自己的区域（zones）</span></h2><p>尽管预定义的区域对于大多数用户来说可能绰绰有余，但是定义自己的区域来描述其功能可能会有所帮助。</p>
 <p>例如，您可能要为Web服务器创建一个名为“ publicweb”的zone。 但是，您可能希望为您在专用网络上提供的DNS服务而去配置另一个zone。 您可能需要一个名为“ privateDNS”的zone。</p>
 <p>添加区域时，必须将其添加到永久防火墙配置中。 然后，您可以重新加载以将配置带入正在运行的会话。 例如，我们可以通过键入以下内容来创建我们上面讨论的两个区域：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --permanent --new-zone&#x3D;publicweb</span><br><span class="line">sudo firewall-cmd --permanent --new-zone&#x3D;privateDNS</span><br></pre></td></tr></table></figure>
@@ -382,7 +382,7 @@
 <p>现在您已经成功地建立了属于您的区域！如果您想要把其中一个区域设置为其他网络接口的默认区域，记得使用参数<code>--set-defalut-zone=</code></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --set-default-zone&#x3D;publicweb</span><br></pre></td></tr></table></figure>
 
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>您现在应该对如何在CentOS系统上日常使用的防火墙服务进行充分的了解。</p>
+<h2><span id="总结">总结</span></h2><p>您现在应该对如何在CentOS系统上日常使用的防火墙服务进行充分的了解。</p>
 <p>Firewalld服务允许您配置依据网络环境的可维护规则和规则集。 它使您可以通过使用区域在不同的防火墙策略之间无缝过渡，并使管理员能够将端口管理抽象为更友好的服务定义。 掌握该系统的使用知识将使您能够利用此工具提供的灵活性和强大功能。</p>
 <p>By Justin Ellingwood</p>
 
@@ -521,7 +521,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#引言"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Firewalld-的基本概念"><span class="toc-number"></span> <span class="toc-text">Firewalld 的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Zones-区域"><span class="toc-number">1.</span> <span class="toc-text">Zones(区域)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#规则永久性"><span class="toc-number">2.</span> <span class="toc-text">规则永久性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装并启动防火墙"><span class="toc-number"></span> <span class="toc-text">安装并启动防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#熟悉当前的防火墙规则"><span class="toc-number"></span> <span class="toc-text">熟悉当前的防火墙规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认值"><span class="toc-number">1.</span> <span class="toc-text">默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可替代区"><span class="toc-number">2.</span> <span class="toc-text">可替代区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为接口选择区域"><span class="toc-number"></span> <span class="toc-text">为接口选择区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#改变接口的区域"><span class="toc-number">1.</span> <span class="toc-text">改变接口的区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#调整默认区域"><span class="toc-number">2.</span> <span class="toc-text">调整默认区域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为应用程序设置规则"><span class="toc-number"></span> <span class="toc-text">为应用程序设置规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#向区域添加服务"><span class="toc-number">1.</span> <span class="toc-text">向区域添加服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如果没有合适的服务可用呢"><span class="toc-number">2.</span> <span class="toc-text">如果没有合适的服务可用呢?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#为你的区域开一个端口"><span class="toc-number">2.1.</span> <span class="toc-text">为你的区域开一个端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#定义一个服务"><span class="toc-number">2.2.</span> <span class="toc-text">定义一个服务</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创造属于你自己的区域（zones）"><span class="toc-number"></span> <span class="toc-text">创造属于你自己的区域（zones）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number"></span> <span class="toc-text">总结</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">引言</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number"></span> <span class="toc-text">Firewalld 的基本概念</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">Zones(区域)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">规则永久性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number"></span> <span class="toc-text">安装并启动防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number"></span> <span class="toc-text">熟悉当前的防火墙规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">默认值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">可替代区</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number"></span> <span class="toc-text">为接口选择区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">改变接口的区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">调整默认区域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number"></span> <span class="toc-text">为应用程序设置规则</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">1.</span> <span class="toc-text">向区域添加服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#null"><span class="toc-number">2.</span> <span class="toc-text">如果没有合适的服务可用呢?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">2.1.</span> <span class="toc-text">为你的区域开一个端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null"><span class="toc-number">2.2.</span> <span class="toc-text">定义一个服务</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number"></span> <span class="toc-text">创造属于你自己的区域（zones）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#null"><span class="toc-number"></span> <span class="toc-text">总结</span></a>
                     </div>
                 </span>
             </div>
@@ -702,10 +702,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
@@ -726,6 +722,18 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">tmux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">FirewallD</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Wireless Communications</a>
               </li>
              
@@ -735,14 +743,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">挂载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">FirewallD</a>
               </li>
              
               <li class="article-tag-list-item">
