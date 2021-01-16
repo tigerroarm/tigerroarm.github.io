@@ -178,6 +178,9 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
         
       </header>
     
@@ -287,6 +290,9 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
         
       </header>
     
@@ -295,7 +301,7 @@
           
       
         <h1 id="常用技巧"><a href="#常用技巧" class="headerlink" title="常用技巧"></a>常用技巧</h1><!-- toc -->
-<p>[TOC]</p>
+
 <ol>
 <li>折叠<ul>
 <li>ctrl = 折叠代码</li>
@@ -307,186 +313,9 @@
 <li>F5运行，F10 debug，shift+F5 退出Debug模式</li>
 <li>doc 取代help，直接跳出文档（由于外网，网络可能不稳定）</li>
 </ol>
-<h1 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h1><ul>
-<li>注意，MATLAB所有序号都是==从1开始==</li>
-<li>MATLAB中 ==Class Array== 的思想随处不在<ul>
-<li>例如对于<code>a = 54</code>，使用<code>whos</code>命令可以看到，MATLAB认为这是一个Size 1×1 8 Bytes的double array，==而非一个简单的double变量==。</li>
-<li>再例如，<code>str1 =&quot;string&quot;</code>，是一个Size 1×1的，150 Bytes的Class为String的Array变量。也就是说，<em>你完全可以直接str1(2) = “string2”</em>，这种操作被理解为在<code>str1</code>这个string array变量中增加了一个元素。</li>
-<li>同样的，<code>char = &#39;char&#39;</code>是定义了一个Size 1×4的，Bytes为8的 Class 为 char的Array变量。</li>
-</ul>
-</li>
-<li>使用<code>%%</code> <code>%</code>来区分不同Block的代码是一种好方法</li>
-</ul>
-<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ul>
-<li>double </li>
-<li>single（单精度）</li>
-<li>logical</li>
-<li>int8(1B 8bit)</li>
-<li>int16</li>
-<li>int32</li>
-<li>int64</li>
-<li>uint8</li>
-<li>char(‘’)</li>
-<li>string(“”)</li>
-<li>NaN(Not a Number)</li>
-<li>Inf(无穷)：有正负之分</li>
-<li>cell</li>
-<li>struct</li>
-<li>function_handle</li>
-<li><class_name>
-
-</li>
-</ul>
-<h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h1><h2 id="矩阵操作"><a href="#矩阵操作" class="headerlink" title="矩阵操作"></a>矩阵操作</h2><ul>
-<li><code>flipud(M)</code>: 翻转矩阵，从下面往上反转</li>
-<li><code>fliplr</code>：左右翻转</li>
-<li><code>flip([])</code>： 翻转向量，矩阵的话和ud一样</li>
-<li><code>repmat(A, 2, 3)</code>：横向重复两次，纵向3次</li>
-<li><code>repelem(A, 2, 3)</code>：repeat element 原来矩阵每个元素都2×3，重新组成新的</li>
-<li><code>max(A)</code>:每列中最大的元素</li>
-<li><code>diff()</code>: 每次相邻两个元素之间做差</li>
-<li><code>prod()</code> :返回数组乘积</li>
-<li><code>cumsum()</code>：返回前n个元素的和<ul>
-<li><code>cumprod()</code></li>
-<li><code>cummin()</code></li>
-<li><code>cummax()</code></li>
-</ul>
-</li>
-<li><code>linspace(x1,x2,n)</code> ：产生n个x1到x2的数据，间隔(x2-x1)/(n-1)<ul>
-<li><code>logspace(x1,x2,n)</code>： 产生n个$$10^{x1}$$到x2的数据</li>
-</ul>
-</li>
-</ul>
-<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><ul>
-<li><code>find(logical_vector, k, &#39;first&#39;)</code> ：首k个true值</li>
-<li><code>any(logical_vector)</code></li>
-<li><code>all(logical_vector)</code></li>
-</ul>
-<h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><ul>
-<li><p>线颜色</p>
-<ul>
-<li>b : blue</li>
-<li>g : green</li>
-<li>r : red</li>
-<li>c : cyan 青蓝色</li>
-<li>m : magenta 品红色</li>
-<li>y : yellow</li>
-<li>k ：black</li>
-<li>w ：white</li>
-</ul>
-</li>
-<li><p>线样式</p>
-<ul>
-<li><code>--</code> 段虚线</li>
-<li><code>:</code> 点虚线</li>
-<li><code>-.</code> 段点虚线</li>
-<li>marker<ul>
-<li><code>*-.</code> *为marker</li>
-<li><code>o</code> </li>
-<li><code>.</code></li>
-<li><code>x</code> </li>
-<li><code>s</code> square 方块</li>
-<li><code>d</code> 菱形</li>
-<li><code>v</code></li>
-<li><code>^</code></li>
-<li><code>&lt;</code></li>
-<li><code>&gt;</code></li>
-<li><code>p</code> 五角形</li>
-<li><code>h</code> 六角形</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>close all</code> 关闭所有的figure</p>
-</li>
-<li><p><code>clf</code> 清空当前画布 clear current figure </p>
-<ul>
-<li>还有<code>cla</code>，清空坐标区 </li>
-</ul>
-</li>
-<li><p><code>subplot(row, col, n_th)</code> </p>
-</li>
-<li><p><code>grid on</code> 网格</p>
-</li>
-<li><p><code>legend()</code> 图例</p>
-</li>
-<li><p><code>xlabel(&#39;&#39;)</code> <code>ylabel(&#39;&#39;)</code> <code>title(&#39;&#39;)</code></p>
-<ul>
-<li>如果要LaTeX显示，需要在后面的<code>&#39;Interpreter&#39;</code>设置为<code>&#39;latex&#39;</code><ul>
-<li>例如  <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">title([<span class="string">&#x27;Predictive signal $\hat&#123;d&#125;(n)$ and orignal signal $d(n)$ with p=&#x27;</span>,num2str(p)],<span class="string">&#x27;Interpreter&#x27;</span>,<span class="string">&#x27;latex&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>plot</code>修饰</p>
-<ul>
-<li><code>color+marker+line_shape</code>, e.g. <code>&#39;ro-.&#39;</code></li>
-<li><code>LineWidth</code> 默认为1</li>
-<li><code>MarkerEdgeColor</code> Marker边缘的颜色</li>
-<li><code>MakerFaceColor</code> Marker里面的颜色 </li>
-</ul>
-</li>
-<li><p><code>axis([x1 x2 y1 y2])</code> 设置坐标轴范围</p>
-</li>
-</ul>
-<h2 id="字符和字符串"><a href="#字符和字符串" class="headerlink" title="字符和字符串"></a>字符和字符串</h2><ul>
-<li><code>strlength(&quot;string&quot;)</code>： 字符串长度</li>
-<li>string 类型可以通过<code>&#123;&#125;</code>的方式提取出char类型结果，例如可以通过<code>string&#123;1&#125;(2)</code>提取出第一个string中的第二个char</li>
-<li><code>input(&#39;Some suggestion string:&#39;,&#39;s&#39;)</code> 输入的是char类型</li>
-<li><code>Upper</code>，全部大写</li>
-<li><code>strcmp(str1, str2, num)</code>，前num位的字符是否相同</li>
-<li><code>strfind(text, pattern)</code> 找text中pattern 的位置</li>
-<li><code>strsplit(text, pattern)</code> split 字符串</li>
-<li></li>
-</ul>
-<h2 id="元胞数组"><a href="#元胞数组" class="headerlink" title="元胞数组"></a>元胞数组</h2><ul>
-<li><code>&#123;48, &quot;uui&quot;, 1:4:9&#125;</code></li>
-<li>访问使用{index} {1,2}</li>
-</ul>
-<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><ul>
-<li><code>S = struct(&#39;field1&#39;,VALUES1,&#39;field2&#39;,VALUES2,...)</code></li>
-</ul>
-<h2 id="保存加载"><a href="#保存加载" class="headerlink" title="保存加载"></a>保存加载</h2><ul>
-<li><code>save testfile.dat mydata -ascii</code> save 文件名 变量名</li>
-<li><code>load file_name.dat</code> </li>
-</ul>
-<h2 id="可变长输入输出"><a href="#可变长输入输出" class="headerlink" title="可变长输入输出"></a>可变长输入输出</h2><ul>
-<li>varargin{1}： variable argument input, cell 类型，存储输入参数</li>
-<li>nargin 输入参数个数</li>
-<li>varargout 输出参数    </li>
-<li>nargout 输出个数</li>
-</ul>
-<h2 id="本地函数和嵌套函数"><a href="#本地函数和嵌套函数" class="headerlink" title="本地函数和嵌套函数"></a>本地函数和嵌套函数</h2><ul>
-<li>本地函数，单个m文件中定义的函数，作用域为整个m文件</li>
-<li>嵌套函数（可以使用所有外层函数定义的量）</li>
-</ul>
-<h2 id="函数句柄"><a href="#函数句柄" class="headerlink" title="函数句柄"></a>函数句柄</h2><ul>
-<li>function_handle，为一个单独的数据类型</li>
-<li>使用 func_han = @(argm1, argm2) argm1*argm2; 即可定义手柄</li>
-<li>func2str(func_hndl);得到函数名字</li>
-<li>相关函数<ul>
-<li><code>fplot(@sin(), [0, 2*pi])</code></li>
-<li><code>feval(@sin(), 0:0.1:1)</code> 返回每个值对应的函数输出</li>
-<li><code>timeit(func_handle)</code>，算函数计算的时间<h2 id="通信相关"><a href="#通信相关" class="headerlink" title="通信相关"></a>通信相关</h2></li>
-</ul>
-</li>
-</ul>
-<h3 id="qammod"><a href="#qammod" class="headerlink" title="qammod"></a>qammod</h3><figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ModDataTX = qammod(BinData, MOD, <span class="string">&#x27;InputType&#x27;</span>, <span class="string">&#x27;bit&#x27;</span>, <span class="string">&#x27;PlotConstellation&#x27;</span>,<span class="built_in">true</span>);</span><br><span class="line"><span class="comment">% 对于输入bit 流进行 QAM调制，MOD是调制阶数，InputType指定输入类型</span></span><br></pre></td></tr></table></figure>
-<p>注意 matlab中 vector’ 如果是vector复数向量，就算的直接是共轭转置，这个被坑过，如果想只转置可以用 vector.’</p>
-<h3 id="berfading"><a href="#berfading" class="headerlink" title="berfading"></a>berfading</h3><p>估计fading时的性能，参数是SNR，调制方式，调制模，复用参数</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">EbNo = <span class="number">8</span>:<span class="number">2</span>:<span class="number">20</span>; <span class="comment">% Eb/N0</span></span><br><span class="line">ber = <span class="built_in">zeros</span>(<span class="built_in">length</span>(EbNo),<span class="number">20</span>);</span><br><span class="line"><span class="keyword">for</span> L = <span class="number">1</span>:<span class="number">20</span> </span><br><span class="line">    ber(:,L) = berfading(EbNo,<span class="string">&#x27;qam&#x27;</span>,<span class="number">16</span>,L); <span class="comment">% 16 QAM</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">semilogy(EbNo,ber,<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">text(<span class="number">18.5</span>, <span class="number">0.02</span>, sprintf(<span class="string">&#x27;L=%d&#x27;</span>,<span class="number">1</span>))</span><br><span class="line">text(<span class="number">18.5</span>, <span class="number">1e-11</span>, sprintf(<span class="string">&#x27;L=%d&#x27;</span>,<span class="number">20</span>))</span><br><span class="line">title(<span class="string">&#x27;QAM over fading channel with diversity order 1 to 20&#x27;</span>)</span><br><span class="line">xlabel(<span class="string">&#x27;E_b/N_0 (dB)&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;BER&#x27;</span>)</span><br><span class="line">grid on</span><br></pre></td></tr></table></figure>
-<p><img src="https://www.mathworks.com/help/examples/comm/win64/EstimateBERPeformanceOf16QAMInFadingExample_01.png" alt="image"></p>
-<h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><p><code>rng(&#39;shuffle&#39;)</code>来使用当前时间作为随机数种子</p>
-<h3 id="rand"><a href="#rand" class="headerlink" title="rand"></a>rand</h3><p>0-1 随机数</p>
-<h3 id="randi"><a href="#randi" class="headerlink" title="randi"></a>randi</h3><p>伪随机整数</p>
-<p>X = randi([imin,imax],size_1,size_2)</p>
-<p>X = randi(imax,sz1,…,szN)</p>
-<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">randi([<span class="built_in">min</span> <span class="built_in">max</span>], row_number, col_number);</span><br><span class="line"><span class="comment">% e.g.</span></span><br><span class="line">randi([<span class="number">0</span> <span class="number">10</span>], <span class="number">1000</span>, <span class="number">1</span>); <span class="comment">% Generate 1000✖1 random vector with range from 0 to 10</span></span><br></pre></td></tr></table></figure>
-<h3 id="randn"><a href="#randn" class="headerlink" title="randn"></a>randn</h3><p>randn生成正态分布随机数</p>
-<p>X = randn(n) 返回由正态分布的随机数组成的 n×n 矩阵。</p>
-<p>X = randn(sz1,…,szN) 返回由随机数组成的 sz1×…×szN 数组，其中 sz1,…,szN 指示每个维度的大小。例如：randn(3,4) 返回一个 3×4 的矩阵。</p>
-<p>X = randn(sz) 返回由随机数组成的数组，其中大小向量 sz 定义 size(X)。例如：randn([3 4]) 返回一个 3×4 的矩阵。</p>
-
+        
+          <a class="article-more-a" href="/2021/01/16/MATLAB%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8C%97/#more">more >></a>
+        
       
 
       
@@ -569,6 +398,9 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
         
       </header>
     
@@ -677,6 +509,9 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
         
       </header>
     
@@ -773,6 +608,9 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
         
       </header>
     
@@ -869,6 +707,9 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
         
       </header>
     
@@ -970,6 +811,9 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
         
       </header>
     
@@ -1067,6 +911,9 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
         
       </header>
     
@@ -1162,6 +1009,9 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
         
       </header>
     
@@ -1258,6 +1108,9 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        		
+        <!-- 目录内容结束 -->
         
       </header>
     

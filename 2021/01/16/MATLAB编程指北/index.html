@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="https://tigerroarm.github.io">
   <title>MATLAB编程指北 | tigerroarm的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用技巧 [TOC]  折叠 ctrl &#x3D; 折叠代码 shift ctrl  &#x3D;展开代码   缩进整理 ctrl i（&#x3D;&#x3D;全选+ctrl i&#x3D;&#x3D;） 跳转到第几行 ctrl g F5运行，F10 debug，shift+F5 退出Debug模式 doc 取代help，直接跳出文档（由于外网，网络可能不稳定）  提醒 注意，MATLAB所有序号都是&#x3D;&#x3D;从1开始&#x3D;&#x3D; MATLAB中 &#x3D;&#x3D;Class Ar">
+  <meta name="description" content="常用技巧   折叠 ctrl &#x3D; 折叠代码 shift ctrl  &#x3D;展开代码   缩进整理 ctrl i（&#x3D;&#x3D;全选+ctrl i&#x3D;&#x3D;） 跳转到第几行 ctrl g F5运行，F10 debug，shift+F5 退出Debug模式 doc 取代help，直接跳出文档（由于外网，网络可能不稳定）">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MATLAB编程指北">
 <meta property="og:url" content="https://tigerroarm.github.io/2021/01/16/MATLAB%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8C%97/index.html">
 <meta property="og:site_name" content="tigerroarm的博客">
-<meta property="og:description" content="常用技巧 [TOC]  折叠 ctrl &#x3D; 折叠代码 shift ctrl  &#x3D;展开代码   缩进整理 ctrl i（&#x3D;&#x3D;全选+ctrl i&#x3D;&#x3D;） 跳转到第几行 ctrl g F5运行，F10 debug，shift+F5 退出Debug模式 doc 取代help，直接跳出文档（由于外网，网络可能不稳定）  提醒 注意，MATLAB所有序号都是&#x3D;&#x3D;从1开始&#x3D;&#x3D; MATLAB中 &#x3D;&#x3D;Class Ar">
+<meta property="og:description" content="常用技巧   折叠 ctrl &#x3D; 折叠代码 shift ctrl  &#x3D;展开代码   缩进整理 ctrl i（&#x3D;&#x3D;全选+ctrl i&#x3D;&#x3D;） 跳转到第几行 ctrl g F5运行，F10 debug，shift+F5 退出Debug模式 doc 取代help，直接跳出文档（由于外网，网络可能不稳定）">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://www.mathworks.com/help/examples/comm/win64/EstimateBERPeformanceOf16QAMInFadingExample_01.png">
 <meta property="article:published_time" content="2021-01-15T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-01-16T09:51:14.895Z">
+<meta property="article:modified_time" content="2021-01-16T10:01:30.511Z">
 <meta property="article:author" content="tigerroarm">
 <meta property="article:tag" content="MATLAB">
 <meta name="twitter:card" content="summary">
@@ -180,6 +180,33 @@
         <!-- 开始添加字数统计-->
         
         <!-- 添加完成 -->
+                <!-- 目录内容 -->
+        
+          <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+                <span class="btn-bg"></span>
+                <span class="btn-text">文章导航</span>
+                </p>
+        <div id="toc-article" class="toc-article">
+            <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+          <strong class="toc-title">文章目录</strong>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7"><span class="toc-number">1.</span> <span class="toc-text">常用技巧</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8F%90%E9%86%92"><span class="toc-number">2.</span> <span class="toc-text">提醒</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">数据类型</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">常用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9F%A9%E9%98%B5%E6%93%8D%E4%BD%9C"><span class="toc-number">4.1.</span> <span class="toc-text">矩阵操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5"><span class="toc-number">4.2.</span> <span class="toc-text">增删改查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%98%E5%9B%BE"><span class="toc-number">4.3.</span> <span class="toc-text">绘图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E5%92%8C%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">4.4.</span> <span class="toc-text">字符和字符串</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%83%E8%83%9E%E6%95%B0%E7%BB%84"><span class="toc-number">4.5.</span> <span class="toc-text">元胞数组</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E4%BD%93"><span class="toc-number">4.6.</span> <span class="toc-text">结构体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%E5%8A%A0%E8%BD%BD"><span class="toc-number">4.7.</span> <span class="toc-text">保存加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%AF%E5%8F%98%E9%95%BF%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA"><span class="toc-number">4.8.</span> <span class="toc-text">可变长输入输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%87%BD%E6%95%B0%E5%92%8C%E5%B5%8C%E5%A5%97%E5%87%BD%E6%95%B0"><span class="toc-number">4.9.</span> <span class="toc-text">本地函数和嵌套函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%BD%E6%95%B0%E5%8F%A5%E6%9F%84"><span class="toc-number">4.10.</span> <span class="toc-text">函数句柄</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E7%9B%B8%E5%85%B3"><span class="toc-number">4.11.</span> <span class="toc-text">通信相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#qammod"><span class="toc-number">4.11.1.</span> <span class="toc-text">qammod</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#berfading"><span class="toc-number">4.11.2.</span> <span class="toc-text">berfading</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-number">4.12.</span> <span class="toc-text">随机数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#rand"><span class="toc-number">4.12.1.</span> <span class="toc-text">rand</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#randi"><span class="toc-number">4.12.2.</span> <span class="toc-text">randi</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#randn"><span class="toc-number">4.12.3.</span> <span class="toc-text">randn</span></a></li></ol></li></ol></li></ol>
+              </div>
+        <script type="text/javascript">
+        function showToc(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:block");
+          show_toc_btn.setAttribute("style","display:none");
+          };
+        function showBtn(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:none");
+          show_toc_btn.setAttribute("style","display:block");
+          };
+        </script>
+            		
+        <!-- 目录内容结束 -->
         
       </header>
     
@@ -188,7 +215,7 @@
           
       
         <h1 id="常用技巧"><a href="#常用技巧" class="headerlink" title="常用技巧"></a>常用技巧</h1><!-- toc -->
-<p>[TOC]</p>
+
 <ol>
 <li>折叠<ul>
 <li>ctrl = 折叠代码</li>
@@ -200,6 +227,8 @@
 <li>F5运行，F10 debug，shift+F5 退出Debug模式</li>
 <li>doc 取代help，直接跳出文档（由于外网，网络可能不稳定）</li>
 </ol>
+<a id="more"></a>
+
 <h1 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h1><ul>
 <li>注意，MATLAB所有序号都是==从1开始==</li>
 <li>MATLAB中 ==Class Array== 的思想随处不在<ul>
