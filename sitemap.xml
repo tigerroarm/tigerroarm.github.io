@@ -109,6 +109,34 @@
 
   
   <url>
+    <loc>https://blog.difan.tech/tags/tmux/</loc>
+    <lastmod>2021-01-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.difan.tech/tags/DSP/</loc>
+    <lastmod>2021-01-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.difan.tech/tags/Math/</loc>
+    <lastmod>2021-01-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.difan.tech/tags/SignalProcessing/</loc>
+    <lastmod>2021-01-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.difan.tech/tags/MATLAB/</loc>
     <lastmod>2021-01-23</lastmod>
     <changefreq>daily</changefreq>
@@ -137,7 +165,7 @@
   </url>
   
   <url>
-    <loc>https://blog.difan.tech/tags/tmux/</loc>
+    <loc>https://blog.difan.tech/tags/Wireless-Communications/</loc>
     <lastmod>2021-01-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -159,34 +187,6 @@
   
   <url>
     <loc>https://blog.difan.tech/tags/Git/</loc>
-    <lastmod>2021-01-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.difan.tech/tags/Wireless-Communications/</loc>
-    <lastmod>2021-01-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.difan.tech/tags/DSP/</loc>
-    <lastmod>2021-01-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.difan.tech/tags/Math/</loc>
-    <lastmod>2021-01-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.difan.tech/tags/SignalProcessing/</loc>
     <lastmod>2021-01-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -216,13 +216,6 @@
 
   
   <url>
-    <loc>https://blog.difan.tech/categories/MATLAB/</loc>
-    <lastmod>2021-01-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.difan.tech/categories/Tools/</loc>
     <lastmod>2021-01-23</lastmod>
     <changefreq>daily</changefreq>
@@ -230,7 +223,14 @@
   </url>
   
   <url>
-    <loc>https://blog.difan.tech/categories/Linux/</loc>
+    <loc>https://blog.difan.tech/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2021-01-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.difan.tech/categories/MATLAB/</loc>
     <lastmod>2021-01-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -244,7 +244,7 @@
   </url>
   
   <url>
-    <loc>https://blog.difan.tech/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://blog.difan.tech/categories/Linux/</loc>
     <lastmod>2021-01-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
