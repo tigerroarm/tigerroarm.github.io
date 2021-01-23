@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>我的学习笔记目录</title>
+    <url>/2020/11/11/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/</url>
+    <content><![CDATA[<ul>
+<li><strong>深入理解计算机系统：</strong><ul>
+<li>笔记： <a href="https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/">CSAPP Notes</a></li>
+<li>实验： <a href="https://tigerroarm.github.io/LearningNotes/csapp/lab/">CSAPP Lab</a></li>
+</ul>
+</li>
+<li><strong>Leetcode ：</strong><ul>
+<li>我的Leetcode题解： <a href="https://tigerroarm.github.io/Leetcode">LeetCode Solution</a></li>
+</ul>
+</li>
+</ul>
+<!--  more  -->
+
+<ul>
+<li><strong>Signal Processing</strong><ul>
+<li>Digital Signal Processing : A Computer-Based Approach: <a href="https://tigerroarm.github.io/2020/12/27/DSP">DSP Code Notes</a></li>
+</ul>
+</li>
+<li><strong>Wireless Communications</strong><ul>
+<li>Part01:  无线通信建模的基本概念和仿真代码  <a href="https://tigerroarm.github.io/2020/12/20/Wireless%20Physical%20Layer/">Communication Code Notes(Part 1)</a></li>
+<li>Part02：OFDM的基本概念和仿真代码</li>
+<li>Part03：MIMO技术基本概念和仿真代码，包括信道容量、空间分集和空时码、空间复用MIMO，预编码，天线选择技术，多用户MIMO</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>MATLAB编程指北</title>
+    <url>/2021/01/16/MATLAB%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8C%97/</url>
+    <content><![CDATA[<h1 id="常用技巧"><a href="#常用技巧" class="headerlink" title="常用技巧"></a>常用技巧</h1><!-- toc -->
+
+<ol>
+<li>折叠<ul>
+<li>ctrl = 折叠代码</li>
+<li>shift ctrl  =展开代码</li>
+</ul>
+</li>
+<li>缩进整理 ctrl i（==全选+ctrl i==）</li>
+<li>跳转到第几行 ctrl g</li>
+<li>F5运行，F10 debug，shift+F5 退出Debug模式</li>
+<li>doc 取代help，直接跳出文档（由于外网，网络可能不稳定）</li>
+</ol>
+<a id="more"></a>
+
+<h1 id="提醒"><a href="#提醒" class="headerlink" title="提醒"></a>提醒</h1><ul>
+<li>注意，MATLAB所有序号都是==从1开始==</li>
+<li>MATLAB中 ==Class Array== 的思想随处不在<ul>
+<li>例如对于<code>a = 54</code>，使用<code>whos</code>命令可以看到，MATLAB认为这是一个Size 1×1 8 Bytes的double array，==而非一个简单的double变量==。</li>
+<li>再例如，<code>str1 =&quot;string&quot;</code>，是一个Size 1×1的，150 Bytes的Class为String的Array变量。也就是说，<em>你完全可以直接str1(2) = “string2”</em>，这种操作被理解为在<code>str1</code>这个string array变量中增加了一个元素。</li>
+<li>同样的，<code>char = &#39;char&#39;</code>是定义了一个Size 1×4的，Bytes为8的 Class 为 char的Array变量。</li>
+</ul>
+</li>
+<li>使用<code>%%</code> <code>%</code>来区分不同Block的代码是一种好方法</li>
+</ul>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><ul>
+<li>double </li>
+<li>single（单精度）</li>
+<li>logical</li>
+<li>int8(1B 8bit)</li>
+<li>int16</li>
+<li>int32</li>
+<li>int64</li>
+<li>uint8</li>
+<li>char(‘’)</li>
+<li>string(“”)</li>
+<li>NaN(Not a Number)</li>
+<li>Inf(无穷)：有正负之分</li>
+<li>cell</li>
+<li>struct</li>
+<li>function_handle</li>
+<li><class_name>
+
+</li>
+</ul>
+<h1 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h1><h2 id="矩阵操作"><a href="#矩阵操作" class="headerlink" title="矩阵操作"></a>矩阵操作</h2><ul>
+<li><code>flipud(M)</code>: 翻转矩阵，从下面往上反转</li>
+<li><code>fliplr</code>：左右翻转</li>
+<li><code>flip([])</code>： 翻转向量，矩阵的话和ud一样</li>
+<li><code>repmat(A, 2, 3)</code>：横向重复两次，纵向3次</li>
+<li><code>repelem(A, 2, 3)</code>：repeat element 原来矩阵每个元素都2×3，重新组成新的</li>
+<li><code>max(A)</code>:每列中最大的元素</li>
+<li><code>diff()</code>: 每次相邻两个元素之间做差</li>
+<li><code>prod()</code> :返回数组乘积</li>
+<li><code>cumsum()</code>：返回前n个元素的和<ul>
+<li><code>cumprod()</code></li>
+<li><code>cummin()</code></li>
+<li><code>cummax()</code></li>
+</ul>
+</li>
+<li><code>linspace(x1,x2,n)</code> ：产生n个x1到x2的数据，间隔(x2-x1)/(n-1)<ul>
+<li><code>logspace(x1,x2,n)</code>： 产生n个$$10^{x1}$$到x2的数据</li>
+</ul>
+</li>
+</ul>
+<h2 id="增删改查"><a href="#增删改查" class="headerlink" title="增删改查"></a>增删改查</h2><ul>
+<li><code>find(logical_vector, k, &#39;first&#39;)</code> ：首k个true值</li>
+<li><code>any(logical_vector)</code></li>
+<li><code>all(logical_vector)</code></li>
+</ul>
+<h2 id="绘图"><a href="#绘图" class="headerlink" title="绘图"></a>绘图</h2><ul>
+<li><p>线颜色</p>
+<ul>
+<li>b : blue</li>
+<li>g : green</li>
+<li>r : red</li>
+<li>c : cyan 青蓝色</li>
+<li>m : magenta 品红色</li>
+<li>y : yellow</li>
+<li>k ：black</li>
+<li>w ：white</li>
+</ul>
+</li>
+<li><p>线样式</p>
+<ul>
+<li><code>--</code> 段虚线</li>
+<li><code>:</code> 点虚线</li>
+<li><code>-.</code> 段点虚线</li>
+<li>marker<ul>
+<li><code>*-.</code> *为marker</li>
+<li><code>o</code> </li>
+<li><code>.</code></li>
+<li><code>x</code> </li>
+<li><code>s</code> square 方块</li>
+<li><code>d</code> 菱形</li>
+<li><code>v</code></li>
+<li><code>^</code></li>
+<li><code>&lt;</code></li>
+<li><code>&gt;</code></li>
+<li><code>p</code> 五角形</li>
+<li><code>h</code> 六角形</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>close all</code> 关闭所有的figure</p>
+</li>
+<li><p><code>clf</code> 清空当前画布 clear current figure </p>
+<ul>
+<li>还有<code>cla</code>，清空坐标区 </li>
+</ul>
+</li>
+<li><p><code>subplot(row, col, n_th)</code> </p>
+</li>
+<li><p><code>grid on</code> 网格</p>
+</li>
+<li><p><code>legend()</code> 图例</p>
+</li>
+<li><p><code>xlabel(&#39;&#39;)</code> <code>ylabel(&#39;&#39;)</code> <code>title(&#39;&#39;)</code></p>
+<ul>
+<li>如果要LaTeX显示，需要在后面的<code>&#39;Interpreter&#39;</code>设置为<code>&#39;latex&#39;</code><ul>
+<li>例如  <figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">title([<span class="string">&#x27;Predictive signal $\hat&#123;d&#125;(n)$ and orignal signal $d(n)$ with p=&#x27;</span>,num2str(p)],<span class="string">&#x27;Interpreter&#x27;</span>,<span class="string">&#x27;latex&#x27;</span>);</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><code>plot</code>修饰</p>
+<ul>
+<li><code>color+marker+line_shape</code>, e.g. <code>&#39;ro-.&#39;</code></li>
+<li><code>LineWidth</code> 默认为1</li>
+<li><code>MarkerEdgeColor</code> Marker边缘的颜色</li>
+<li><code>MakerFaceColor</code> Marker里面的颜色 </li>
+</ul>
+</li>
+<li><p><code>axis([x1 x2 y1 y2])</code> 设置坐标轴范围</p>
+</li>
+</ul>
+<h2 id="字符和字符串"><a href="#字符和字符串" class="headerlink" title="字符和字符串"></a>字符和字符串</h2><ul>
+<li><code>strlength(&quot;string&quot;)</code>： 字符串长度</li>
+<li>string 类型可以通过<code>&#123;&#125;</code>的方式提取出char类型结果，例如可以通过<code>string&#123;1&#125;(2)</code>提取出第一个string中的第二个char</li>
+<li><code>input(&#39;Some suggestion string:&#39;,&#39;s&#39;)</code> 输入的是char类型</li>
+<li><code>Upper</code>，全部大写</li>
+<li><code>strcmp(str1, str2, num)</code>，前num位的字符是否相同</li>
+<li><code>strfind(text, pattern)</code> 找text中pattern 的位置</li>
+<li><code>strsplit(text, pattern)</code> split 字符串</li>
+<li></li>
+</ul>
+<h2 id="元胞数组"><a href="#元胞数组" class="headerlink" title="元胞数组"></a>元胞数组</h2><ul>
+<li><code>&#123;48, &quot;uui&quot;, 1:4:9&#125;</code></li>
+<li>访问使用{index} {1,2}</li>
+</ul>
+<h2 id="结构体"><a href="#结构体" class="headerlink" title="结构体"></a>结构体</h2><ul>
+<li><code>S = struct(&#39;field1&#39;,VALUES1,&#39;field2&#39;,VALUES2,...)</code></li>
+</ul>
+<h2 id="保存加载"><a href="#保存加载" class="headerlink" title="保存加载"></a>保存加载</h2><ul>
+<li><code>save testfile.dat mydata -ascii</code> save 文件名 变量名</li>
+<li><code>load file_name.dat</code> </li>
+</ul>
+<h2 id="可变长输入输出"><a href="#可变长输入输出" class="headerlink" title="可变长输入输出"></a>可变长输入输出</h2><ul>
+<li>varargin{1}： variable argument input, cell 类型，存储输入参数</li>
+<li>nargin 输入参数个数</li>
+<li>varargout 输出参数    </li>
+<li>nargout 输出个数</li>
+</ul>
+<h2 id="本地函数和嵌套函数"><a href="#本地函数和嵌套函数" class="headerlink" title="本地函数和嵌套函数"></a>本地函数和嵌套函数</h2><ul>
+<li>本地函数，单个m文件中定义的函数，作用域为整个m文件</li>
+<li>嵌套函数（可以使用所有外层函数定义的量）</li>
+</ul>
+<h2 id="函数句柄"><a href="#函数句柄" class="headerlink" title="函数句柄"></a>函数句柄</h2><ul>
+<li>function_handle，为一个单独的数据类型</li>
+<li>使用 func_han = @(argm1, argm2) argm1*argm2; 即可定义手柄</li>
+<li>func2str(func_hndl);得到函数名字</li>
+<li>相关函数<ul>
+<li><code>fplot(@sin(), [0, 2*pi])</code></li>
+<li><code>feval(@sin(), 0:0.1:1)</code> 返回每个值对应的函数输出</li>
+<li><code>timeit(func_handle)</code>，算函数计算的时间<h2 id="通信相关"><a href="#通信相关" class="headerlink" title="通信相关"></a>通信相关</h2></li>
+</ul>
+</li>
+</ul>
+<h3 id="qammod"><a href="#qammod" class="headerlink" title="qammod"></a>qammod</h3><figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">ModDataTX = qammod(BinData, MOD, <span class="string">&#x27;InputType&#x27;</span>, <span class="string">&#x27;bit&#x27;</span>, <span class="string">&#x27;PlotConstellation&#x27;</span>,<span class="built_in">true</span>);</span><br><span class="line"><span class="comment">% 对于输入bit 流进行 QAM调制，MOD是调制阶数，InputType指定输入类型</span></span><br></pre></td></tr></table></figure>
+<p>注意 matlab中 vector’ 如果是vector复数向量，就算的直接是共轭转置，这个被坑过，如果想只转置可以用 vector.’</p>
+<h3 id="berfading"><a href="#berfading" class="headerlink" title="berfading"></a>berfading</h3><p>估计fading时的性能，参数是SNR，调制方式，调制模，复用参数</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">EbNo = <span class="number">8</span>:<span class="number">2</span>:<span class="number">20</span>; <span class="comment">% Eb/N0</span></span><br><span class="line">ber = <span class="built_in">zeros</span>(<span class="built_in">length</span>(EbNo),<span class="number">20</span>);</span><br><span class="line"><span class="keyword">for</span> L = <span class="number">1</span>:<span class="number">20</span> </span><br><span class="line">    ber(:,L) = berfading(EbNo,<span class="string">&#x27;qam&#x27;</span>,<span class="number">16</span>,L); <span class="comment">% 16 QAM</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">semilogy(EbNo,ber,<span class="string">&#x27;b&#x27;</span>)</span><br><span class="line">text(<span class="number">18.5</span>, <span class="number">0.02</span>, sprintf(<span class="string">&#x27;L=%d&#x27;</span>,<span class="number">1</span>))</span><br><span class="line">text(<span class="number">18.5</span>, <span class="number">1e-11</span>, sprintf(<span class="string">&#x27;L=%d&#x27;</span>,<span class="number">20</span>))</span><br><span class="line">title(<span class="string">&#x27;QAM over fading channel with diversity order 1 to 20&#x27;</span>)</span><br><span class="line">xlabel(<span class="string">&#x27;E_b/N_0 (dB)&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;BER&#x27;</span>)</span><br><span class="line">grid on</span><br></pre></td></tr></table></figure>
+<p><img src="https://www.mathworks.com/help/examples/comm/win64/EstimateBERPeformanceOf16QAMInFadingExample_01.png" alt="image"></p>
+<h2 id="随机数"><a href="#随机数" class="headerlink" title="随机数"></a>随机数</h2><p><code>rng(&#39;shuffle&#39;)</code>来使用当前时间作为随机数种子</p>
+<h3 id="rand"><a href="#rand" class="headerlink" title="rand"></a>rand</h3><p>0-1 随机数</p>
+<h3 id="randi"><a href="#randi" class="headerlink" title="randi"></a>randi</h3><p>伪随机整数</p>
+<p>X = randi([imin,imax],size_1,size_2)</p>
+<p>X = randi(imax,sz1,…,szN)</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">randi([<span class="built_in">min</span> <span class="built_in">max</span>], row_number, col_number);</span><br><span class="line"><span class="comment">% e.g.</span></span><br><span class="line">randi([<span class="number">0</span> <span class="number">10</span>], <span class="number">1000</span>, <span class="number">1</span>); <span class="comment">% Generate 1000✖1 random vector with range from 0 to 10</span></span><br></pre></td></tr></table></figure>
+<h3 id="randn"><a href="#randn" class="headerlink" title="randn"></a>randn</h3><p>randn生成正态分布随机数</p>
+<p>X = randn(n) 返回由正态分布的随机数组成的 n×n 矩阵。</p>
+<p>X = randn(sz1,…,szN) 返回由随机数组成的 sz1×…×szN 数组，其中 sz1,…,szN 指示每个维度的大小。例如：randn(3,4) 返回一个 3×4 的矩阵。</p>
+<p>X = randn(sz) 返回由随机数组成的数组，其中大小向量 sz 定义 size(X)。例如：randn([3 4]) 返回一个 3×4 的矩阵。</p>
+]]></content>
+      <categories>
+        <category>MATLAB</category>
+      </categories>
+      <tags>
+        <tag>MATLAB</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数字信号处理 -- 基于计算机方法</title>
+    <url>/2020/12/27/DSP/</url>
+    <content><![CDATA[<p><strong>目录：</strong></p>
+<!-- toc -->
+
+
+<blockquote>
+<p>本文是我学习《数字信号处理 – 基于计算机的方法》第四版的笔记</p>
+</blockquote>
+<a id="more"></a>
+
+
+<h1 id="信号与信号处理"><a href="#信号与信号处理" class="headerlink" title="信号与信号处理"></a>信号与信号处理</h1><h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><h3 id="信号分类"><a href="#信号分类" class="headerlink" title="信号分类"></a>信号分类</h3><ul>
+<li>振幅</li>
+<li>时间<ul>
+<li>连续时间信号<ul>
+<li>振幅也连续：模拟信号</li>
+</ul>
+</li>
+<li>离散时间信号<ul>
+<li>振幅离散：数字信号</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="复数信号和解析信号"><a href="#复数信号和解析信号" class="headerlink" title="复数信号和解析信号"></a>复数信号和解析信号</h3><h4 id="复数信号"><a href="#复数信号" class="headerlink" title="复数信号"></a>复数信号</h4><ul>
+<li><p>Why?</p>
+<ul>
+<li>信号表示更加复杂（相位，幅度） -&gt; 信息量很大 -&gt; 信号处理更加简单，易于处理</li>
+</ul>
+</li>
+<li><p>希尔伯特变换 HT</p>
+<ul>
+<li>$h_{HT} = \frac{1}{\pi t}$</li>
+<li>$H_{HT}(j\Omega) = \begin{cases} -j &amp; \Omega &gt; 0 \\  j &amp;  \Omega &lt; 0  \end{cases} $<!--这里要用\\\来表示换行-->
+<h4 id="实数信号"><a href="#实数信号" class="headerlink" title="实数信号"></a>实数信号</h4></li>
+</ul>
+</li>
+<li><p>实数信号</p>
+<ul>
+<li>FT性质 =&gt; 幅度偶对称，相位奇对称</li>
+<li>正频率 + 负频率 $X(j\Omega) = X_p(j\Omega)+X_n(j\Omega)$</li>
+<li>经过HT =&gt; $\hat{X}(j\Omega) = -j X_p(j\Omega)+jX_n(j\Omega)$  =&gt; $\hat{x}(t)$也是实数信号</li>
+</ul>
+</li>
+</ul>
+<h4 id="解析信号"><a href="#解析信号" class="headerlink" title="解析信号"></a>解析信号</h4><p>=&gt; 解析信号  $y(t) = x(t) + j\hat{x}(t)$ </p>
+<p>$x(t), \hat{x}(t)$ 为<strong>同相分量</strong>和<strong>正交分量</strong></p>
+<p>$Y(j\Omega) = X(j\Omega)+j\hat{X}(j\Omega) = 2 X_p(j\Omega)$</p>
+<p>我们可以看出<em>解析信号只包含正频率的部分</em></p>
+<h2 id="信号运算"><a href="#信号运算" class="headerlink" title="信号运算"></a>信号运算</h2><ul>
+<li>简单运算<ul>
+<li>衰减</li>
+<li>延迟 $y(t) = x(t-t_0)$ </li>
+<li>相加，相乘</li>
+<li>积分 $y(t) = \int_{-\infty}^{t}x(\tau) d\tau$ </li>
+<li>微分 $y(t) = \frac{dx(t)}{dt}$</li>
+<li>傅里叶变换Fourier Transform(FT)  $X(j\Omega) = \int_{-\infty}^{+\infty}x(t) e^{-j\Omega t} dt$</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>滤波<ul>
+<li>$y(t) = \int_{-\infty}^{+\infty} h(t-\tau)x(\tau)d\tau$</li>
+<li>低通，高通，带通</li>
+<li>带阻（陷波器3）</li>
+<li>多频带滤波器：多个通带阻带</li>
+<li>梳状滤波器：阻断某个低频的整数倍</li>
+</ul>
+</li>
+</ul>
+<h3 id="调制"><a href="#调制" class="headerlink" title="调制"></a>调制</h3><ul>
+<li>Why?<ul>
+<li>低频信号无法直接用于传输</li>
+<li>调制到高频进行传输- 原理：利用信号的振幅、相位、频率表示信号</li>
+</ul>
+</li>
+</ul>
+<h1 id="时域离散时间信号"><a href="#时域离散时间信号" class="headerlink" title="时域离散时间信号"></a>时域离散时间信号</h1><p>离散时间信号， Why？</p>
+<blockquote>
+<p> 现代计算机、微处理器、嵌入式设备都是处理数字信号的，但是我们的物理世界充斥着连续信号（模拟信号），如声音信号等。而直接处理模拟信号是比较困难的（1G通信），设备器件做的很大（大哥大），而且不便于加密（你树根天线就能窃听到隔壁老王在电话里说什么）。这就涉及到<em>模拟信号数字化</em>（<strong>采样，或者抽样</strong>），转换为数字信号进行处理。</p>
+</blockquote>
+<h2 id="时域表示"><a href="#时域表示" class="headerlink" title="时域表示"></a>时域表示</h2><p>采样： $x[n] = x_a{(t)}|_{t = nT} = x_a(nT)$</p>
+<p>采样频率（抽样频率）： $F_t = \frac{1}{T}$</p>
+<p>采样得到的值由于ADC（数模转换器）的精度问题（例如12 Bit ADC）有<strong>舍入的问题</strong>。</p>
+<h2 id="频域表示"><a href="#频域表示" class="headerlink" title="频域表示"></a>频域表示</h2><p>归一化角频率：$\omega_c$ 为归一化角频率，因为样本$n$是无量纲的，所以应该是弧度/样本，且<br>$$<br>\omega = 2\pi f<br>$$<br>$f$ 是归一化角频率， 单位是周期/样本，即一个样本多少周期</p>
+<h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p><strong>例子2.1：集合平均</strong></p>
+<p>$s[n]=2[n(0.9)^n]$ 和噪声$d(n)$，受干扰后的集合平均可以减少干扰影响</p>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line"><span class="comment">% Program_2_1</span></span><br><span class="line"><span class="comment">% Generation of the ensemble average</span></span><br><span class="line">N = <span class="number">50</span>; <span class="comment">% total number</span></span><br><span class="line">n = <span class="number">0</span> : N<span class="number">-1</span>;</span><br><span class="line">s = <span class="number">2</span>*(n.*<span class="number">0.9</span>.^n); <span class="comment">% generate the original signal s[n]</span></span><br><span class="line">rng();</span><br><span class="line">d = <span class="built_in">rand</span>(N, <span class="number">1</span>) - <span class="number">0.5</span>; <span class="comment">% generate the noise signal d[n]</span></span><br><span class="line"></span><br><span class="line">x1 = s+d&#x27;; <span class="comment">% the corrupted signal</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the corrupted signal</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">stem(n, x1);</span><br><span class="line">xlabel(<span class="string">&#x27;Time Index n&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;Amplitude&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;The Corrupted Signal&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the Noise Signal</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">stem(n, d)</span><br><span class="line">xlabel(<span class="string">&#x27;Time Index n&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;Amplitude&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;The Noise Signal&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Ensemble average</span></span><br><span class="line"><span class="keyword">for</span> m = <span class="number">1</span>:<span class="number">50</span></span><br><span class="line">    rng();</span><br><span class="line">    noise = <span class="built_in">rand</span>(N,<span class="number">1</span>) - <span class="number">0.5</span>;</span><br><span class="line">    x = s + noise&#x27;;</span><br><span class="line">    x1 = x1 + x;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">x1 = x1 / N;</span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the ensemble average signal</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">stem(n, x1);</span><br><span class="line">xlabel(<span class="string">&#x27;Time Index n&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;Amplitude&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;The Ensemble Average Signal&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="/images/DSP/2-1-01.png" alt=""></p>
+<p><img src="/images/DSP/2-1-02.png" alt=""></p>
+<h3 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h3><p>使用函数<code>conv</code>即可作为卷积运算</p>
+<h3 id="抽样率转换"><a href="#抽样率转换" class="headerlink" title="抽样率转换"></a>抽样率转换</h3><p><strong>抽样率转换比:</strong>  $\frac{F_T^{‘}}{F_T} = R$, $F_T$ 是原本的抽样率, 再拿$F_T^{‘}$ 去抽样</p>
+<h3 id="序列分类"><a href="#序列分类" class="headerlink" title="序列分类"></a>序列分类</h3><ul>
+<li>周期、非周期</li>
+<li>能量信号、功率信号</li>
+</ul>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>DSP</tag>
+        <tag>Math</tag>
+        <tag>SignalProcessing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>无线网络物理层</title>
+    <url>/2020/12/20/Wireless%20Physical%20Layer/</url>
+    <content><![CDATA[<blockquote>
+<p>本笔记来源于书籍《MIMO OFDM Wireless Communications with MATLAB》</p>
+</blockquote>
+<h1 id="无线信道"><a href="#无线信道" class="headerlink" title="无线信道"></a>无线信道</h1><h2 id="衰落："><a href="#衰落：" class="headerlink" title="衰落："></a>衰落：</h2><p><em>衰落</em>：信号在时间和频率上的上下浮动</p>
+<a id="more"></a>
+
+<p><em>产生原因：</em></p>
+<ul>
+<li>多径（接收端的经多条路径收到发射端发射的信号）</li>
+<li>噪声</li>
+<li>障碍物（阴影衰落）</li>
+</ul>
+<p><em>分类</em></p>
+<ul>
+<li>大尺度衰落</li>
+</ul>
+<h1 id="SISO-模型"><a href="#SISO-模型" class="headerlink" title="SISO 模型"></a>SISO 模型</h1><h1 id="MIMO模型"><a href="#MIMO模型" class="headerlink" title="MIMO模型"></a>MIMO模型</h1>]]></content>
+      <categories>
+        <category>Communications</category>
+      </categories>
+      <tags>
+        <tag>Wireless Communications</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>TMUX</title>
+    <url>/2020/10/09/TMUX/</url>
+    <content><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>维护管理终端正在运行的程序</li>
+<li>执行多个任务</li>
+<li>远程使用时尤其方便，断开连接也不会挂掉正在跑的东西<a id="more"></a></li>
+</ul>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul>
+<li>Sessions 包含多个windows，表示一个工作区</li>
+<li>Windows 相当于浏览器的tabs</li>
+<li>Panes 一个window分割成几个视觉上分开的Panes</li>
+</ul>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li>session<ul>
+<li>tmux 开启新session</li>
+<li>tmux new -s NAME </li>
+<li>tmux ls 列出现存的session</li>
+<li><C-b> d 分离当前的session</li>
+<li>tmux a 继续上一个session </li>
+<li>tmux a -t 0 指定session 0</li>
+</ul>
+</li>
+<li>window<ul>
+<li><C-b> c 创建window</li>
+<li><C-b> + number 去 第几 window</li>
+<li><C-b> p 上一个window</li>
+<li><C-b> n 下一个window</li>
+<li><C-b> w 列出现有的windows</li>
+</ul>
+</li>
+<li>pane<ul>
+<li><C-b> “ （我这里是 | ）水平方向分割</li>
+<li><C-b> % （我这里是 - ）竖直方向分割</li>
+<li><C-b> z 全屏，然后再按一次恢复</li>
+<li><C-b> <C> ← →来改变pane大小</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>tmux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vim 随手记</title>
+    <url>/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><a id="more"></a>
+
+<ul>
+<li><p>i : insert 光标字符之前</p>
+</li>
+<li><p>a : append 光标字符之后加入</p>
+</li>
+<li><p>o : open a line below 当前行下面开一行</p>
+</li>
+<li><p>A : 在本行最后append</p>
+</li>
+<li><p>O : 本行上面插入一行，开头插入</p>
+</li>
+<li><p>I : 在本行开头插入</p>
+</li>
+</ul>
+<h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><ul>
+<li>normal<ul>
+<li>使用 gi 快速恢复到原始插入位置</li>
+<li>w 下个单词开头，e下个单词结尾</li>
+<li>b 上个单词开头 </li>
+<li>大写跳动到以空白符为间隔的地方</li>
+<li>f+字符，搜索字符, ; 下一个 ,上一个 F+ 字符反过来搜</li>
+<li>0 行首，$ 行尾</li>
+<li>g 移动到开头，G移动到结尾 H/M/L跳转到屏幕的开头，结尾</li>
+<li>ctrl u ctrl d翻页 cltr F/B</li>
+<li>dw 删除一个单词 delete a world x删除字符</li>
+<li>r replalce一个字符 s 删除当前字符进入插入模式 </li>
+<li>R 不断地替换 S 整行删除，进入插入模式</li>
+<li>c(change) aw 删掉一个词进入插入 C 删除整行进入插入模式 ct” 删除整个“”中的内容</li>
+<li>? / 进行反向前向搜索，n/N下一个上一个 # * 当前单词向上搜索/向下搜索</li>
+</ul>
+</li>
+<li>insert<ul>
+<li>ctrl + w 删除word</li>
+<li>ctrl + u 删除行</li>
+<li>ctrl + h 删除上一个字符</li>
+<li>用ctrl + [ 代替esc</li>
+</ul>
+</li>
+<li>command <ul>
+<li>:vs(vertical split) 竖分屏（左右）</li>
+<li>:sp(split) 上下分屏</li>
+<li>set nu 行号</li>
+<li>% s/word1/word2/g 全局替换</li>
+<li>1,6 s/word1/word2/g 1-6行之间替换</li>
+<li>1,6 self//n 统计1-6行几个匹配self n指number，报告匹配到的次数</li>
+<li>% s/&lt;quack&gt;/word2/g</li>
+</ul>
+</li>
+<li>visual<ul>
+<li>normal 模式 v</li>
+<li>V选行</li>
+<li>ctrl v选方块</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>vim</tag>
+        <tag>Linux</tag>
+        <tag>随手记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何在CentOS 7上使用FirewallD设置防火墙</title>
+    <url>/2020/01/10/%E5%A6%82%E4%BD%95%E5%9C%A8CentOS%207%E4%B8%8A%E4%BD%BF%E7%94%A8FirewallD%E8%AE%BE%E7%BD%AE%E9%98%B2%E7%81%AB%E5%A2%99/</url>
+    <content><![CDATA[<p>本文翻译自 <a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-a-firewall-using-firewalld-on-centos-7">How To Set Up a Firewall Using FirewallD on CentOS 7</a></p>
+<a id="more"></a>
+
+<h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>Firewalld是可用于许多Linux发行版的防火墙管理解决方案，它充当Linux内核提供的iptables数据包过滤系统的前端。 在本指南中，我们将介绍如何为服务器设置防火墙，并向您展示使用firewall-cmd管理工具管理防火墙的基本知识（如果您希望在CentOS中使用iptables，请遵循 <a href="https://www.digitalocean.com/community/tutorials/how-to-migrate-from-firewalld-to-iptables-on-centos-7">这个指南</a>。</p>
+<h2 id="Firewalld-的基本概念"><a href="#Firewalld-的基本概念" class="headerlink" title="Firewalld 的基本概念"></a>Firewalld 的基本概念</h2><p>在开始讨论如何实际使用firewall-cmd实用程序来管理防火墙配置之前，我们应该熟悉该工具引入的一些基本概念。</p>
+<h3 id="Zones-区域"><a href="#Zones-区域" class="headerlink" title="Zones(区域)"></a>Zones(区域)</h3><p>Firewalld守护程序使用称为“区域”的实体管理规则组。 区域基本上是一组规则，它们决定了允许哪些流量，具体取决于您对计算机所连接的网络的信任程度。 为网络接口分配一个Zone来指示防火墙应允许和拒绝哪些行为。</p>
+<p>对于可能经常在网络之间移动的计算机（例如笔记本电脑），这种灵活性提供了一种根据环境更改规则的好方法。 在公共WiFi网络上运行时，您可能有严格的规则禁止大多数流量，而在连接到家庭网络时允许放宽限制。 对于服务器来说，这些区域并不是那么重要，因为网络环境很少更改。</p>
+<p>无论您的网络环境动态性有多强，熟悉防火墙的每个预定义区域背后的概念仍然很有用。 按从最不信任到最受信任的顺序，firewalld中的预定义区域为：</p>
+<ul>
+<li><p><strong>drop</strong>：最低级别的信任度。 所有传入的连接都将被丢弃而不会回复，并且只能进行传出连接。</p>
+</li>
+<li><p><strong>block</strong>：与上述类似，但不仅仅是丢弃连接，而是使用icmp-host-prohibited或icmp6-adm-prohibited消息拒绝传入的请求。</p>
+</li>
+<li><p><strong>public</strong>：代表公共的，不受信任的网络。 您不信任其他计算机，但可能会视情况允许选择的传入连接。</p>
+</li>
+<li><p><strong>external</strong>：external network用于这种情形：您将firewalld当成网关使用。 将其配置为伪NAT，以便您的内部网络保持私有但可访问。</p>
+</li>
+<li><p><strong>internal</strong>：外部区域的另一侧，用于网关的内部。 这些计算机相当值得信赖，并且可以使用一些其他服务。</p>
+</li>
+<li><p><strong>dmz</strong>：用于DMZ（无法访问网络其余部分的隔离计算机）。 仅允许某些传入连接。</p>
+</li>
+<li><p><strong>work</strong>：用于工作机。 信任网络中的大多数计算机。 可能还允许其他一些服务。</p>
+</li>
+<li><p><strong>home</strong>：家庭环境。 通常，这意味着您信任其他大多数计算机，并且将接受其他一些服务。</p>
+</li>
+<li><p><strong>trusted</strong>：信任网络中的所有计算机。 可用选项中最开放的，应谨慎使用。</p>
+</li>
+</ul>
+<p>要使用防火墙，我们可以创建规则并更改区域的属性，然后将网络接口（network interface）分配给最合适的区域（zones）。</p>
+<h3 id="规则永久性"><a href="#规则永久性" class="headerlink" title="规则永久性"></a>规则永久性</h3><p>在firewalld中，可以将规则指定为<strong>永久规则</strong>或<strong>立即规则</strong>。 如果添加或修改规则，则默认情况下，将修改当前运行的防火墙规则。 下次启动时，旧规则将恢复。</p>
+<p>大多数<code>firewall-cmd</code>操作都可以使用<code>--permanent</code>标志来指示应永久防火墙规则作为目标。 这将影响在引导时重新加载的规则。 这种分离意味着您可以在活动的防火墙实例中测试规则，然后在出现问题时重新加载。 您还可以使用<code>--permanent</code>标志随着时间的推移建立一套完整的规则，这些规则将在发出<code>reload</code>命令时立即应用。</p>
+<h2 id="安装并启动防火墙"><a href="#安装并启动防火墙" class="headerlink" title="安装并启动防火墙"></a>安装并启动防火墙</h2><p>firewalld默认安装在一些Linux发行版上，包括许多CentOS 7的映像。但是，您可能需要自己安装firewalld:</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo yum install firewalld</span><br></pre></td></tr></table></figure>
+<p>安装firewalld之后，可以启用服务并重新启动服务器。请记住，启用firewalld将导致服务在引导时启动。最好的做法是<strong>先创建防火墙规则</strong>，并在配置此行为之前对其进行测试，以避免潜在的问题。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable firewalld </span><br><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
+<p>当服务器重新启动时，你的防火墙应该会打开，你的网络接口应该放入已配置的区域(或退回到已配置的默认区域)，与区域相关的任何规则都将应用于相关的接口。</p>
+<p>我们可以通过键入以下内容来验证该服务正在运行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --state</span><br></pre></td></tr></table></figure>
+<p>这表明我们的防火墙已经启动并使用默认配置运行。</p>
+<h2 id="熟悉当前的防火墙规则"><a href="#熟悉当前的防火墙规则" class="headerlink" title="熟悉当前的防火墙规则"></a>熟悉当前的防火墙规则</h2><p>在开始进行修改之前，我们应该熟悉守护进程提供的默认环境和规则。</p>
+<h3 id="默认值"><a href="#默认值" class="headerlink" title="默认值"></a>默认值</h3><p>我们可以通过输入以下内容来查看当前选择的默认区域：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">firewall-cmd --get-active-zones</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">output</span><br><span class="line">public</span><br><span class="line">  interfaces: eth0 eth1</span><br></pre></td></tr></table></figure>
+<p> 在这里，我们可以看到示例服务器具有两个受防火墙控制的网络接口（eth0和eth1）。 目前，它们都根据为public zone定义的规则进行管理。</p>
+<p>我们如何知道与public zone相关的规则？ 我们可以通过输入以下内容来打印默认区域的配置：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">output</span><br><span class="line">public (default, active)</span><br><span class="line">  target: default</span><br><span class="line">  icmp-block-inversion: no</span><br><span class="line">  interfaces: eth0 eth1</span><br><span class="line">  sources: </span><br><span class="line">  services: ssh dhcpv6-client</span><br><span class="line">  ports: </span><br><span class="line">  protocols: </span><br><span class="line">  masquerade: no</span><br><span class="line">  forward-ports: </span><br><span class="line">  source-ports: </span><br><span class="line">  icmp-blocks: </span><br><span class="line">  rich rules: </span><br></pre></td></tr></table></figure>
+<p>从输出中可以看出，该区域既是默认区域又是活动区域，并且eth0和eth1接口与此区域相关联（我们已经从之前的查询中了解了所有这些信息）。 但是，我们还可以看到，该区域允许与DHCP客户端（用于IP地址分配）和SSH（用于远程管理）相关的正常操作。</p>
+<h3 id="可替代区"><a href="#可替代区" class="headerlink" title="可替代区"></a>可替代区</h3><p>现在，我们对缺省和活动区域的配置有了很好的了解。我们也可以找到其他区域的信息。要获得可用区域的列表，请输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --get-zones</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">output</span><br><span class="line">block dmz drop external home internal public trusted work</span><br></pre></td></tr></table></figure>
+<p>我们可以通过在<code>—list-all</code>命令中包含<code>—zone=</code>参数来查看与区域关联的特定配置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;home --list-all</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">output</span><br><span class="line">home</span><br><span class="line">  interfaces: </span><br><span class="line">  sources: </span><br><span class="line">  services: dhcpv6-client ipp-client mdns samba-client ssh</span><br><span class="line">  ports: </span><br><span class="line">  masquerade: no</span><br><span class="line">  forward-ports: </span><br><span class="line">  icmp-blocks: </span><br><span class="line">  rich rules:</span><br></pre></td></tr></table></figure>
+<p>您可以使用–list-all-zones选项输出所有区域定义。 您可能希望将输出通过管道以便于查看：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --list-all-zones | less</span><br></pre></td></tr></table></figure>
+<h2 id="为接口选择区域"><a href="#为接口选择区域" class="headerlink" title="为接口选择区域"></a>为接口选择区域</h2><p>除非您已经配置了您的网络接口，否则在防火墙启动时，每个接口都将放在默认区域。</p>
+<h3 id="改变接口的区域"><a href="#改变接口的区域" class="headerlink" title="改变接口的区域"></a>改变接口的区域</h3><p>您可以在会话期间使用<code>—zone=</code>参数和<code>—change-interface=</code>参数在区域之间转换接口。与修改防火墙的所有命令一样，您将需要使用sudo。</p>
+<p>例如，我们可以通过输入以下内容将eth0接口转换到home区域:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;home --change-interface&#x3D;eth0</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>每当将接口转换到新区域时，请注意，您可能正在修改将可操作的服务。例如，在这里，我们将移动到”home”区域，其中有 SSH 可用。这意味着我们的连接不应该断开。默认情况下，某些其他区域未启用 SSH，如果在使用这些区域之一时断开连接，您可能会发现自己无法重新登录。</p>
+</blockquote>
+<p>我们可以通过再次请求活动区域来验证这是否成功：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">firewall-cmd --get-active-zones</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">output</span><br><span class="line">home</span><br><span class="line">  interfaces: eth0</span><br><span class="line">public</span><br><span class="line">  interfaces: eth1</span><br></pre></td></tr></table></figure>
+<h3 id="调整默认区域"><a href="#调整默认区域" class="headerlink" title="调整默认区域"></a>调整默认区域</h3><p>如果所有接口都可以最好地由单个区域处理，那么只需选择最佳默认区域，然后将其用于配置可能更容易。</p>
+<p>您可以使用 参数更改默认区域。这将立即将默认的接口更改回新区域：<code>--set-default-zone=</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --set-default-zone&#x3D;home</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">output</span><br><span class="line">success</span><br></pre></td></tr></table></figure>
+<h2 id="为应用程序设置规则"><a href="#为应用程序设置规则" class="headerlink" title="为应用程序设置规则"></a>为应用程序设置规则</h2><p>为您希望提供的服务定义防火墙的基本方法非常简单。我们将在这里了解基本思想。</p>
+<h3 id="向区域添加服务"><a href="#向区域添加服务" class="headerlink" title="向区域添加服务"></a>向区域添加服务</h3><p>最简单的方法是将所需的服务或端口添加到正在使用的区域。同样，您可以使用以下选项获取可用服务的列表：<code>--get-services</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --get-services</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">output</span><br><span class="line">RH-Satellite-6 amanda-client amanda-k5-client bacula bacula-client bitcoin bitcoin-rpc bitcoin-testnet bitcoin-testnet-rpc ceph ceph-mon cfengine condor-collector ctdb dhcp dhcpv6 dhcpv6-client dns docker-registry dropbox-lansync elasticsearch freeipa-ldap freeipa-ldaps freeipa-replication freeipa-trust ftp ganglia-client ganglia-master high-availability http https imap imaps ipp ipp-client ipsec iscsi-target kadmin kerberos kibana klogin kpasswd kshell ldap ldaps libvirt libvirt-tls managesieve mdns mosh mountd ms-wbt mssql mysql nfs nrpe ntp openvpn ovirt-imageio ovirt-storageconsole ovirt-vmconsole pmcd pmproxy pmwebapi pmwebapis pop3 pop3s postgresql privoxy proxy-dhcp ptp pulseaudio puppetmaster quassel radius rpc-bind rsh rsyncd samba samba-client sane sip sips smtp smtp-submission smtps snmp snmptrap spideroak-lansync squid ssh synergy syslog syslog-tls telnet tftp tftp-client tinc tor-socks transmission-client vdsm vnc-server wbem-https xmpp-bosh xmpp-client xmpp-local xmpp-server</span><br></pre></td></tr></table></figure>
+
+<p>您可以使用命令行参数为区域启用服务。该操作将针对默认区域或参数指定的任何区域。默认情况下，这将仅调整当前防火墙会话。您可以通过包含<code>permanent</code>标志来调整永久防火墙配置。<code>--add-service=--zone=--permanent</code></p>
+<p>例如，如果我们正在运行一个为传统HTTP流量提供服务的web服务器，我们可以通过输入以下命令来允许该会话的公共区域中的接口的流量:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public --add-service&#x3D;http</span><br></pre></td></tr></table></figure>
+<p>我们可以用这个验证操作是否成功：<code>--zone=--list-all--list-services</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public --list-services</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">output</span><br><span class="line">dhcpv6-client http ssh</span><br></pre></td></tr></table></figure>
+<p>测试完所有功能后，可能需要修改永久防火墙规则，以便在重新启动后服务仍然可用。通过：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public --permanent --add-service&#x3D;http</span><br></pre></td></tr></table></figure>
+<p>现在，您的“公共”区域将允许端口80上的HTTP Web通信。如果您的Web服务器配置为使用SSL / TLS，则还需要添加服务。 我们可以通过以下内容将其添加到当前session和永久规则集合中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public --add-service&#x3D;https</span><br><span class="line">sudo firewall-cmd --zone&#x3D;public --permanent --add-service&#x3D;https</span><br></pre></td></tr></table></figure>
+<h3 id="如果没有合适的服务可用呢"><a href="#如果没有合适的服务可用呢" class="headerlink" title="如果没有合适的服务可用呢?"></a>如果没有合适的服务可用呢?</h3><p>firewalld安装中包含的防火墙服务代表了您可能希望允许访问的应用程序的许多最常见需求。但是，可能会出现这些服务不适合您的需求的情况。</p>
+<p>在这种情况下，你有两种选择：</p>
+<h4 id="为你的区域开一个端口"><a href="#为你的区域开一个端口" class="headerlink" title="为你的区域开一个端口"></a>为你的区域开一个端口</h4><p>支持你特定服务最简单的方法就是在合适的区域(zone)内开放一个端口， 这很容易指定端口或端口范围，以及需要打开的端口相关的协议。</p>
+<p>比如，如果你的应用在5000端口中使用TCP，<br>你可以在public区域内使用这个参数进行增加，协议可以为tcp，udp：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public --add-port&#x3D;5000&#x2F;tcp</span><br></pre></td></tr></table></figure>
+<p>我们可以通过<code>--list-ports</code>进行确认</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public --list-ports</span><br></pre></td></tr></table></figure>
+<p>使用横杠进行连续端口的指定也是可能的，例如，下面的例子就开放了4990到4999的UDP端口，当然同样是在Public zone中：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public ---add-port&#x3D;4990-4999&#x2F;udp</span><br></pre></td></tr></table></figure>
+<p>在测试后，我们想把它们增加为永久的防火墙规则，你可以输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;public --permanent --add-port&#x3D;5000&#x2F;tcp</span><br><span class="line">sudo firewall-cmd --zone&#x3D;public --permanent --add-port&#x3D;4990-4999&#x2F;udp</span><br><span class="line">sudo firewall-cmd --zone&#x3D;public --permanent --list-ports</span><br></pre></td></tr></table></figure>
+<h4 id="定义一个服务"><a href="#定义一个服务" class="headerlink" title="定义一个服务"></a>定义一个服务</h4><p>为您的区域打开端口很容易，但是很难跟踪每个端口的用途。如果您曾经在您的服务器上停止过一个服务，那么您可能很难记住哪些过去被打开了的端口仍然是必需的。为了避免这种情况，可以定义一个服务。</p>
+<p>服务只是具有相关名称和描述的端口的集合。使用服务比端口更容易管理，但是需要一些前期工作。最简单的启动方式是将现有的脚本复制到防火墙查找非标准定义的目录中。<code>/usr/lib/firewalld/services/etc/firewalld/services</code></p>
+<p>例如，我们可以复制SSH服务定义来使用我们的’example’服务定义，如下所示。文件名减去后缀将指示防火墙服务列表中的服务名称:<code>.xml</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo cp &#x2F;usr&#x2F;lib&#x2F;firewalld&#x2F;services&#x2F;ssh.xml &#x2F;etc&#x2F;firewalld&#x2F;services&#x2F;example.xml</span><br></pre></td></tr></table></figure>
+<p>首先，该文件将包含您复制的SSH定义</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">service</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">short</span>&gt;</span>SSH<span class="tag">&lt;/<span class="name">short</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>Secure Shell (SSH) is a protocol for logging into and executing commands on remote machines. It provides secure encrypted communications. If you plan on accessing your machine remotely via SSH over a firewalled interface, enable this option. You need the openssh-server package installed for this option to be useful.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">port</span> <span class="attr">protocol</span>=<span class="string">&quot;tcp&quot;</span> <span class="attr">port</span>=<span class="string">&quot;22&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>该定义的大部分实际上是元数据。 您将要在标签内更改服务的简称。 这是您的服务的易读名称。 您还应该添加描述，以便在需要审核服务时获得更多信息。 您需要进行的实际上会影响服务功能的唯一配置可能是端口定义，您可以在其中定义要打开的端口号和协议。 可以多次指定。</p>
+<p>对于我们的示例服务，假设我们需要为TCP打开7777端口，为UDP打开8888端口。通过按下按钮进入插入模式，我们可以这样修改现有的定义</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">service</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">short</span>&gt;</span>Example Service<span class="tag">&lt;/<span class="name">short</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">description</span>&gt;</span>This is just an example service.  It probably shouldn&#x27;t be used on a real system.<span class="tag">&lt;/<span class="name">description</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">port</span> <span class="attr">protocol</span>=<span class="string">&quot;tcp&quot;</span> <span class="attr">port</span>=<span class="string">&quot;7777&quot;</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">port</span> <span class="attr">protocol</span>=<span class="string">&quot;udp&quot;</span> <span class="attr">port</span>=<span class="string">&quot;8888&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>重新加载防火墙以访问新服务:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --get-services</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">output:</span><br><span class="line">RH-Satellite-6 amanda-client amanda-k5-client bacula bacula-client bitcoin bitcoin-rpc bitcoin-testnet bitcoin-testnet-rpc ceph ceph-mon cfengine condor-collector ctdb dhcp dhcpv6 dhcpv6-client dns docker-registry dropbox-lansync elasticsearch example freeipa-ldap freeipa-ldaps freeipa-replication freeipa-trust ftp ganglia-client ganglia-master high-availability http https imap imaps ipp ipp-client ipsec iscsi-target kadmin kerberos kibana klogin kpasswd kshell ldap ldaps libvirt libvirt-tls managesieve mdns mosh mountd ms-wbt mssql mysql nfs nrpe ntp openvpn ovirt-imageio ovirt-storageconsole ovirt-vmconsole pmcd pmproxy pmwebapi pmwebapis pop3 pop3s postgresql privoxy proxy-dhcp ptp pulseaudio puppetmaster quassel radius rpc-bind rsh rsyncd samba samba-client sane sip sips smtp smtp-submission smtps snmp snmptrap spideroak-lansync squid ssh synergy syslog syslog-tls telnet tftp tftp-client tinc tor-socks transmission-client vdsm vnc-server wbem-https xmpp-bosh xmpp-client xmpp-local xmpp-server</span><br></pre></td></tr></table></figure>
+<p>我们可以看到example服务已经被成功定义。</p>
+<h2 id="创造属于你自己的区域（zones）"><a href="#创造属于你自己的区域（zones）" class="headerlink" title="创造属于你自己的区域（zones）"></a>创造属于你自己的区域（zones）</h2><p>尽管预定义的区域对于大多数用户来说可能绰绰有余，但是定义自己的区域来描述其功能可能会有所帮助。</p>
+<p>例如，您可能要为Web服务器创建一个名为“ publicweb”的zone。 但是，您可能希望为您在专用网络上提供的DNS服务而去配置另一个zone。 您可能需要一个名为“ privateDNS”的zone。</p>
+<p>添加区域时，必须将其添加到永久防火墙配置中。 然后，您可以重新加载以将配置带入正在运行的会话。 例如，我们可以通过键入以下内容来创建我们上面讨论的两个区域：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --permanent --new-zone&#x3D;publicweb</span><br><span class="line">sudo firewall-cmd --permanent --new-zone&#x3D;privateDNS</span><br></pre></td></tr></table></figure>
+<p>您可以通过键入来验证它们是否存在于您的永久配置中:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --permanent --get-zones</span><br></pre></td></tr></table></figure>
+<p>如前所述，这些在防火墙的当前实例中还不可用,重新加载防火墙，将这些新区域引入活动配置2</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --reload</span><br><span class="line">firewall-cmd --get-zones</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">block dmz drop external home internal privateDNS public publicweb trusted work</span><br></pre></td></tr></table></figure>
+<p>现在，您可以开始为您的区域分配适当的服务和端口。先调整active instance，然后在测试之后将这些更改转移到永久配置，这通常是一个好主意。例如，对于publicweb专区，您可能希望添加SSH、HTTP和HTTPS服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;publicweb --add-service&#x3D;ssh</span><br><span class="line">sudo firewall-cmd --zone&#x3D;publicweb --add-service&#x3D;http</span><br><span class="line">sudo firewall-cmd --zone&#x3D;publicweb --add-service&#x3D;https</span><br><span class="line">sudo firewall-cmd --zone&#x3D;publicweb --list-all</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">output</span><br><span class="line">publicweb</span><br><span class="line">  target: default</span><br><span class="line">  icmp-block-inversion: no</span><br><span class="line">  interfaces: </span><br><span class="line">  sources: </span><br><span class="line">  services: ssh http https</span><br><span class="line">  ports: </span><br><span class="line">  protocols: </span><br><span class="line">  masquerade: no</span><br><span class="line">  forward-ports: </span><br><span class="line">  source-ports: </span><br><span class="line">  icmp-blocks: </span><br><span class="line">  rich rules:</span><br></pre></td></tr></table></figure>
+<p>同样，我们可以将DNS服务添加到我们的privateDNS zone</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;privateDNS --add-service&#x3D;dns</span><br><span class="line">sudo firewall-cmd --zone&#x3D;privateDNS --list-all</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">privateDNS</span><br><span class="line">  interfaces: </span><br><span class="line">  sources: </span><br><span class="line">  services: dns</span><br><span class="line">  ports: </span><br><span class="line">  masquerade: no</span><br><span class="line">  forward-ports: </span><br><span class="line">  icmp-blocks: </span><br><span class="line">  rich rules:</span><br></pre></td></tr></table></figure>
+<p>然后，我们可以更改对应zone的网络接口以对其进行测试：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;publicweb --change-interface&#x3D;eth0</span><br><span class="line">sudo firewall-cmd --zone&#x3D;privateDNS --change-interface&#x3D;eth1</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;publicweb --change-interface&#x3D;eth0</span><br><span class="line">sudo firewall-cmd --zone&#x3D;privateDNS --change-interface&#x3D;eth1</span><br></pre></td></tr></table></figure>
+<p>此时，您就有机会测试您的配置了。如果这些值对您有效，您将希望向永久配置添加相同的规则。您可以通过重新应用带有标志的规则来做到这一点:<code>--permanent</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;publicweb --permanent --add-service&#x3D;ssh</span><br><span class="line">sudo firewall-cmd --zone&#x3D;publicweb --permanent --add-service&#x3D;http</span><br><span class="line">sudo firewall-cmd --zone&#x3D;publicweb --permanent --add-service&#x3D;https</span><br><span class="line">sudo firewall-cmd --zone&#x3D;privateDNS --permanent --add-service&#x3D;dns</span><br></pre></td></tr></table></figure>
+<p>在永久地应用这些规则之后，您可以重新启动网络并重新加载防火墙服务</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo systemctl restart network</span><br><span class="line">sudo systemctl reload firewalld</span><br></pre></td></tr></table></figure>
+<p>确认已经成功分配了zones：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --get-active-zones</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">privateDNS</span><br><span class="line">  interfaces: eth1</span><br><span class="line">publicweb</span><br><span class="line">  interfaces: eth0</span><br></pre></td></tr></table></figure>
+<p>确认合适的服务已经在每个zones里面可用：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;publicweb --list-services</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">output</span><br><span class="line">http https ssh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --zone&#x3D;privateDNS --list-services</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">dns</span><br></pre></td></tr></table></figure>
+<p>现在您已经成功地建立了属于您的区域！如果您想要把其中一个区域设置为其他网络接口的默认区域，记得使用参数<code>--set-defalut-zone=</code></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo firewall-cmd --set-default-zone&#x3D;publicweb</span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>您现在应该对如何在CentOS系统上日常使用的防火墙服务进行充分的了解。</p>
+<p>Firewalld服务允许您配置依据网络环境的可维护规则和规则集。 它使您可以通过使用区域在不同的防火墙策略之间无缝过渡，并使管理员能够将端口管理抽象为更友好的服务定义。 掌握该系统的使用知识将使您能够利用此工具提供的灵活性和强大功能。</p>
+<p>By Justin Ellingwood</p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>CentOS</tag>
+        <tag>FirewallD</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>微软新 Edge 浏览器--带给你Chrome一致的体验 安装教程和上手体验</title>
+    <url>/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/</url>
+    <content><![CDATA[<blockquote>
+<p>Edge是微软新一代浏览器。 微软新的 IE 浏览器项目 Project Spartan 在 Build 2015 上正式更名为 Microsoft Edge。最新的 Edge<br><strong>采用了 Chromium 内核</strong>，当然也兼容以前 IE 的功能。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>由于最新的Edge采用Chromium内核，对于平时使用Chrome作为使用工具的人来说不会有太大学习成本，基本无缝迁移。最新版本在功耗，性能，UI上都取得了比较不错的表现。</p>
+<p>最新的Edge版采用了Chromium的内核，当然现在没有正式版，可以用<a href="https://www.microsoftedgeinsider.com/zh-cn/">Beta版</a> 来体验。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191215235301329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击Beta版进行下载</p>
+<p><img src="https://img-blog.csdnimg.cn/20191215235921432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191215235957717.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>我们看到进去后提示导入chrome收藏，一键导入很方便，UI风格很漂亮，下面看一下开发者工具：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191216000333905.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191216001742765.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>和之前Chrome的类似，不会有学习成本。新Edge浏览器因为只是测试版，因此插件很少，不过我们可以将<strong>Chrome的插件直接打包过来或者直接访问<a href="https://chrome.google.com/webstore/">Chrome商店</a>进行下载</strong>。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191216002513982.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>亲测可直接添加Chrome插件，使用体验没有任何区别，在正常工作环境下（插件数量相同，打开6个TAB），新Edge占用内存较低：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191216004233444.png" alt="在这里插入图片描述"><br>目前来看，优势主要有：</p>
+<ul>
+<li><p>账户可以直接用微软账户，同步不需要翻墙</p>
+</li>
+<li><p>和Chrome一致的的性能，更好的UI</p>
+</li>
+<li><p>平滑滚动好</p>
+<p>要注意的是，现在的Edge Beta版和自带的Edge不是覆盖的，所以可以放心试用。</p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20191216005133562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>MicroSoft</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Git 实战</title>
+    <url>/2019/07/09/git%20%E5%AE%9E%E6%88%98/</url>
+    <content><![CDATA[<h2 id="版本控制系统"><a href="#版本控制系统" class="headerlink" title="版本控制系统"></a>版本控制系统</h2><ul>
+<li>集中式 ： 版本库存放在中央服务器，先从中央服务器取得最新的版本，然后开始工作</li>
+<li>分布式 ： 每个人电脑都是一个完整的版本库，安全性高，一台坏掉了也不要紧</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.name <span class="string">&quot;×××&quot;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.email <span class="string">&quot;×××@gmail.com&quot;</span></span></span><br></pre></td></tr></table></figure>
+<p>会在~ 目录生成一个.gitconfig</p>
+<p>如果你想不是global，则不带–global即可，会在本项目目录下创建.git/config</p>
+<p><code>git init</code> 初始化一个git project</p>
+<p><code>git diff --cached</code> 查看缓存区里有哪些文件被修改了。<code>git diff</code>会显示所有已做但是没有加到缓存区的修改</p>
+<p>add 和commit操作不赘述，commit操作后<code>-a</code>将所有没有加到缓存区的修改也一起提交，不过<strong>不会提交新文件</strong></p>
+<p><code>git remote add origin https://github.com/myname/myproject.git</code></p>
+<p><code>git push origin master</code></p>
+<h2 id="分支与合并"><a href="#分支与合并" class="headerlink" title="分支与合并"></a>分支与合并</h2><p>分支在多人协作开发用的多，比如你负责的一个功能需要一个月完成，就可以创建一个分支，只把功能代码提交到这个分支上，最后合并到master分支上</p>
+<p><code>git branch experimental</code> 创建分支</p>
+<p><code>git branch</code> 查看分支</p>
+<p>结果：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">* experimental </span><br><span class="line">  master</span><br></pre></td></tr></table></figure>
+<p><code>git checkout experimental</code> 切换到其他分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 将experimental分支合并到master</span><br><span class="line">$ git merge -m &#39;merge experimental branch&#39; experimental</span><br></pre></td></tr></table></figure>
+<p>如果有冲突，比如两个分支都修改了同一个文件，就会merge失败，这是在master分支修改对应文件再commit即可。</p>
+<p>当我们完成分支，可以用<code>git branch -d experimental</code> 来删除（只能删除已经合并了的分支，强行删除用<code>-D</code>）</p>
+<p>如果你觉得<strong>合并错了</strong>，可以回到合并前的状态</p>
+<p><code>git reset --hard HEAD^</code></p>
+<h2 id="Git-日志"><a href="#Git-日志" class="headerlink" title="Git 日志"></a>Git 日志</h2><p><code>git log</code></p>
+<p><code>git log --stat</code> 会显示哪些文件被修改</p>
+<p><code>git log --pretty=oneline</code> 会一行显示一条信息</p>
+<p><code>git log --pretty=short</code> 显示简短信息</p>
+<p><code>git log --graph -pretty=oneline</code> 画一个漂亮的历史</p>
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>git diff不仅仅能查看两个文件的差别，也可以看两个branch的区别。 </p>
+<p><code>git diff anotherbranch</code>  + 表示本分支比anotherbranch分支多的，- 表示本分支少的</p>
+<h2 id="分布式工作流程"><a href="#分布式工作流程" class="headerlink" title="分布式工作流程"></a>分布式工作流程</h2><p>如果要经常操作远程分支，可以定义缩写</p>
+<p><code>git remote add myrepo /tmp/myrepo</code></p>
+<p>git pull 相当于两个操作：使用git fetch抓取最新的修改信息，然后git merge</p>
+<p><strong>为什么不需要指定远程仓库？</strong></p>
+<p>因为Git把远程地址存到了配置文件的remote.origin.url</p>
+<p>git 也可以是服务器的地址：</p>
+<p><code>git clone ssh://服务器/账号/仓库名称</code></p>
+<p><code>git push ssh://服务器仓库地址 master:master</code></p>
+<h2 id="Git-Tag"><a href="#Git-Tag" class="headerlink" title="Git Tag"></a>Git Tag</h2><h3 id="轻量级标签"><a href="#轻量级标签" class="headerlink" title="轻量级标签"></a>轻量级标签</h3><p><code>git tag tagname 8c2940</code></p>
+<p><code>git tag</code></p>
+<h3 id="标签对象"><a href="#标签对象" class="headerlink" title="标签对象"></a>标签对象</h3><p><code>git tag -a stable-2 8c315325 -m &quot;stable 2&quot;</code></p>
+<h3 id="签名标签"><a href="#签名标签" class="headerlink" title="签名标签"></a>签名标签</h3><p>签名标签可以让提交和标签更加完整可信</p>
+<h2 id="git-ignore"><a href="#git-ignore" class="headerlink" title="git ignore"></a>git ignore</h2><p>.gitignore 来忽略不需要提交的文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*.html</span><br><span class="line">!foo.html #foo.html例外</span><br><span class="line">*.[oa] #忽略所有.o .a </span><br></pre></td></tr></table></figure>
+
+
+<h2 id="重置"><a href="#重置" class="headerlink" title="重置"></a>重置</h2><p><code>git reset --hard HEAD^</code> 回到上次提交的状态</p>
+<p><code>git checkout -- hello.rb</code> 恢复一个文件</p>
+<p><code>git revert HEAD</code> 撤销最近的一次提交</p>
+<h2 id="建设私有仓库"><a href="#建设私有仓库" class="headerlink" title="建设私有仓库"></a>建设私有仓库</h2><h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><p>可以导出一个裸仓库，然后用scp命令拷贝到服务器上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone --bare &#x2F;home&#x2F;user&#x2F;myrepo&#x2F;.git &#x2F;tmp&#x2F;myrepo.git</span><br><span class="line">scp -r &#x2F;tmp&#x2F;myrepo.git myserver.com:&#x2F;opt&#x2F;git&#x2F;myrepo.git</span><br></pre></td></tr></table></figure>
+<p>对于其他人来说，直接</p>
+<p><code>git clone myserver:com:/opt/git/myrepo.git</code></p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu 16.04 home挂载 系统重装</title>
+    <url>/2018/06/09/ubuntu%2016.04%20home%E6%8C%82%E8%BD%BD%20%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="Ubuntu-系统重装并挂载"><a href="#Ubuntu-系统重装并挂载" class="headerlink" title="Ubuntu 系统重装并挂载"></a>Ubuntu 系统重装并挂载</h1><p>昨天一不小心改变了系统/usr的权限，导致grub引导的Ubuntu系统进不去，查找方法失效后，我使用u盘引导的方式重装ubuntu系统，并恢复原有/home 路径下挂载的近74GB文件。挂载的好处就是这种如果系统崩了，还能保存/home下的文件不丢…..</p>
+<a id="more"></a>
+
+<h2 id="linux分区"><a href="#linux分区" class="headerlink" title="linux分区"></a>linux分区</h2><blockquote>
+<p>SWAP分区是LINUX暂时存储数据的交换分区，它主要是把主内存上暂时不用得数据存起来，在需要的时候再调进内存内，且作为SWAP使用的分区不用指定“Mout Point”（载入点），既然它作为交换分区，我们理所当然应给它指定大小，它至少要等于系统上实际内存的量，<strong>一般来说它的大小是内存的一至两倍</strong>。另外你也可以创建和使用一个以上的交换分区，最多16个。</p>
+</blockquote>
+<h3 id="分区的原因"><a href="#分区的原因" class="headerlink" title="分区的原因"></a>分区的原因</h3><p>为什么要自定义多个分区</p>
+<ul>
+<li>在不损失数据的情况下重装系统，比如独立设置/home挂载点,重装系统的时候直接标记回/home，数据不会有任何损失。</li>
+<li>针对不同挂载点的特性分配合适的文件系统以合理发挥性能，比如对/var使用reiserfs，对/home使用xfs，对/使用ext4。</li>
+<li>针对不同的挂载点开启不同的挂载选项，如是否需要即时同步，是否开启日志，是否启用压缩。</li>
+<li>大硬盘搜索范围大，效率低</li>
+<li>磁盘配额只能对分区做设定</li>
+<li>/home、/var、/usr/local 经常是单独分区，因为经常会操作，容易产生碎片<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy80MjQxMDM4LTIzMzllNDk4YzkyZGU1MjIuanBn?x-oss-process=image/format,png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></li>
+</ul>
+<p>（常见的挂载目录结构）</p>
+<blockquote>
+<p>/ 根目录，存放系统命令和用户数据等（如果下面挂载点没有单独的分区，它们都将在根目录的分区中） /boot boot loader 的静态链接文件，存放与Linux启动相关的程序 /home 用户目录，存放普通用户的数据 /tmp 临时文件 /usr 是Linux系统存放软件的地方,如有可能应将最大空间分给它 /usr/local 自已安装程序安装在此 /var 不断变化的数据，服务器的一些服务、日志放在下面 /opt （Option可选的）附加的应用程序软件包 /bin 基本命令执行文 /dev 设备文件 /etc 主机特定的系统配置 /lib 基本共享库以及内核模块 /media 用于移动介质的挂载点 /mnt 用于临时挂载文件系统或者别的硬件设备（如光驱、软驱） /proc 系统信息的虚拟目录(2.4 和 2.6 内核)，这些信息是在内存中，由系统自己产生的 /root root 用户的目录 /sbin 基本系统命令执行文件 /sys 系统信息的虚拟目录(2.6 内核) /srv 系统提供的用于 service 的数据 /usr/X1186 X-Windows目录，存放一些X-Windows的配置文件 /usr/include 系统头文件，存储一些C语言的头文件 /usr/src Linux内核源代码，Linux系统所安装的内核源代码都保存在此 /usr/bin 对/bin目录的一些补充 /usr/sbin 对/sbin目录的一些补充 /lost+found 这个目录在大多数情况下都是空的。但是如果你正在工作突然停电，或是没有用正常方式关机，在你重新启动机器的时候，有些文件就会找不到应该存放的地方，对于这些文件，系统将他们放在这个目录下</p>
+</blockquote>
+<h3 id="为什么会有挂载"><a href="#为什么会有挂载" class="headerlink" title="为什么会有挂载"></a>为什么会有挂载</h3><p>因为<strong>linux 下一切皆文件</strong>！换句说法就是linux操作系统将系统中的一切都作为文件来管理。在windows中我们常见的硬件设备（打印机、网卡、声卡…）、磁盘分区等，在linux中统统都被视作文件，对设备、分区的访问就是读写对应的文件。</p>
+<h2 id="linux挂载"><a href="#linux挂载" class="headerlink" title="linux挂载"></a>linux挂载</h2><h3 id="临时挂载"><a href="#临时挂载" class="headerlink" title="临时挂载"></a>临时挂载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mount &#x2F;dev&#x2F;sda11 &#x2F;data   ##sda3分区挂载在data目录下</span><br><span class="line">$ umount &#x2F;data   ##卸载data目录下分区 &#x2F;dev&#x2F;sda11 &#x2F;data   ##sda3分区挂载在data目录下</span><br><span class="line">$ umount &#x2F;data   ##卸载data目录下分区</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="永久挂载：开机自动挂载"><a href="#永久挂载：开机自动挂载" class="headerlink" title="永久挂载：开机自动挂载"></a>永久挂载：开机自动挂载</h3><p><strong>需要修改/etc/fstab</strong></p>
+<p><strong><img src="https://img-blog.csdn.net/20180609133109749" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></strong></p>
+<p><strong><img src="https://img-blog.csdn.net/20180609133131519" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">​</strong></p>
+<p><strong>Device</strong></p>
+<p>By default, Ubuntu now uses <a href="http://en.wikipedia.org/wiki/UUID">UUID</a> to identify partitions.</p>
+<p>默认，Ubuntu用uuid识别分区</p>
+<p>To list your devices by UUID use blkid</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>使用命令 <code>fdisk -l</code> 可以列出系统中当前连接的硬盘,设备和分区信息.新硬盘没有分区信息,则只显示硬盘大小信息.</p>
+<p><img src="https://img-blog.csdn.net/20180609133150762" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>可以先mkdir一个目录，比如new_dir，然后挂载分区：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount &#x2F;dev&#x2F;sda11 &#x2F;mnt&#x2F;new_dir</span><br></pre></td></tr></table></figure>
+<p>将所有东西全部cp到new_dir中</p>
+<p>move原有的home </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp &#x2F;home&#x2F;* &#x2F;mnt&#x2F;new_dir&#x2F;</span><br><span class="line">mv &#x2F;home &#x2F;old_home &#x2F;home&#x2F;* &#x2F;mnt&#x2F;new_dir&#x2F;</span><br><span class="line">mv &#x2F;home &#x2F;old_home</span><br></pre></td></tr></table></figure>
+<p>再<code>mkdir</code>一个新的home,将sda11再mount到home上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount &#x2F;dev&#x2F;sda11 &#x2F;home</span><br></pre></td></tr></table></figure>
+
+
+<p><code>df -h</code>查看硬盘大小和挂载情况</p>
+<p><img src="https://img-blog.csdn.net/20180609133221926" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>最后根据要求，修改/etc/fstab 文件，注意格式要和其他保持一致，查看UUID可以用前文中说的方法。最后</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount -a-a</span><br></pre></td></tr></table></figure>
+<p>这样就设置了fstab中的参数，<strong>设置完之后一定要看看生不生效，再继续操作</strong></p>
+]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>ubuntu</tag>
+        <tag>挂载</tag>
+      </tags>
+  </entry>
+</search>
