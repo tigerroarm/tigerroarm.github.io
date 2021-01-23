@@ -1175,7 +1175,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c4ffd2;
+  background: #7969ff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1686,7 +1686,7 @@ pre .javascript .function {
 .post-eof {
   background: #ccc;
   height: 1px;
-  margin: 80px auto 60px;
+  margin: 30px auto 20px;
   text-align: center;
   width: 8%;
 }
@@ -2560,4 +2560,10 @@ mjx-container + br {
 }
 .links-of-blogroll-item {
   padding: 0;
+}
+.post-button {
+  margin-top: 20px;
+}
+.posts-expand .post-meta {
+  margin-bottom: 5px;
 }
