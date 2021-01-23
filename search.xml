@@ -181,7 +181,6 @@
 <li><code>strcmp(str1, str2, num)</code>，前num位的字符是否相同</li>
 <li><code>strfind(text, pattern)</code> 找text中pattern 的位置</li>
 <li><code>strsplit(text, pattern)</code> split 字符串</li>
-<li></li>
 </ul>
 <h2 id="元胞数组"><a href="#元胞数组" class="headerlink" title="元胞数组"></a>元胞数组</h2><ul>
 <li><code>&#123;48, &quot;uui&quot;, 1:4:9&#125;</code></li>
