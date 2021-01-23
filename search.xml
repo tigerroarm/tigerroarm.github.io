@@ -1,37 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>我的学习笔记目录</title>
-    <url>/2020/11/11/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/</url>
-    <content><![CDATA[<ul>
-<li><strong>深入理解计算机系统：</strong><ul>
-<li>笔记： <a href="https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/">CSAPP Notes</a></li>
-<li>实验： <a href="https://tigerroarm.github.io/LearningNotes/csapp/lab/">CSAPP Lab</a></li>
+    <title>TMUX</title>
+    <url>/2020/10/09/TMUX/</url>
+    <content><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
+<li>维护管理终端正在运行的程序</li>
+<li>执行多个任务</li>
+<li>远程使用时尤其方便，断开连接也不会挂掉正在跑的东西<a id="more"></a></li>
+</ul>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul>
+<li>Sessions 包含多个windows，表示一个工作区</li>
+<li>Windows 相当于浏览器的tabs</li>
+<li>Panes 一个window分割成几个视觉上分开的Panes</li>
+</ul>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
+<li>session<ul>
+<li>tmux 开启新session</li>
+<li>tmux new -s NAME </li>
+<li>tmux ls 列出现存的session</li>
+<li><C-b> d 分离当前的session</li>
+<li>tmux a 继续上一个session </li>
+<li>tmux a -t 0 指定session 0</li>
 </ul>
 </li>
-<li><strong>Leetcode ：</strong><ul>
-<li>我的Leetcode题解： <a href="https://tigerroarm.github.io/Leetcode">LeetCode Solution</a></li>
+<li>window<ul>
+<li><C-b> c 创建window</li>
+<li><C-b> + number 去 第几 window</li>
+<li><C-b> p 上一个window</li>
+<li><C-b> n 下一个window</li>
+<li><C-b> w 列出现有的windows</li>
 </ul>
 </li>
-</ul>
-<!--  more  -->
-
-<ul>
-<li><strong>Signal Processing</strong><ul>
-<li>Digital Signal Processing : A Computer-Based Approach: <a href="https://tigerroarm.github.io/2020/12/27/DSP">DSP Code Notes</a></li>
-</ul>
-</li>
-<li><strong>Wireless Communications</strong><ul>
-<li>Part01:  无线通信建模的基本概念和仿真代码  <a href="https://tigerroarm.github.io/2020/12/20/Wireless%20Physical%20Layer/">Communication Code Notes(Part 1)</a></li>
-<li>Part02：OFDM的基本概念和仿真代码</li>
-<li>Part03：MIMO技术基本概念和仿真代码，包括信道容量、空间分集和空时码、空间复用MIMO，预编码，天线选择技术，多用户MIMO</li>
+<li>pane<ul>
+<li><C-b> “ （我这里是 | ）水平方向分割</li>
+<li><C-b> % （我这里是 - ）竖直方向分割</li>
+<li><C-b> z 全屏，然后再按一次恢复</li>
+<li><C-b> <C> ← →来改变pane大小</li>
 </ul>
 </li>
 </ul>
 ]]></content>
       <categories>
-        <category>学习笔记</category>
+        <category>Tools</category>
       </categories>
+      <tags>
+        <tag>tmux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vim 随手记</title>
+    <url>/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><a id="more"></a>
+
+<ul>
+<li><p>i : insert 光标字符之前</p>
+</li>
+<li><p>a : append 光标字符之后加入</p>
+</li>
+<li><p>o : open a line below 当前行下面开一行</p>
+</li>
+<li><p>A : 在本行最后append</p>
+</li>
+<li><p>O : 本行上面插入一行，开头插入</p>
+</li>
+<li><p>I : 在本行开头插入</p>
+</li>
+</ul>
+<h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><ul>
+<li>normal<ul>
+<li>使用 gi 快速恢复到原始插入位置</li>
+<li>w 下个单词开头，e下个单词结尾</li>
+<li>b 上个单词开头 </li>
+<li>大写跳动到以空白符为间隔的地方</li>
+<li>f+字符，搜索字符, ; 下一个 ,上一个 F+ 字符反过来搜</li>
+<li>0 行首，$ 行尾</li>
+<li>g 移动到开头，G移动到结尾 H/M/L跳转到屏幕的开头，结尾</li>
+<li>ctrl u ctrl d翻页 cltr F/B</li>
+<li>dw 删除一个单词 delete a world x删除字符</li>
+<li>r replalce一个字符 s 删除当前字符进入插入模式 </li>
+<li>R 不断地替换 S 整行删除，进入插入模式</li>
+<li>c(change) aw 删掉一个词进入插入 C 删除整行进入插入模式 ct” 删除整个“”中的内容</li>
+<li>? / 进行反向前向搜索，n/N下一个上一个 # * 当前单词向上搜索/向下搜索</li>
+</ul>
+</li>
+<li>insert<ul>
+<li>ctrl + w 删除word</li>
+<li>ctrl + u 删除行</li>
+<li>ctrl + h 删除上一个字符</li>
+<li>用ctrl + [ 代替esc</li>
+</ul>
+</li>
+<li>command <ul>
+<li>:vs(vertical split) 竖分屏（左右）</li>
+<li>:sp(split) 上下分屏</li>
+<li>set nu 行号</li>
+<li>% s/word1/word2/g 全局替换</li>
+<li>1,6 s/word1/word2/g 1-6行之间替换</li>
+<li>1,6 self//n 统计1-6行几个匹配self n指number，报告匹配到的次数</li>
+<li>% s/&lt;quack&gt;/word2/g</li>
+</ul>
+</li>
+<li>visual<ul>
+<li>normal 模式 v</li>
+<li>V选行</li>
+<li>ctrl v选方块</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>vim</tag>
+        <tag>Linux</tag>
+        <tag>随手记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>无线网络物理层</title>
+    <url>/2020/12/20/Wireless%20Physical%20Layer/</url>
+    <content><![CDATA[<blockquote>
+<p>本笔记来源于书籍《MIMO OFDM Wireless Communications with MATLAB》</p>
+</blockquote>
+<h1 id="无线信道"><a href="#无线信道" class="headerlink" title="无线信道"></a>无线信道</h1><h2 id="衰落："><a href="#衰落：" class="headerlink" title="衰落："></a>衰落：</h2><p><em>衰落</em>：信号在时间和频率上的上下浮动</p>
+<a id="more"></a>
+
+<p><em>产生原因：</em></p>
+<ul>
+<li>多径（接收端的经多条路径收到发射端发射的信号）</li>
+<li>噪声</li>
+<li>障碍物（阴影衰落）</li>
+</ul>
+<p><em>分类</em></p>
+<ul>
+<li>大尺度衰落</li>
+</ul>
+<h1 id="SISO-模型"><a href="#SISO-模型" class="headerlink" title="SISO 模型"></a>SISO 模型</h1><h1 id="MIMO模型"><a href="#MIMO模型" class="headerlink" title="MIMO模型"></a>MIMO模型</h1>]]></content>
+      <categories>
+        <category>Communications</category>
+      </categories>
+      <tags>
+        <tag>Wireless Communications</tag>
+      </tags>
   </entry>
   <entry>
     <title>MATLAB编程指北</title>
@@ -351,148 +462,198 @@
       </tags>
   </entry>
   <entry>
-    <title>无线网络物理层</title>
-    <url>/2020/12/20/Wireless%20Physical%20Layer/</url>
-    <content><![CDATA[<blockquote>
-<p>本笔记来源于书籍《MIMO OFDM Wireless Communications with MATLAB》</p>
-</blockquote>
-<h1 id="无线信道"><a href="#无线信道" class="headerlink" title="无线信道"></a>无线信道</h1><h2 id="衰落："><a href="#衰落：" class="headerlink" title="衰落："></a>衰落：</h2><p><em>衰落</em>：信号在时间和频率上的上下浮动</p>
+    <title>ubuntu 16.04 home挂载 系统重装</title>
+    <url>/2018/06/09/ubuntu%2016.04%20home%E6%8C%82%E8%BD%BD%20%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="Ubuntu-系统重装并挂载"><a href="#Ubuntu-系统重装并挂载" class="headerlink" title="Ubuntu 系统重装并挂载"></a>Ubuntu 系统重装并挂载</h1><p>昨天一不小心改变了系统/usr的权限，导致grub引导的Ubuntu系统进不去，查找方法失效后，我使用u盘引导的方式重装ubuntu系统，并恢复原有/home 路径下挂载的近74GB文件。挂载的好处就是这种如果系统崩了，还能保存/home下的文件不丢…..</p>
 <a id="more"></a>
 
-<p><em>产生原因：</em></p>
+<h2 id="linux分区"><a href="#linux分区" class="headerlink" title="linux分区"></a>linux分区</h2><blockquote>
+<p>SWAP分区是LINUX暂时存储数据的交换分区，它主要是把主内存上暂时不用得数据存起来，在需要的时候再调进内存内，且作为SWAP使用的分区不用指定“Mout Point”（载入点），既然它作为交换分区，我们理所当然应给它指定大小，它至少要等于系统上实际内存的量，<strong>一般来说它的大小是内存的一至两倍</strong>。另外你也可以创建和使用一个以上的交换分区，最多16个。</p>
+</blockquote>
+<h3 id="分区的原因"><a href="#分区的原因" class="headerlink" title="分区的原因"></a>分区的原因</h3><p>为什么要自定义多个分区</p>
 <ul>
-<li>多径（接收端的经多条路径收到发射端发射的信号）</li>
-<li>噪声</li>
-<li>障碍物（阴影衰落）</li>
+<li>在不损失数据的情况下重装系统，比如独立设置/home挂载点,重装系统的时候直接标记回/home，数据不会有任何损失。</li>
+<li>针对不同挂载点的特性分配合适的文件系统以合理发挥性能，比如对/var使用reiserfs，对/home使用xfs，对/使用ext4。</li>
+<li>针对不同的挂载点开启不同的挂载选项，如是否需要即时同步，是否开启日志，是否启用压缩。</li>
+<li>大硬盘搜索范围大，效率低</li>
+<li>磁盘配额只能对分区做设定</li>
+<li>/home、/var、/usr/local 经常是单独分区，因为经常会操作，容易产生碎片<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy80MjQxMDM4LTIzMzllNDk4YzkyZGU1MjIuanBn?x-oss-process=image/format,png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></li>
 </ul>
-<p><em>分类</em></p>
-<ul>
-<li>大尺度衰落</li>
-</ul>
-<h1 id="SISO-模型"><a href="#SISO-模型" class="headerlink" title="SISO 模型"></a>SISO 模型</h1><h1 id="MIMO模型"><a href="#MIMO模型" class="headerlink" title="MIMO模型"></a>MIMO模型</h1>]]></content>
+<p>（常见的挂载目录结构）</p>
+<blockquote>
+<p>/ 根目录，存放系统命令和用户数据等（如果下面挂载点没有单独的分区，它们都将在根目录的分区中） /boot boot loader 的静态链接文件，存放与Linux启动相关的程序 /home 用户目录，存放普通用户的数据 /tmp 临时文件 /usr 是Linux系统存放软件的地方,如有可能应将最大空间分给它 /usr/local 自已安装程序安装在此 /var 不断变化的数据，服务器的一些服务、日志放在下面 /opt （Option可选的）附加的应用程序软件包 /bin 基本命令执行文 /dev 设备文件 /etc 主机特定的系统配置 /lib 基本共享库以及内核模块 /media 用于移动介质的挂载点 /mnt 用于临时挂载文件系统或者别的硬件设备（如光驱、软驱） /proc 系统信息的虚拟目录(2.4 和 2.6 内核)，这些信息是在内存中，由系统自己产生的 /root root 用户的目录 /sbin 基本系统命令执行文件 /sys 系统信息的虚拟目录(2.6 内核) /srv 系统提供的用于 service 的数据 /usr/X1186 X-Windows目录，存放一些X-Windows的配置文件 /usr/include 系统头文件，存储一些C语言的头文件 /usr/src Linux内核源代码，Linux系统所安装的内核源代码都保存在此 /usr/bin 对/bin目录的一些补充 /usr/sbin 对/sbin目录的一些补充 /lost+found 这个目录在大多数情况下都是空的。但是如果你正在工作突然停电，或是没有用正常方式关机，在你重新启动机器的时候，有些文件就会找不到应该存放的地方，对于这些文件，系统将他们放在这个目录下</p>
+</blockquote>
+<h3 id="为什么会有挂载"><a href="#为什么会有挂载" class="headerlink" title="为什么会有挂载"></a>为什么会有挂载</h3><p>因为<strong>linux 下一切皆文件</strong>！换句说法就是linux操作系统将系统中的一切都作为文件来管理。在windows中我们常见的硬件设备（打印机、网卡、声卡…）、磁盘分区等，在linux中统统都被视作文件，对设备、分区的访问就是读写对应的文件。</p>
+<h2 id="linux挂载"><a href="#linux挂载" class="headerlink" title="linux挂载"></a>linux挂载</h2><h3 id="临时挂载"><a href="#临时挂载" class="headerlink" title="临时挂载"></a>临时挂载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mount &#x2F;dev&#x2F;sda11 &#x2F;data   ##sda3分区挂载在data目录下</span><br><span class="line">$ umount &#x2F;data   ##卸载data目录下分区 &#x2F;dev&#x2F;sda11 &#x2F;data   ##sda3分区挂载在data目录下</span><br><span class="line">$ umount &#x2F;data   ##卸载data目录下分区</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="永久挂载：开机自动挂载"><a href="#永久挂载：开机自动挂载" class="headerlink" title="永久挂载：开机自动挂载"></a>永久挂载：开机自动挂载</h3><p><strong>需要修改/etc/fstab</strong></p>
+<p><strong><img src="https://img-blog.csdn.net/20180609133109749" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></strong></p>
+<p><strong><img src="https://img-blog.csdn.net/20180609133131519" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">​</strong></p>
+<p><strong>Device</strong></p>
+<p>By default, Ubuntu now uses <a href="http://en.wikipedia.org/wiki/UUID">UUID</a> to identify partitions.</p>
+<p>默认，Ubuntu用uuid识别分区</p>
+<p>To list your devices by UUID use blkid</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>使用命令 <code>fdisk -l</code> 可以列出系统中当前连接的硬盘,设备和分区信息.新硬盘没有分区信息,则只显示硬盘大小信息.</p>
+<p><img src="https://img-blog.csdn.net/20180609133150762" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>可以先mkdir一个目录，比如new_dir，然后挂载分区：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount &#x2F;dev&#x2F;sda11 &#x2F;mnt&#x2F;new_dir</span><br></pre></td></tr></table></figure>
+<p>将所有东西全部cp到new_dir中</p>
+<p>move原有的home </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp &#x2F;home&#x2F;* &#x2F;mnt&#x2F;new_dir&#x2F;</span><br><span class="line">mv &#x2F;home &#x2F;old_home &#x2F;home&#x2F;* &#x2F;mnt&#x2F;new_dir&#x2F;</span><br><span class="line">mv &#x2F;home &#x2F;old_home</span><br></pre></td></tr></table></figure>
+<p>再<code>mkdir</code>一个新的home,将sda11再mount到home上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount &#x2F;dev&#x2F;sda11 &#x2F;home</span><br></pre></td></tr></table></figure>
+
+
+<p><code>df -h</code>查看硬盘大小和挂载情况</p>
+<p><img src="https://img-blog.csdn.net/20180609133221926" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>最后根据要求，修改/etc/fstab 文件，注意格式要和其他保持一致，查看UUID可以用前文中说的方法。最后</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount -a-a</span><br></pre></td></tr></table></figure>
+<p>这样就设置了fstab中的参数，<strong>设置完之后一定要看看生不生效，再继续操作</strong></p>
+]]></content>
       <categories>
-        <category>Communications</category>
+        <category>Linux</category>
       </categories>
       <tags>
-        <tag>Wireless Communications</tag>
+        <tag>ubuntu</tag>
+        <tag>挂载</tag>
       </tags>
   </entry>
   <entry>
-    <title>TMUX</title>
-    <url>/2020/10/09/TMUX/</url>
-    <content><![CDATA[<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
-<li>维护管理终端正在运行的程序</li>
-<li>执行多个任务</li>
-<li>远程使用时尤其方便，断开连接也不会挂掉正在跑的东西<a id="more"></a></li>
+    <title>Git 实战</title>
+    <url>/2019/07/09/git%20%E5%AE%9E%E6%88%98/</url>
+    <content><![CDATA[<h2 id="版本控制系统"><a href="#版本控制系统" class="headerlink" title="版本控制系统"></a>版本控制系统</h2><ul>
+<li>集中式 ： 版本库存放在中央服务器，先从中央服务器取得最新的版本，然后开始工作</li>
+<li>分布式 ： 每个人电脑都是一个完整的版本库，安全性高，一台坏掉了也不要紧</li>
 </ul>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><ul>
-<li>Sessions 包含多个windows，表示一个工作区</li>
-<li>Windows 相当于浏览器的tabs</li>
-<li>Panes 一个window分割成几个视觉上分开的Panes</li>
-</ul>
-<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><ul>
-<li>session<ul>
-<li>tmux 开启新session</li>
-<li>tmux new -s NAME </li>
-<li>tmux ls 列出现存的session</li>
-<li><C-b> d 分离当前的session</li>
-<li>tmux a 继续上一个session </li>
-<li>tmux a -t 0 指定session 0</li>
-</ul>
-</li>
-<li>window<ul>
-<li><C-b> c 创建window</li>
-<li><C-b> + number 去 第几 window</li>
-<li><C-b> p 上一个window</li>
-<li><C-b> n 下一个window</li>
-<li><C-b> w 列出现有的windows</li>
-</ul>
-</li>
-<li>pane<ul>
-<li><C-b> “ （我这里是 | ）水平方向分割</li>
-<li><C-b> % （我这里是 - ）竖直方向分割</li>
-<li><C-b> z 全屏，然后再按一次恢复</li>
-<li><C-b> <C> ← →来改变pane大小</li>
-</ul>
-</li>
-</ul>
+<a id="more"></a>
+
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.name <span class="string">&quot;×××&quot;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.email <span class="string">&quot;×××@gmail.com&quot;</span></span></span><br></pre></td></tr></table></figure>
+<p>会在~ 目录生成一个.gitconfig</p>
+<p>如果你想不是global，则不带–global即可，会在本项目目录下创建.git/config</p>
+<p><code>git init</code> 初始化一个git project</p>
+<p><code>git diff --cached</code> 查看缓存区里有哪些文件被修改了。<code>git diff</code>会显示所有已做但是没有加到缓存区的修改</p>
+<p>add 和commit操作不赘述，commit操作后<code>-a</code>将所有没有加到缓存区的修改也一起提交，不过<strong>不会提交新文件</strong></p>
+<p><code>git remote add origin https://github.com/myname/myproject.git</code></p>
+<p><code>git push origin master</code></p>
+<h2 id="分支与合并"><a href="#分支与合并" class="headerlink" title="分支与合并"></a>分支与合并</h2><p>分支在多人协作开发用的多，比如你负责的一个功能需要一个月完成，就可以创建一个分支，只把功能代码提交到这个分支上，最后合并到master分支上</p>
+<p><code>git branch experimental</code> 创建分支</p>
+<p><code>git branch</code> 查看分支</p>
+<p>结果：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">* experimental </span><br><span class="line">  master</span><br></pre></td></tr></table></figure>
+<p><code>git checkout experimental</code> 切换到其他分支</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 将experimental分支合并到master</span><br><span class="line">$ git merge -m &#39;merge experimental branch&#39; experimental</span><br></pre></td></tr></table></figure>
+<p>如果有冲突，比如两个分支都修改了同一个文件，就会merge失败，这是在master分支修改对应文件再commit即可。</p>
+<p>当我们完成分支，可以用<code>git branch -d experimental</code> 来删除（只能删除已经合并了的分支，强行删除用<code>-D</code>）</p>
+<p>如果你觉得<strong>合并错了</strong>，可以回到合并前的状态</p>
+<p><code>git reset --hard HEAD^</code></p>
+<h2 id="Git-日志"><a href="#Git-日志" class="headerlink" title="Git 日志"></a>Git 日志</h2><p><code>git log</code></p>
+<p><code>git log --stat</code> 会显示哪些文件被修改</p>
+<p><code>git log --pretty=oneline</code> 会一行显示一条信息</p>
+<p><code>git log --pretty=short</code> 显示简短信息</p>
+<p><code>git log --graph -pretty=oneline</code> 画一个漂亮的历史</p>
+<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>git diff不仅仅能查看两个文件的差别，也可以看两个branch的区别。 </p>
+<p><code>git diff anotherbranch</code>  + 表示本分支比anotherbranch分支多的，- 表示本分支少的</p>
+<h2 id="分布式工作流程"><a href="#分布式工作流程" class="headerlink" title="分布式工作流程"></a>分布式工作流程</h2><p>如果要经常操作远程分支，可以定义缩写</p>
+<p><code>git remote add myrepo /tmp/myrepo</code></p>
+<p>git pull 相当于两个操作：使用git fetch抓取最新的修改信息，然后git merge</p>
+<p><strong>为什么不需要指定远程仓库？</strong></p>
+<p>因为Git把远程地址存到了配置文件的remote.origin.url</p>
+<p>git 也可以是服务器的地址：</p>
+<p><code>git clone ssh://服务器/账号/仓库名称</code></p>
+<p><code>git push ssh://服务器仓库地址 master:master</code></p>
+<h2 id="Git-Tag"><a href="#Git-Tag" class="headerlink" title="Git Tag"></a>Git Tag</h2><h3 id="轻量级标签"><a href="#轻量级标签" class="headerlink" title="轻量级标签"></a>轻量级标签</h3><p><code>git tag tagname 8c2940</code></p>
+<p><code>git tag</code></p>
+<h3 id="标签对象"><a href="#标签对象" class="headerlink" title="标签对象"></a>标签对象</h3><p><code>git tag -a stable-2 8c315325 -m &quot;stable 2&quot;</code></p>
+<h3 id="签名标签"><a href="#签名标签" class="headerlink" title="签名标签"></a>签名标签</h3><p>签名标签可以让提交和标签更加完整可信</p>
+<h2 id="git-ignore"><a href="#git-ignore" class="headerlink" title="git ignore"></a>git ignore</h2><p>.gitignore 来忽略不需要提交的文件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*.html</span><br><span class="line">!foo.html #foo.html例外</span><br><span class="line">*.[oa] #忽略所有.o .a </span><br></pre></td></tr></table></figure>
+
+
+<h2 id="重置"><a href="#重置" class="headerlink" title="重置"></a>重置</h2><p><code>git reset --hard HEAD^</code> 回到上次提交的状态</p>
+<p><code>git checkout -- hello.rb</code> 恢复一个文件</p>
+<p><code>git revert HEAD</code> 撤销最近的一次提交</p>
+<h2 id="建设私有仓库"><a href="#建设私有仓库" class="headerlink" title="建设私有仓库"></a>建设私有仓库</h2><h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><p>可以导出一个裸仓库，然后用scp命令拷贝到服务器上</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone --bare &#x2F;home&#x2F;user&#x2F;myrepo&#x2F;.git &#x2F;tmp&#x2F;myrepo.git</span><br><span class="line">scp -r &#x2F;tmp&#x2F;myrepo.git myserver.com:&#x2F;opt&#x2F;git&#x2F;myrepo.git</span><br></pre></td></tr></table></figure>
+<p>对于其他人来说，直接</p>
+<p><code>git clone myserver:com:/opt/git/myrepo.git</code></p>
 ]]></content>
       <categories>
         <category>Tools</category>
       </categories>
       <tags>
-        <tag>tmux</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
-    <title>Vim 随手记</title>
-    <url>/2020/05/04/Vim%20%E9%9A%8F%E6%89%8B%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><a id="more"></a>
+    <title>微软新 Edge 浏览器--带给你Chrome一致的体验 安装教程和上手体验</title>
+    <url>/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/</url>
+    <content><![CDATA[<blockquote>
+<p>Edge是微软新一代浏览器。 微软新的 IE 浏览器项目 Project Spartan 在 Build 2015 上正式更名为 Microsoft Edge。最新的 Edge<br><strong>采用了 Chromium 内核</strong>，当然也兼容以前 IE 的功能。</p>
+</blockquote>
+<a id="more"></a>
+
+<p>由于最新的Edge采用Chromium内核，对于平时使用Chrome作为使用工具的人来说不会有太大学习成本，基本无缝迁移。最新版本在功耗，性能，UI上都取得了比较不错的表现。</p>
+<p>最新的Edge版采用了Chromium的内核，当然现在没有正式版，可以用<a href="https://www.microsoftedgeinsider.com/zh-cn/">Beta版</a> 来体验。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191215235301329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击Beta版进行下载</p>
+<p><img src="https://img-blog.csdnimg.cn/20191215235921432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20191215235957717.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>我们看到进去后提示导入chrome收藏，一键导入很方便，UI风格很漂亮，下面看一下开发者工具：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191216000333905.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191216001742765.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>和之前Chrome的类似，不会有学习成本。新Edge浏览器因为只是测试版，因此插件很少，不过我们可以将<strong>Chrome的插件直接打包过来或者直接访问<a href="https://chrome.google.com/webstore/">Chrome商店</a>进行下载</strong>。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191216002513982.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>亲测可直接添加Chrome插件，使用体验没有任何区别，在正常工作环境下（插件数量相同，打开6个TAB），新Edge占用内存较低：</p>
+<p><img src="https://img-blog.csdnimg.cn/20191216004233444.png" alt="在这里插入图片描述"><br>目前来看，优势主要有：</p>
+<ul>
+<li><p>账户可以直接用微软账户，同步不需要翻墙</p>
+</li>
+<li><p>和Chrome一致的的性能，更好的UI</p>
+</li>
+<li><p>平滑滚动好</p>
+<p>要注意的是，现在的Edge Beta版和自带的Edge不是覆盖的，所以可以放心试用。</p>
+</li>
+</ul>
+<p><img src="https://img-blog.csdnimg.cn/20191216005133562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+]]></content>
+      <categories>
+        <category>Tools</category>
+      </categories>
+      <tags>
+        <tag>MicroSoft</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我的学习笔记目录</title>
+    <url>/2020/11/11/%E6%88%91%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/</url>
+    <content><![CDATA[<ul>
+<li><strong>深入理解计算机系统：</strong><ul>
+<li>笔记： <a href="https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/">CSAPP Notes</a></li>
+<li>实验： <a href="https://tigerroarm.github.io/LearningNotes/csapp/lab/">CSAPP Lab</a></li>
+</ul>
+</li>
+<li><strong>Leetcode ：</strong><ul>
+<li>我的Leetcode题解： <a href="https://tigerroarm.github.io/Leetcode">LeetCode Solution</a></li>
+</ul>
+</li>
+</ul>
+<!--  more  -->
 
 <ul>
-<li><p>i : insert 光标字符之前</p>
-</li>
-<li><p>a : append 光标字符之后加入</p>
-</li>
-<li><p>o : open a line below 当前行下面开一行</p>
-</li>
-<li><p>A : 在本行最后append</p>
-</li>
-<li><p>O : 本行上面插入一行，开头插入</p>
-</li>
-<li><p>I : 在本行开头插入</p>
-</li>
-</ul>
-<h1 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h1><ul>
-<li>normal<ul>
-<li>使用 gi 快速恢复到原始插入位置</li>
-<li>w 下个单词开头，e下个单词结尾</li>
-<li>b 上个单词开头 </li>
-<li>大写跳动到以空白符为间隔的地方</li>
-<li>f+字符，搜索字符, ; 下一个 ,上一个 F+ 字符反过来搜</li>
-<li>0 行首，$ 行尾</li>
-<li>g 移动到开头，G移动到结尾 H/M/L跳转到屏幕的开头，结尾</li>
-<li>ctrl u ctrl d翻页 cltr F/B</li>
-<li>dw 删除一个单词 delete a world x删除字符</li>
-<li>r replalce一个字符 s 删除当前字符进入插入模式 </li>
-<li>R 不断地替换 S 整行删除，进入插入模式</li>
-<li>c(change) aw 删掉一个词进入插入 C 删除整行进入插入模式 ct” 删除整个“”中的内容</li>
-<li>? / 进行反向前向搜索，n/N下一个上一个 # * 当前单词向上搜索/向下搜索</li>
+<li><strong>Signal Processing</strong><ul>
+<li>Digital Signal Processing : A Computer-Based Approach: <a href="https://tigerroarm.github.io/2020/12/27/DSP">DSP Code Notes</a></li>
 </ul>
 </li>
-<li>insert<ul>
-<li>ctrl + w 删除word</li>
-<li>ctrl + u 删除行</li>
-<li>ctrl + h 删除上一个字符</li>
-<li>用ctrl + [ 代替esc</li>
-</ul>
-</li>
-<li>command <ul>
-<li>:vs(vertical split) 竖分屏（左右）</li>
-<li>:sp(split) 上下分屏</li>
-<li>set nu 行号</li>
-<li>% s/word1/word2/g 全局替换</li>
-<li>1,6 s/word1/word2/g 1-6行之间替换</li>
-<li>1,6 self//n 统计1-6行几个匹配self n指number，报告匹配到的次数</li>
-<li>% s/&lt;quack&gt;/word2/g</li>
-</ul>
-</li>
-<li>visual<ul>
-<li>normal 模式 v</li>
-<li>V选行</li>
-<li>ctrl v选方块</li>
+<li><strong>Wireless Communications</strong><ul>
+<li>Part01:  无线通信建模的基本概念和仿真代码  <a href="https://tigerroarm.github.io/2020/12/20/Wireless%20Physical%20Layer/">Communication Code Notes(Part 1)</a></li>
+<li>Part02：OFDM的基本概念和仿真代码</li>
+<li>Part03：MIMO技术基本概念和仿真代码，包括信道容量、空间分集和空时码、空间复用MIMO，预编码，天线选择技术，多用户MIMO</li>
 </ul>
 </li>
 </ul>
 ]]></content>
       <categories>
-        <category>Tools</category>
+        <category>学习笔记</category>
       </categories>
-      <tags>
-        <tag>vim</tag>
-        <tag>Linux</tag>
-        <tag>随手记</tag>
-      </tags>
   </entry>
   <entry>
     <title>如何在CentOS 7上使用FirewallD设置防火墙</title>
@@ -649,167 +810,6 @@
       <tags>
         <tag>CentOS</tag>
         <tag>FirewallD</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>微软新 Edge 浏览器--带给你Chrome一致的体验 安装教程和上手体验</title>
-    <url>/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/</url>
-    <content><![CDATA[<blockquote>
-<p>Edge是微软新一代浏览器。 微软新的 IE 浏览器项目 Project Spartan 在 Build 2015 上正式更名为 Microsoft Edge。最新的 Edge<br><strong>采用了 Chromium 内核</strong>，当然也兼容以前 IE 的功能。</p>
-</blockquote>
-<a id="more"></a>
-
-<p>由于最新的Edge采用Chromium内核，对于平时使用Chrome作为使用工具的人来说不会有太大学习成本，基本无缝迁移。最新版本在功耗，性能，UI上都取得了比较不错的表现。</p>
-<p>最新的Edge版采用了Chromium的内核，当然现在没有正式版，可以用<a href="https://www.microsoftedgeinsider.com/zh-cn/">Beta版</a> 来体验。</p>
-<p><img src="https://img-blog.csdnimg.cn/20191215235301329.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>点击Beta版进行下载</p>
-<p><img src="https://img-blog.csdnimg.cn/20191215235921432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20191215235957717.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>我们看到进去后提示导入chrome收藏，一键导入很方便，UI风格很漂亮，下面看一下开发者工具：</p>
-<p><img src="https://img-blog.csdnimg.cn/20191216000333905.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191216001742765.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>和之前Chrome的类似，不会有学习成本。新Edge浏览器因为只是测试版，因此插件很少，不过我们可以将<strong>Chrome的插件直接打包过来或者直接访问<a href="https://chrome.google.com/webstore/">Chrome商店</a>进行下载</strong>。</p>
-<p><img src="https://img-blog.csdnimg.cn/20191216002513982.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>亲测可直接添加Chrome插件，使用体验没有任何区别，在正常工作环境下（插件数量相同，打开6个TAB），新Edge占用内存较低：</p>
-<p><img src="https://img-blog.csdnimg.cn/20191216004233444.png" alt="在这里插入图片描述"><br>目前来看，优势主要有：</p>
-<ul>
-<li><p>账户可以直接用微软账户，同步不需要翻墙</p>
-</li>
-<li><p>和Chrome一致的的性能，更好的UI</p>
-</li>
-<li><p>平滑滚动好</p>
-<p>要注意的是，现在的Edge Beta版和自带的Edge不是覆盖的，所以可以放心试用。</p>
-</li>
-</ul>
-<p><img src="https://img-blog.csdnimg.cn/20191216005133562.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3RpZ2Vycm9hcm0=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>MicroSoft</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Git 实战</title>
-    <url>/2019/07/09/git%20%E5%AE%9E%E6%88%98/</url>
-    <content><![CDATA[<h2 id="版本控制系统"><a href="#版本控制系统" class="headerlink" title="版本控制系统"></a>版本控制系统</h2><ul>
-<li>集中式 ： 版本库存放在中央服务器，先从中央服务器取得最新的版本，然后开始工作</li>
-<li>分布式 ： 每个人电脑都是一个完整的版本库，安全性高，一台坏掉了也不要紧</li>
-</ul>
-<a id="more"></a>
-
-<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.name <span class="string">&quot;×××&quot;</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> git config --global user.email <span class="string">&quot;×××@gmail.com&quot;</span></span></span><br></pre></td></tr></table></figure>
-<p>会在~ 目录生成一个.gitconfig</p>
-<p>如果你想不是global，则不带–global即可，会在本项目目录下创建.git/config</p>
-<p><code>git init</code> 初始化一个git project</p>
-<p><code>git diff --cached</code> 查看缓存区里有哪些文件被修改了。<code>git diff</code>会显示所有已做但是没有加到缓存区的修改</p>
-<p>add 和commit操作不赘述，commit操作后<code>-a</code>将所有没有加到缓存区的修改也一起提交，不过<strong>不会提交新文件</strong></p>
-<p><code>git remote add origin https://github.com/myname/myproject.git</code></p>
-<p><code>git push origin master</code></p>
-<h2 id="分支与合并"><a href="#分支与合并" class="headerlink" title="分支与合并"></a>分支与合并</h2><p>分支在多人协作开发用的多，比如你负责的一个功能需要一个月完成，就可以创建一个分支，只把功能代码提交到这个分支上，最后合并到master分支上</p>
-<p><code>git branch experimental</code> 创建分支</p>
-<p><code>git branch</code> 查看分支</p>
-<p>结果：</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">* experimental </span><br><span class="line">  master</span><br></pre></td></tr></table></figure>
-<p><code>git checkout experimental</code> 切换到其他分支</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 将experimental分支合并到master</span><br><span class="line">$ git merge -m &#39;merge experimental branch&#39; experimental</span><br></pre></td></tr></table></figure>
-<p>如果有冲突，比如两个分支都修改了同一个文件，就会merge失败，这是在master分支修改对应文件再commit即可。</p>
-<p>当我们完成分支，可以用<code>git branch -d experimental</code> 来删除（只能删除已经合并了的分支，强行删除用<code>-D</code>）</p>
-<p>如果你觉得<strong>合并错了</strong>，可以回到合并前的状态</p>
-<p><code>git reset --hard HEAD^</code></p>
-<h2 id="Git-日志"><a href="#Git-日志" class="headerlink" title="Git 日志"></a>Git 日志</h2><p><code>git log</code></p>
-<p><code>git log --stat</code> 会显示哪些文件被修改</p>
-<p><code>git log --pretty=oneline</code> 会一行显示一条信息</p>
-<p><code>git log --pretty=short</code> 显示简短信息</p>
-<p><code>git log --graph -pretty=oneline</code> 画一个漂亮的历史</p>
-<h2 id="git-diff"><a href="#git-diff" class="headerlink" title="git diff"></a>git diff</h2><p>git diff不仅仅能查看两个文件的差别，也可以看两个branch的区别。 </p>
-<p><code>git diff anotherbranch</code>  + 表示本分支比anotherbranch分支多的，- 表示本分支少的</p>
-<h2 id="分布式工作流程"><a href="#分布式工作流程" class="headerlink" title="分布式工作流程"></a>分布式工作流程</h2><p>如果要经常操作远程分支，可以定义缩写</p>
-<p><code>git remote add myrepo /tmp/myrepo</code></p>
-<p>git pull 相当于两个操作：使用git fetch抓取最新的修改信息，然后git merge</p>
-<p><strong>为什么不需要指定远程仓库？</strong></p>
-<p>因为Git把远程地址存到了配置文件的remote.origin.url</p>
-<p>git 也可以是服务器的地址：</p>
-<p><code>git clone ssh://服务器/账号/仓库名称</code></p>
-<p><code>git push ssh://服务器仓库地址 master:master</code></p>
-<h2 id="Git-Tag"><a href="#Git-Tag" class="headerlink" title="Git Tag"></a>Git Tag</h2><h3 id="轻量级标签"><a href="#轻量级标签" class="headerlink" title="轻量级标签"></a>轻量级标签</h3><p><code>git tag tagname 8c2940</code></p>
-<p><code>git tag</code></p>
-<h3 id="标签对象"><a href="#标签对象" class="headerlink" title="标签对象"></a>标签对象</h3><p><code>git tag -a stable-2 8c315325 -m &quot;stable 2&quot;</code></p>
-<h3 id="签名标签"><a href="#签名标签" class="headerlink" title="签名标签"></a>签名标签</h3><p>签名标签可以让提交和标签更加完整可信</p>
-<h2 id="git-ignore"><a href="#git-ignore" class="headerlink" title="git ignore"></a>git ignore</h2><p>.gitignore 来忽略不需要提交的文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">*.html</span><br><span class="line">!foo.html #foo.html例外</span><br><span class="line">*.[oa] #忽略所有.o .a </span><br></pre></td></tr></table></figure>
-
-
-<h2 id="重置"><a href="#重置" class="headerlink" title="重置"></a>重置</h2><p><code>git reset --hard HEAD^</code> 回到上次提交的状态</p>
-<p><code>git checkout -- hello.rb</code> 恢复一个文件</p>
-<p><code>git revert HEAD</code> 撤销最近的一次提交</p>
-<h2 id="建设私有仓库"><a href="#建设私有仓库" class="headerlink" title="建设私有仓库"></a>建设私有仓库</h2><h3 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h3><p>可以导出一个裸仓库，然后用scp命令拷贝到服务器上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git clone --bare &#x2F;home&#x2F;user&#x2F;myrepo&#x2F;.git &#x2F;tmp&#x2F;myrepo.git</span><br><span class="line">scp -r &#x2F;tmp&#x2F;myrepo.git myserver.com:&#x2F;opt&#x2F;git&#x2F;myrepo.git</span><br></pre></td></tr></table></figure>
-<p>对于其他人来说，直接</p>
-<p><code>git clone myserver:com:/opt/git/myrepo.git</code></p>
-]]></content>
-      <categories>
-        <category>Tools</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu 16.04 home挂载 系统重装</title>
-    <url>/2018/06/09/ubuntu%2016.04%20home%E6%8C%82%E8%BD%BD%20%E7%B3%BB%E7%BB%9F%E9%87%8D%E8%A3%85/</url>
-    <content><![CDATA[<h1 id="Ubuntu-系统重装并挂载"><a href="#Ubuntu-系统重装并挂载" class="headerlink" title="Ubuntu 系统重装并挂载"></a>Ubuntu 系统重装并挂载</h1><p>昨天一不小心改变了系统/usr的权限，导致grub引导的Ubuntu系统进不去，查找方法失效后，我使用u盘引导的方式重装ubuntu系统，并恢复原有/home 路径下挂载的近74GB文件。挂载的好处就是这种如果系统崩了，还能保存/home下的文件不丢…..</p>
-<a id="more"></a>
-
-<h2 id="linux分区"><a href="#linux分区" class="headerlink" title="linux分区"></a>linux分区</h2><blockquote>
-<p>SWAP分区是LINUX暂时存储数据的交换分区，它主要是把主内存上暂时不用得数据存起来，在需要的时候再调进内存内，且作为SWAP使用的分区不用指定“Mout Point”（载入点），既然它作为交换分区，我们理所当然应给它指定大小，它至少要等于系统上实际内存的量，<strong>一般来说它的大小是内存的一至两倍</strong>。另外你也可以创建和使用一个以上的交换分区，最多16个。</p>
-</blockquote>
-<h3 id="分区的原因"><a href="#分区的原因" class="headerlink" title="分区的原因"></a>分区的原因</h3><p>为什么要自定义多个分区</p>
-<ul>
-<li>在不损失数据的情况下重装系统，比如独立设置/home挂载点,重装系统的时候直接标记回/home，数据不会有任何损失。</li>
-<li>针对不同挂载点的特性分配合适的文件系统以合理发挥性能，比如对/var使用reiserfs，对/home使用xfs，对/使用ext4。</li>
-<li>针对不同的挂载点开启不同的挂载选项，如是否需要即时同步，是否开启日志，是否启用压缩。</li>
-<li>大硬盘搜索范围大，效率低</li>
-<li>磁盘配额只能对分区做设定</li>
-<li>/home、/var、/usr/local 经常是单独分区，因为经常会操作，容易产生碎片<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy80MjQxMDM4LTIzMzllNDk4YzkyZGU1MjIuanBn?x-oss-process=image/format,png" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></li>
-</ul>
-<p>（常见的挂载目录结构）</p>
-<blockquote>
-<p>/ 根目录，存放系统命令和用户数据等（如果下面挂载点没有单独的分区，它们都将在根目录的分区中） /boot boot loader 的静态链接文件，存放与Linux启动相关的程序 /home 用户目录，存放普通用户的数据 /tmp 临时文件 /usr 是Linux系统存放软件的地方,如有可能应将最大空间分给它 /usr/local 自已安装程序安装在此 /var 不断变化的数据，服务器的一些服务、日志放在下面 /opt （Option可选的）附加的应用程序软件包 /bin 基本命令执行文 /dev 设备文件 /etc 主机特定的系统配置 /lib 基本共享库以及内核模块 /media 用于移动介质的挂载点 /mnt 用于临时挂载文件系统或者别的硬件设备（如光驱、软驱） /proc 系统信息的虚拟目录(2.4 和 2.6 内核)，这些信息是在内存中，由系统自己产生的 /root root 用户的目录 /sbin 基本系统命令执行文件 /sys 系统信息的虚拟目录(2.6 内核) /srv 系统提供的用于 service 的数据 /usr/X1186 X-Windows目录，存放一些X-Windows的配置文件 /usr/include 系统头文件，存储一些C语言的头文件 /usr/src Linux内核源代码，Linux系统所安装的内核源代码都保存在此 /usr/bin 对/bin目录的一些补充 /usr/sbin 对/sbin目录的一些补充 /lost+found 这个目录在大多数情况下都是空的。但是如果你正在工作突然停电，或是没有用正常方式关机，在你重新启动机器的时候，有些文件就会找不到应该存放的地方，对于这些文件，系统将他们放在这个目录下</p>
-</blockquote>
-<h3 id="为什么会有挂载"><a href="#为什么会有挂载" class="headerlink" title="为什么会有挂载"></a>为什么会有挂载</h3><p>因为<strong>linux 下一切皆文件</strong>！换句说法就是linux操作系统将系统中的一切都作为文件来管理。在windows中我们常见的硬件设备（打印机、网卡、声卡…）、磁盘分区等，在linux中统统都被视作文件，对设备、分区的访问就是读写对应的文件。</p>
-<h2 id="linux挂载"><a href="#linux挂载" class="headerlink" title="linux挂载"></a>linux挂载</h2><h3 id="临时挂载"><a href="#临时挂载" class="headerlink" title="临时挂载"></a>临时挂载</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ mount &#x2F;dev&#x2F;sda11 &#x2F;data   ##sda3分区挂载在data目录下</span><br><span class="line">$ umount &#x2F;data   ##卸载data目录下分区 &#x2F;dev&#x2F;sda11 &#x2F;data   ##sda3分区挂载在data目录下</span><br><span class="line">$ umount &#x2F;data   ##卸载data目录下分区</span><br></pre></td></tr></table></figure>
-
-
-<h3 id="永久挂载：开机自动挂载"><a href="#永久挂载：开机自动挂载" class="headerlink" title="永久挂载：开机自动挂载"></a>永久挂载：开机自动挂载</h3><p><strong>需要修改/etc/fstab</strong></p>
-<p><strong><img src="https://img-blog.csdn.net/20180609133109749" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></strong></p>
-<p><strong><img src="https://img-blog.csdn.net/20180609133131519" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动">​</strong></p>
-<p><strong>Device</strong></p>
-<p>By default, Ubuntu now uses <a href="http://en.wikipedia.org/wiki/UUID">UUID</a> to identify partitions.</p>
-<p>默认，Ubuntu用uuid识别分区</p>
-<p>To list your devices by UUID use blkid</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo blkid</span><br></pre></td></tr></table></figure>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>使用命令 <code>fdisk -l</code> 可以列出系统中当前连接的硬盘,设备和分区信息.新硬盘没有分区信息,则只显示硬盘大小信息.</p>
-<p><img src="https://img-blog.csdn.net/20180609133150762" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>可以先mkdir一个目录，比如new_dir，然后挂载分区：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount &#x2F;dev&#x2F;sda11 &#x2F;mnt&#x2F;new_dir</span><br></pre></td></tr></table></figure>
-<p>将所有东西全部cp到new_dir中</p>
-<p>move原有的home </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cp &#x2F;home&#x2F;* &#x2F;mnt&#x2F;new_dir&#x2F;</span><br><span class="line">mv &#x2F;home &#x2F;old_home &#x2F;home&#x2F;* &#x2F;mnt&#x2F;new_dir&#x2F;</span><br><span class="line">mv &#x2F;home &#x2F;old_home</span><br></pre></td></tr></table></figure>
-<p>再<code>mkdir</code>一个新的home,将sda11再mount到home上</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount &#x2F;dev&#x2F;sda11 &#x2F;home</span><br></pre></td></tr></table></figure>
-
-
-<p><code>df -h</code>查看硬盘大小和挂载情况</p>
-<p><img src="https://img-blog.csdn.net/20180609133221926" alt="img">)<img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>最后根据要求，修改/etc/fstab 文件，注意格式要和其他保持一致，查看UUID可以用前文中说的方法。最后</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">mount -a-a</span><br></pre></td></tr></table></figure>
-<p>这样就设置了fstab中的参数，<strong>设置完之后一定要看看生不生效，再继续操作</strong></p>
-]]></content>
-      <categories>
-        <category>Linux</category>
-      </categories>
-      <tags>
-        <tag>ubuntu</tag>
-        <tag>挂载</tag>
       </tags>
   </entry>
 </search>
