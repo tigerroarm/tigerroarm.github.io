@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="google7750c428b5128303">
+  <meta name="baidu-site-verification" content="DsamQtmEvVB9mvoD">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.difan.tech","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Inband Full-duplex Wireless Communication System动机全双工系统可以使得频谱利用率为原来的两倍。传统的通信系统一般都是半双工系统，例如在时域区分上下行的TDD和在频域区分上下行信号的FDD，带内全双工（In-BandFull-Duplex）讲的就是在同频率上同时进行收发，这样的话在如今如此紧张的频谱情形下能使频谱利用率加倍，那将十分有用。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Inband Full-duplex Wireless Communication System">
+<meta property="og:url" content="https://blog.difan.tech/2021/03/29/fullduplex/index.html">
+<meta property="og:site_name" content="Tigerroarm&#39;s Blog">
+<meta property="og:description" content="Inband Full-duplex Wireless Communication System动机全双工系统可以使得频谱利用率为原来的两倍。传统的通信系统一般都是半双工系统，例如在时域区分上下行的TDD和在频域区分上下行信号的FDD，带内全双工（In-BandFull-Duplex）讲的就是在同频率上同时进行收发，这样的话在如今如此紧张的频谱情形下能使频谱利用率加倍，那将十分有用。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.difan.tech/2021/03/29/fullduplex/media/c45cb054af14da46a727521c6b3ac8de.png">
+<meta property="og:image" content="https://blog.difan.tech/2021/03/29/fullduplex/media/4685cb8996f44b2128c3c41a1981c02c.png">
+<meta property="og:image" content="https://blog.difan.tech/2021/03/29/fullduplex/media/99ae3ce95c644451471721ac19aabd59.png">
+<meta property="og:image" content="https://blog.difan.tech/2021/03/29/fullduplex/media/d4d66762a16d084a48221bf39bbb108d.emf">
+<meta property="og:image" content="https://blog.difan.tech/2021/03/29/fullduplex/media/74e6cba8d12936066cf3668c3f988b41.png">
+<meta property="og:image" content="https://blog.difan.tech/2021/03/29/fullduplex/media/a8d08156add47aa647e04dbec788b785.png">
+<meta property="og:image" content="https://blog.difan.tech/2021/03/29/fullduplex/media/6d826fb6bee579455ea260605c32698f.png">
+<meta property="og:image" content="https://blog.difan.tech/2021/03/29/fullduplex/media/ca41f139d0ebf6a5d3d7f7e9cb645d96.jpg">
+<meta property="og:image" content="https://blog.difan.tech/2021/03/29/fullduplex/media/4eb4d1f8c0c6d2ad4a4f7cfaea47ecbd.png">
+<meta property="article:published_time" content="2021-03-29T07:11:43.448Z">
+<meta property="article:modified_time" content="2021-03-29T07:14:21.334Z">
+<meta property="article:author" content="Tigerroarm">
+<meta property="article:tag" content="EE">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.difan.tech/2021/03/29/fullduplex/media/c45cb054af14da46a727521c6b3ac8de.png">
+
+<link rel="canonical" href="https://blog.difan.tech/2021/03/29/fullduplex/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Inband Full-duplex Wireless Communication System | Tigerroarm's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Tigerroarm's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Tigerroarm's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay naive, stay simple. <br> Love math, love coding.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">16</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">7</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2021/03/29/fullduplex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headportrait.jpg">
+      <meta itemprop="name" content="Tigerroarm">
+      <meta itemprop="description" content="Tigerroarm的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tigerroarm's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Inband Full-duplex Wireless Communication System
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-03-29 15:11:43 / 修改时间：15:14:21" itemprop="dateCreated datePublished" datetime="2021-03-29T15:11:43+08:00">2021-03-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/EE/" itemprop="url" rel="index"><span itemprop="name">EE</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/03/29/fullduplex/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/03/29/fullduplex/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Inband-Full-duplex-Wireless-Communication-System"><a href="#Inband-Full-duplex-Wireless-Communication-System" class="headerlink" title="Inband Full-duplex Wireless Communication System"></a>Inband Full-duplex Wireless Communication System</h1><h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>全双工系统可以使得频谱利用率为原来的两倍。传统的通信系统一般都是半双工系统，例如在时域区分上下行的TDD和在频域区分上下行信号的FDD，带内全双工（In-Band<br>Full-Duplex）讲的就是在同频率上同时进行收发，这样的话在如今如此紧张的频谱情形下能使频谱利用率加倍，那将十分有用。</p>
+<a id="more"></a>
+
+<h2 id="主要想法"><a href="#主要想法" class="headerlink" title="主要想法"></a>主要想法</h2><p>要实现全双工，主要就是减少自干扰（self-interference），即同一设备发射的信号对于接收信号的干扰。WiFi信号的平均功率为20dBm（100mW），接收机的噪声基底（noise<br>floor）大致为-90dBm，所以要将自干扰降低到-90dBm，需要降低110dB的线性抵消能力。</p>
+<p>对于非线性自干扰（Harmonics），其为-10dBm（比基底高80dB），即需要80dB的非线性抵消能力。</p>
+<p><img src="media/c45cb054af14da46a727521c6b3ac8de.png" alt=""></p>
+<p><strong>图 1</strong> 抵消目标[1]</p>
+<p>图1中，我们看到，SIC中线性分量是主要分量，发射机噪声为-40dBm，由于OFDM的PAPR特性所以我们需要预留10dB，即模拟域需要提供60dB的消除能力。</p>
+<h2 id="自干扰分析"><a href="#自干扰分析" class="headerlink" title="自干扰分析"></a>自干扰分析</h2><p>在WiFi场景下，自干扰主要有以下三种（如图1所示）</p>
+<ul>
+<li><p>天线与环行器阻抗不匹配导致的反射分量 RA</p>
+</li>
+<li><p>环行器1端口到3端口的泄露分量 I</p>
+</li>
+<li><p>环境散射分量RC</p>
+</li>
+</ul>
+<p><img src="media/4685cb8996f44b2128c3c41a1981c02c.png" alt=""></p>
+<p><strong>图 2</strong> 自干扰分析图</p>
+<h2 id="具体实现方法"><a href="#具体实现方法" class="headerlink" title="具体实现方法"></a>具体实现方法</h2><h3 id="4-1-天线隔离"><a href="#4-1-天线隔离" class="headerlink" title="4.1 天线隔离"></a>4.1 天线隔离</h3><ul>
+<li><p>环行器 Circulator（大部分的方法）</p>
+</li>
+<li><p>电平衡 EBD (×)</p>
+</li>
+</ul>
+<h3 id="4-2-RF域（模拟域）干扰抵消"><a href="#4-2-RF域（模拟域）干扰抵消" class="headerlink" title="4.2 RF域（模拟域）干扰抵消"></a>4.2 RF域（模拟域）干扰抵消</h3><h4 id="4-2-1-IMT-方法（RF-front）-2"><a href="#4-2-1-IMT-方法（RF-front）-2" class="headerlink" title="4.2.1 IMT 方法（RF front）[2]"></a>4.2.1 IMT 方法（RF front）[2]</h4><p>I和RA因为没有路径损耗，具有主要的能量，是我们在模拟域/RF域主要需要抵消的信号。RC由于其环境反射特性可以在数字域建模消除。</p>
+<p>使用IMT网络控制RA的振幅和相位，直接抵消I。</p>
+<p>根据计算得到反射系数结果：</p>
+<p><img src="media/99ae3ce95c644451471721ac19aabd59.png" alt=""></p>
+<p>S为端之间的回波损耗。</p>
+<p><img src="media/d4d66762a16d084a48221bf39bbb108d.emf" alt=""></p>
+<p>上图具有并联和串联变容二极管的可重配置IMT电路的示意图，可以通过调整Vs，Vp来调整Zin。</p>
+<p>ZL是天线输入阻抗，根据反射系数定义，可以得到：</p>
+<p><img src="media/74e6cba8d12936066cf3668c3f988b41.png" alt=""></p>
+<p>Z0是环行器器2端口的特性阻抗。</p>
+<p><strong>实验部分：</strong></p>
+<p>用了RFCI CR5853环行器，15.5dB固有隔离度。Skyworks Inc的可变容二极管SMV 2019</p>
+<p>结果：</p>
+<p><img src="media/a8d08156add47aa647e04dbec788b785.png" alt=""></p>
+<p><strong>图3</strong> IMT结果</p>
+<h4 id="4-2-2-信号重建方法-SR-SIC（第一阶段）"><a href="#4-2-2-信号重建方法-SR-SIC（第一阶段）" class="headerlink" title="4.2.2 信号重建方法 SR-SIC（第一阶段）"></a>4.2.2 信号重建方法 SR-SIC（第一阶段）</h4><p>以[1]为代表的抽头延迟线横向滤波器，通过对射频信号采样，用sinc函数插值重建原始信号。<strong>是我们第一阶段采用的方法。</strong></p>
+<p><img src="media/6d826fb6bee579455ea260605c32698f.png" alt=""></p>
+<p><strong>图 4</strong> 时域信号重建方法</p>
+<p>图4<br>为时域的方法，基于时域的抵消架构对发射信号进行采样，并将其分成不同的分支，称为抽头。这些抽头中的每一个都有不同的时间延迟，并且可以在组合成单个输出之前独立调整信号的幅度和相位。正是这种延迟和抽头的复杂加权使得抵消器能够匹配自干扰信号，并产生与接收机内的自干扰相消的信号。</p>
+<p>由于使用原始信号进行信号重建，故其发射机噪声可以被消除（也只能在模拟域进行消除）。其线性消除能力为62dB，非线性能力为30dB</p>
+<p>当然也有频域相关的方法，可以参考哥伦比亚大学Jin<br>Zhou团队，优点是可以芯片小型化，缺点是目前为止其指标并不高。</p>
+<h4 id="4-2-3-信道响应方法-CR-SIC"><a href="#4-2-3-信道响应方法-CR-SIC" class="headerlink" title="4.2.3 信道响应方法 CR-SIC"></a>4.2.3 信道响应方法 CR-SIC</h4><p>[8]中的方法</p>
+<h4 id="4-2-4-数字域辅助模拟域方法"><a href="#4-2-4-数字域辅助模拟域方法" class="headerlink" title="4.2.4 数字域辅助模拟域方法"></a>4.2.4 数字域辅助模拟域方法</h4><p>[5]的方法，可以作为参考</p>
+<h3 id="4-3-数字域干扰抵消"><a href="#4-3-数字域干扰抵消" class="headerlink" title="4.3 数字域干扰抵消"></a>4.3 数字域干扰抵消</h3><p>参考[3]和专著[12]</p>
+<h4 id="4-3-1-功放模型"><a href="#4-3-1-功放模型" class="headerlink" title="4.3.1 功放模型"></a>4.3.1 功放模型</h4><p>在理想情况下，对于均值为0的射频信号，我们期望功率放大器的输出信号总是其输入信号的线性放大</p>
+<p>其中表示某一常数。然而在实际情况中功率放大器的增益是一个随着输入信号大小而变化的函数</p>
+<p><img src="media/ca41f139d0ebf6a5d3d7f7e9cb645d96.jpg" alt="C:\\Users\\difan\\Desktop\\asdf.jpg"></p>
+<p><strong>图 4</strong> 幅度-幅度（AM-AM）特性 幅度-相位（AM-PM）特性</p>
+<p>AM-AM特性和AM-PM特性指的是输入幅度变化造成的输出幅度和输出相移的非线性改变。早期通信系统带宽比较窄，远小于功放的工作带宽，所以使用无记忆模型，在频域上的体现就是功率放大器的行为特性不依赖于信号频率。当通信的带宽越来越大，其记忆效应更加明显，简单的无记忆模型不再适用。其记忆效应在频域体现在频率依赖行为，在时域体现在不仅与当前信号有关，还与过去一段时间信号有关。</p>
+<p>记忆效应分为长记忆效应（线性记忆效应）和短记忆效应（非线性记忆效应），前者与匹配网络有关，后者主要由于功放的低频散射，具体模型如表1所示。</p>
+<p>功放非线性指标</p>
+<ul>
+<li><p>1dB压缩点:相对线性增益降低1dB的输出功率点</p>
+</li>
+<li><p>三阶截断点:IP3</p>
+</li>
+</ul>
+<p><strong>表1</strong> 常用功放模型分类</p>
+<table>
+<thead>
+<tr>
+<th>无记忆模型</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>多项式模型</td>
+<td>结构简单，参数辨识度高</td>
+<td></td>
+</tr>
+<tr>
+<td>记忆模型</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>两盒模型</td>
+<td>Wiener</td>
+<td>线性滤波+静态非线性模块（无记忆）</td>
+</tr>
+<tr>
+<td></td>
+<td>Hammerstein</td>
+<td>静态非线性模块（无记忆）+线性滤波</td>
+</tr>
+<tr>
+<td>Volterra级数及其改进形式</td>
+<td>记忆多项式模型(Memory Polynomial)的性能具有稳健性，多种情况下优于Wiener, Hammerstein等模型的线性化性能，结构简单，复杂度低。</td>
+<td></td>
+</tr>
+</tbody></table>
+<h5 id="PA的Volterra级数模型"><a href="#PA的Volterra级数模型" class="headerlink" title="PA的Volterra级数模型"></a>PA的Volterra级数模型</h5><p>一般形式的Volterra模型为：</p>
+<p>(4.3.1-1)</p>
+<p>称为Volterra的kernels，一般只考虑奇数项，那么Volterra在功放中的表示形式如下</p>
+<p>(4.3.1-2)</p>
+<p>为对角项，其它求和项为交叉项。如果我们忽略交叉项，只保留对角项，则简化为如下多项式模型：</p>
+<p>(4.3.1-3)</p>
+<h4 id="4-3-2-线性消除"><a href="#4-3-2-线性消除" class="headerlink" title="4.3.2 线性消除"></a>4.3.2 线性消除</h4><h5 id="闭环方法"><a href="#闭环方法" class="headerlink" title="闭环方法"></a>闭环方法</h5><p>同模拟域类似，可以使用具有数字可控时间延迟单元和复杂抽头加权的抽头延迟线结构，如下图所示，可以通过LMS等等方法调整权重，好处是在数字域处理更加灵活，抽头数可以更多，自适应性强，可以实时调整权重。</p>
+<p><img src="media/4eb4d1f8c0c6d2ad4a4f7cfaea47ecbd.png" alt=""></p>
+<p>图 4 数字域闭环方法</p>
+<h5 id="开环方法"><a href="#开环方法" class="headerlink" title="开环方法"></a>开环方法</h5><p>主要是[1]中的方法，使用WiFi Preamble进行LS信道估计后恢复信号。</p>
+<p>我们同样使用PH模型进行PA建模：</p>
+<p>其中2K-1是该模型的阶数，L是该模型的抽头数。其矩阵形式可表示为：</p>
+<p>其中</p>
+<p>其中的Y是带有噪声的向量，通过LS算法求出B后再进行模型重建。</p>
+<h4 id="4-3-2-非线性消除"><a href="#4-3-2-非线性消除" class="headerlink" title="4.3.2 非线性消除"></a>4.3.2 非线性消除</h4><h5 id="Parallelizable-Hammerstein-模型"><a href="#Parallelizable-Hammerstein-模型" class="headerlink" title="Parallelizable-Hammerstein 模型"></a>Parallelizable-Hammerstein 模型</h5><p>功放的模型可以参考[4]。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] Bharadia, D., McMilin, E., &amp; Katti, S. (2013). Full duplex radios. ACM<br>SIGCOMM. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/2534169.2486033">https://doi.org/10.1145/2534169.2486033</a></p>
+<p>[2] Khaledian, S., Farzami, F., Smida, B., &amp; Erricolo, D. (2018). Inherent<br>Self-Interference Cancellation for In-Band Full-Duplex Single-Antenna Systems.<br>IEEE Transactions on Microwave Theory and Techniques, 66(6), 2842–2850.<br><a target="_blank" rel="noopener" href="https://doi.org/10.1109/TMTT.2018.2818124">https://doi.org/10.1109/TMTT.2018.2818124</a></p>
+<p>[3] Kolodziej, K. E., Perry, B. T., &amp; Herd, J. S. (2019). In-Band Full-Duplex<br>Technology: Techniques and Systems Survey. IEEE Transactions on Microwave Theory<br>and Techniques, 67(7), 3025–3041. <a target="_blank" rel="noopener" href="https://doi.org/10.1109/TMTT.2019.2896561">https://doi.org/10.1109/TMTT.2019.2896561</a></p>
+<p>[4] Isaksson, M., Wisell, D., &amp; Rönnow, D. (2006). A comparative analysis of<br>behavioral models for RF power amplifiers. IEEE Transactions on Microwave Theory<br>and Techniques, 54(1), 348–359. <a target="_blank" rel="noopener" href="https://doi.org/10.1109/TMTT.2005.860500">https://doi.org/10.1109/TMTT.2005.860500</a></p>
+<p>[5] Liu, Y., Quan, X., Pan, W., &amp; Tang, Y. (2017). Digitally Assisted Analog<br>Interference Cancellation for In-Band Full-Duplex Radios. IEEE Communications<br>Letters, 21(5), 1079–1082. <a target="_blank" rel="noopener" href="https://doi.org/10.1109/LCOMM.2017.2652444">https://doi.org/10.1109/LCOMM.2017.2652444</a></p>
+<p>[6] Kolodziej, K. E., McMichael, J. G., &amp; Perry, B. T. (2016). Multitap RF<br>Canceller for In-Band Full-Duplex Wireless Communications. IEEE Transactions on<br>Wireless Communications, 15(6), 4321–4334.<br><a target="_blank" rel="noopener" href="https://doi.org/10.1109/TWC.2016.2539169">https://doi.org/10.1109/TWC.2016.2539169</a></p>
+<p>[7] Korpi, D., Tamminen, J., Turunen, M., Huusari, T., Choi, Y. S., Anttila, L.,<br>Talwar, S., &amp; Valkama, M. (2016). Full-duplex mobile device: Pushing the limits.<br>IEEE Communications Magazine, 54(9), 80–87.<br><a target="_blank" rel="noopener" href="https://doi.org/10.1109/MCOM.2016.7565192">https://doi.org/10.1109/MCOM.2016.7565192</a></p>
+<p>[8] Choi, Y. S., &amp; Shirani-Mehr, H. (2013). Simultaneous transmission and<br>reception: Algorithm, design and system level performance. IEEE Transactions on<br>Wireless Communications, 12(12), 5992–6010.<br><a target="_blank" rel="noopener" href="https://doi.org/10.1109/TWC.2013.101713.121152">https://doi.org/10.1109/TWC.2013.101713.121152</a></p>
+<p>[9] Korpi, D., Tamminen, J., Turunen, M., Huusari, T., Choi, Y. S., Anttila, L.,<br>Talwar, S., &amp; Valkama, M. (2016). Full-duplex mobile device: Pushing the limits.<br>IEEE Communications Magazine, 54(9), 80–87.<br><a target="_blank" rel="noopener" href="https://doi.org/10.1109/MCOM.2016.7565192">https://doi.org/10.1109/MCOM.2016.7565192</a></p>
+<p>[10] Khaledian, S., Farzami, F., Smida, B., &amp; Erricolo, D. (2018). Inherent<br>Self-Interference Cancellation for In-Band Full-Duplex Single-Antenna Systems.<br>IEEE Transactions on Microwave Theory and Techniques, 66(6), 2842–2850.<br><a target="_blank" rel="noopener" href="https://doi.org/10.1109/TMTT.2018.2818124">https://doi.org/10.1109/TMTT.2018.2818124</a></p>
+<p>[11] Wu, X., Shen, Y., &amp; Tang, Y. (2014). The Power Delay Pro fi le of the<br>Single-Antenna. 13, 1561–1564.</p>
+<p>[12] Full-Duplex Wireless Communications Systems.(2017).</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/EE/" rel="tag"># EE</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/16/MATLAB%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8C%97/" rel="prev" title="MATLAB编程指北">
+      <i class="fa fa-chevron-left"></i> MATLAB编程指北
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Inband-Full-duplex-Wireless-Communication-System"><span class="nav-number">1.</span> <span class="nav-text">Inband Full-duplex Wireless Communication System</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%9C%BA"><span class="nav-number">1.1.</span> <span class="nav-text">动机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E6%83%B3%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">主要想法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%B9%B2%E6%89%B0%E5%88%86%E6%9E%90"><span class="nav-number">1.3.</span> <span class="nav-text">自干扰分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.</span> <span class="nav-text">具体实现方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E5%A4%A9%E7%BA%BF%E9%9A%94%E7%A6%BB"><span class="nav-number">1.4.1.</span> <span class="nav-text">4.1 天线隔离</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-RF%E5%9F%9F%EF%BC%88%E6%A8%A1%E6%8B%9F%E5%9F%9F%EF%BC%89%E5%B9%B2%E6%89%B0%E6%8A%B5%E6%B6%88"><span class="nav-number">1.4.2.</span> <span class="nav-text">4.2 RF域（模拟域）干扰抵消</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-1-IMT-%E6%96%B9%E6%B3%95%EF%BC%88RF-front%EF%BC%89-2"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">4.2.1 IMT 方法（RF front）[2]</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-2-%E4%BF%A1%E5%8F%B7%E9%87%8D%E5%BB%BA%E6%96%B9%E6%B3%95-SR-SIC%EF%BC%88%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%89"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">4.2.2 信号重建方法 SR-SIC（第一阶段）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-3-%E4%BF%A1%E9%81%93%E5%93%8D%E5%BA%94%E6%96%B9%E6%B3%95-CR-SIC"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">4.2.3 信道响应方法 CR-SIC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-4-%E6%95%B0%E5%AD%97%E5%9F%9F%E8%BE%85%E5%8A%A9%E6%A8%A1%E6%8B%9F%E5%9F%9F%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">4.2.4 数字域辅助模拟域方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E6%95%B0%E5%AD%97%E5%9F%9F%E5%B9%B2%E6%89%B0%E6%8A%B5%E6%B6%88"><span class="nav-number">1.4.3.</span> <span class="nav-text">4.3 数字域干扰抵消</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-1-%E5%8A%9F%E6%94%BE%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">4.3.1 功放模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#PA%E7%9A%84Volterra%E7%BA%A7%E6%95%B0%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.3.1.1.</span> <span class="nav-text">PA的Volterra级数模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-2-%E7%BA%BF%E6%80%A7%E6%B6%88%E9%99%A4"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">4.3.2 线性消除</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%97%AD%E7%8E%AF%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.3.2.1.</span> <span class="nav-text">闭环方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E7%8E%AF%E6%96%B9%E6%B3%95"><span class="nav-number">1.4.3.2.2.</span> <span class="nav-text">开环方法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-2-%E9%9D%9E%E7%BA%BF%E6%80%A7%E6%B6%88%E9%99%A4"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">4.3.2 非线性消除</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Parallelizable-Hammerstein-%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.4.3.3.1.</span> <span class="nav-text">Parallelizable-Hammerstein 模型</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">2.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tigerroarm"
+      src="/images/headportrait.jpg">
+  <p class="site-author-name" itemprop="name">Tigerroarm</p>
+  <div class="site-description" itemprop="description">Tigerroarm的博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tigerroarm" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tigerroarm" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:difanmu@gmail.com" title="E-Mail → mailto:difanmu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+        
+          <li>
+            <a href="/2021/03/29/fullduplex/" title="Inband Full-duplex Wireless Communication System" target="_blank">Inband Full-duplex Wireless Communication System</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/16/MATLAB%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8C%97/" title="MATLAB编程指北" target="_blank">MATLAB编程指北</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/27/DSP/" title="数字信号处理 -- 基于计算机方法" target="_blank">数字信号处理 -- 基于计算机方法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/12/20/Wireless%20Physical%20Layer/" title="无线网络物理层" target="_blank">无线网络物理层</a>
+          </li>
+        
+          <li>
+            <a href="/2020/11/11/%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/" title="笔记汇总" target="_blank">笔记汇总</a>
+          </li>
+        
+      </ul>
+    </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tigerroarm</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '9eFpMRHKYdm4ucton4CTUrAd-gzGzoHsz',
+      appKey     : 'EbiAV4uFtmudGKkNbsCTpGCA',
+      placeholder: "输入您的评论",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
