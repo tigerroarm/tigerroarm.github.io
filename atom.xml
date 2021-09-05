@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.difan.tech/"/>
-  <updated>2021-04-11T07:54:04.116Z</updated>
+  <updated>2021-03-29T07:22:49.754Z</updated>
   <id>https://blog.difan.tech/</id>
   
   <author>
@@ -15,39 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>我的笔记记录汇总</title>
-    <link href="https://blog.difan.tech/2021/09/05/%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/"/>
-    <id>https://blog.difan.tech/2021/09/05/%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0%EF%BC%88%E7%9B%AE%E5%BD%95%EF%BC%89/</id>
-    <published>2021-09-05T15:43:30.921Z</published>
-    <updated>2021-04-11T07:54:04.116Z</updated>
-    
-    <content type="html"><![CDATA[<table><thead><tr><th align="center">Category</th><th align="center">Name</th><th align="center">Link</th></tr></thead><tbody><tr><td align="center">Computer Science</td><td align="center">CSAPP</td><td align="center"><a href="https://tigerroarm.github.io/LearningNotes/csapp/chapter0102/">CSAPP Notes</a>  <a href="https://tigerroarm.github.io/LearningNotes/csapp/lab/">CSAPP Lab</a></td></tr><tr><td align="center">Coding Notes</td><td align="center">Leetcode</td><td align="center"><a href="https://tigerroarm.github.io/Leetcode">LeetCode Solution</a></td></tr><tr><td align="center">Math &amp; Signal Processing</td><td align="center">Digital Signal Processing</td><td align="center"><a href="https://tigerroarm.github.io/2020/12/27/DSP">DSP Code Notes</a></td></tr><tr><td align="center">Electronic Engineering</td><td align="center">Wireless Communications</td><td align="center"><a href="https://tigerroarm.github.io/2020/12/20/Wireless%20Physical%20Layer/">Communication Code Notes(Part 1)</a></td></tr></tbody></table>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&quot;center&quot;&gt;Category&lt;/th&gt;
-&lt;th align=&quot;center&quot;&gt;Name&lt;/th&gt;
-&lt;th align=&quot;center&quot;&gt;Link&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;&lt;tr&gt;
-&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="笔记" scheme="https://blog.difan.tech/categories/%E7%AC%94%E8%AE%B0/"/>
-    
-    
-  </entry>
   
   <entry>
     <title>Inband Full-duplex Wireless Communication System</title>
