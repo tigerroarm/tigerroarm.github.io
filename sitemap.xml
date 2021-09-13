@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.difan.tech/2021/09/10/Gossip%E7%AE%97%E6%B3%95/</loc>
+    
+    <lastmod>2021-09-13</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.difan.tech/2021/01/02/fullduplex/</loc>
     
     <lastmod>2021-09-05</lastmod>
@@ -123,7 +130,7 @@
 
   <url>
     <loc>https://blog.difan.tech/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -131,140 +138,147 @@
   
   <url>
     <loc>https://blog.difan.tech/tags/%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/Unix/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/C-C/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/DSP/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/Math/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/SignalProcessing/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/http/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/MATLAB/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/vim/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/Linux/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/%E9%9A%8F%E6%89%8B%E8%AE%B0/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/Wireless-Communications/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/EE/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/ubuntu/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/%E6%8C%82%E8%BD%BD/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/CentOS/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/FirewallD/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/tmux/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/MicroSoft/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/tags/Git/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.difan.tech/tags/Network-%E5%88%86%E5%B8%83%E5%BC%8F/</loc>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -273,56 +287,56 @@
   
   <url>
     <loc>https://blog.difan.tech/categories/C-C/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/categories/Network/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/categories/MATLAB/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/categories/Tools/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/categories/Communications/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/categories/EE/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://blog.difan.tech/categories/Linux/</loc>
-    <lastmod>2021-09-05</lastmod>
+    <lastmod>2021-09-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>

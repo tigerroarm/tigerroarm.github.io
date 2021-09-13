@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Tigerroarm&#39;s Blog</title>
   <icon>https://www.gravatar.com/avatar/7880b27a93b174bc9a1cbe57a5bba5ff</icon>
-  <subtitle>Stay naive, stay simple. &lt;br&gt; Love math, love coding.</subtitle>
+  <subtitle>Stay naive, stay simple.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://blog.difan.tech/"/>
-  <updated>2021-05-13T08:57:46.729Z</updated>
+  <updated>2021-09-13T12:21:19.714Z</updated>
   <id>https://blog.difan.tech/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Gossip 算法</title>
+    <link href="https://blog.difan.tech/2021/09/10/Gossip%E7%AE%97%E6%B3%95/"/>
+    <id>https://blog.difan.tech/2021/09/10/Gossip%E7%AE%97%E6%B3%95/</id>
+    <published>2021-09-09T16:00:00.000Z</published>
+    <updated>2021-09-13T12:21:19.714Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Gossip-算法"><a href="#Gossip-算法" class="headerlink" title="Gossip 算法"></a>Gossip 算法</h2><p>在一个有界网络中，每个node传播message给随机的几个节点，经过杂乱无章的通信，最终所有节点都会达成一致。每个节点有可能知道所有的节点，也可能仅仅知道几个邻居节点，最后状态都是一致的，又称为反熵。</p><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul><li>可扩展性<ul><li>使用$O(\log N)$ rounds 到达所有nodes，N为node的个数。</li></ul></li><li>容错<ul><li>从源头节点到目的节点路径不止一条，可以在不规则为止连接性的网络中运行。</li></ul></li><li>健壮性<ul><li>故障节点不会阻止其他节点发送消息，每个节点都可以随意加入和退出，不会严重啊影响服务质量</li><li>但是如果消息有关于故障节点或者恶意节点，那么系统就不健壮</li></ul></li><li>收敛速度<ul><li>指数收敛速度</li></ul></li></ul><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>两个概念</p><ul><li>Cycle 传播一个消息的轮数</li><li>Fanout 每轮种node通信的节点数</li></ul><ol><li>周期性散播消息</li><li>每轮随机选择fanout个节点散播消息</li><li>每轮散播消息都选择尚未发送过的节点进行散播</li><li>收到消息的节点不再往send节点散播</li></ol><blockquote><p>Goosip 和 raft<br>raft是强一致性的，而gossip是最终一致</p></blockquote><h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul><li>Riak 使用gossip协议分享并通信ring state和bucket properties</li><li>CASSANDRA 分享周围nodes和自己的信息</li><li><a href="https://github.com/hashicorp/serf">serf</a>：go实现的服务发现和治理的框架</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;Gossip-算法&quot;&gt;&lt;a href=&quot;#Gossip-算法&quot; class=&quot;headerlink&quot; title=&quot;Gossip 算法&quot;&gt;&lt;/a&gt;Gossip 算法&lt;/h2&gt;&lt;p&gt;在一个有界网络中，每个node传播message给随机的几个节点，经过杂乱无章的通信
+      
+    
+    </summary>
+    
+    
+      <category term="Network" scheme="https://blog.difan.tech/categories/Network/"/>
+    
+    
+      <category term="Network - 分布式" scheme="https://blog.difan.tech/tags/Network-%E5%88%86%E5%B8%83%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>POSIX thread</title>
