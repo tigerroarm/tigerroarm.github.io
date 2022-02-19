@@ -22,31 +22,35 @@
     var CONFIG = {"hostname":"blog.difan.tech","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Tigerroarm的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tigerroarm&#39;s Blog">
-<meta property="og:url" content="https://blog.difan.tech/index.html">
+  <meta name="description" content="数组快排lc 912 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263&#x2F;&#x2F; 版本1void quick_sort(vector&lt;int&gt;&amp; a, int l, int r) &amp;#123;	if">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用数据结构与算法代码">
+<meta property="og:url" content="https://blog.difan.tech/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/index.html">
 <meta property="og:site_name" content="Tigerroarm&#39;s Blog">
-<meta property="og:description" content="Tigerroarm的博客">
+<meta property="og:description" content="数组快排lc 912 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263&#x2F;&#x2F; 版本1void quick_sort(vector&lt;int&gt;&amp; a, int l, int r) &amp;#123;	if">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-09T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-02-19T12:38:28.305Z">
 <meta property="article:author" content="Tigerroarm">
-<meta property="article:tag" content="Tigerroarm的博客">
+<meta property="article:tag" content="C&#x2F;C++">
+<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.difan.tech/">
+<link rel="canonical" href="https://blog.difan.tech/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Tigerroarm's Blog</title>
+  <title>常用数据结构与算法代码 | Tigerroarm's Blog</title>
   
 
 
@@ -194,93 +198,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2022/01/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headportrait.jpg">
-      <meta itemprop="name" content="Tigerroarm">
-      <meta itemprop="description" content="Tigerroarm的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tigerroarm's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="post-title-link" itemprop="url">操作系统总结</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-01-10 00:00:00" itemprop="dateCreated datePublished" datetime="2022-01-10T00:00:00+08:00">2022-01-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/OS/" itemprop="url" rel="index"><span itemprop="name">OS</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>《modern operating systems&gt; 我看的是第四版，主要介绍了操作系统相关的理论性的东西，为了防止遗忘，记录下重点备查。</p>
-</blockquote>
-<h1 id="1-进程和线程"><a href="#1-进程和线程" class="headerlink" title="1 进程和线程"></a>1 进程和线程</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><p>进程是程序的一个正在执行的实例，包括相关的PC（program counter），寄存器和变量等。理论上说，每一个进程都有属于自己的虚拟CPU。</p>
-<h3 id="进程模型"><a href="#进程模型" class="headerlink" title="进程模型"></a>进程模型</h3><ul>
-<li>多道程序设计（multiprogramming）: 指仅使用一个CPU（单核），在进程中来回切换，造成多个进程同时进行的效果。</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/01/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -296,10 +217,9 @@
       <meta itemprop="name" content="Tigerroarm's Blog">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">常用数据结构与算法代码</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          常用数据结构与算法代码
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -322,6 +242,18 @@
 
           
   
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
   
 
 
@@ -335,7 +267,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sort-an-array/">lc 912</a></p>
+        <h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h3 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h3><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sort-an-array/">lc 912</a></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 版本1</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; a, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">	<span class="comment">// 这样分 &lt;=j的元素都是小于x的值</span></span><br><span class="line">    <span class="keyword">int</span> x = a[l], i = l<span class="number">-1</span>, j = r+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; j) &#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span> (a[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span> (a[j] &gt; x);</span><br><span class="line">        <span class="keyword">if</span> (i &lt; j) swap(a[i], a[j]);</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">	quick_sort(a, l, j);</span><br><span class="line">	quick_sort(a, j+<span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> i = l - <span class="number">1</span>, j = r + <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">int</span> x = nums[l + r &gt;&gt; <span class="number">1</span>];</span><br><span class="line">	<span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">		<span class="keyword">while</span> (nums[++i] &lt; x);</span><br><span class="line">		<span class="keyword">while</span> (nums[--j] &gt; x);</span><br><span class="line">		<span class="keyword">if</span> (i &lt; j) swap(nums[i], nums[j]);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	quick_sort(nums, l, j);</span><br><span class="line">	quick_sort(nums, j + <span class="number">1</span>, r);</span><br><span class="line">&#125;<span class="comment">//版本2</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; a, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> i = l,  pivot = a[l], j = r;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j &amp;&amp; a[j] &gt; pivot) j--;</span><br><span class="line">        a[i] = a[j];</span><br><span class="line">        <span class="keyword">while</span> (i &lt; j &amp;&amp; a[i] &lt;= pivot) i++;</span><br><span class="line">        a[j] = a[i];</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    a[i] = pivot;</span><br><span class="line">    quick_sort(a, l, i<span class="number">-1</span>);</span><br><span class="line">    quick_sort(a, i+<span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//版本3</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">quick_sort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (l &gt;= r) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">   swap(nums[l], nums[l + rand() % (r - l + <span class="number">1</span>)]);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">int</span> pivot = nums[l], i = l, j = r;</span><br><span class="line">	<span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">		<span class="keyword">while</span> (i &lt; j &amp;&amp; nums[j] &gt;= pivot) j--;</span><br><span class="line">		nums[i] = nums[j];</span><br><span class="line">		<span class="keyword">while</span> (i &lt; j &amp;&amp; nums[i] &lt;= pivot) i++;</span><br><span class="line">		nums[j] = nums[i];</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	nums[i] = pivot;</span><br><span class="line">	quick_sort(nums, l, i - <span class="number">1</span>);</span><br><span class="line">	quick_sort(nums, i + <span class="number">1</span>, r);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="topK"><a href="#topK" class="headerlink" title="topK"></a>topK</h4><p><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/">LC 215. 数组中的第K个最大元素</a></p>
@@ -596,736 +528,45 @@
 <p><code>unordered_set, unordered_map, unordered_multiset, unordered_multimap</code> 哈希表<br>    和上面类似，但是绝大部分操作的复杂度是O(1), 不支持lower_bound, upper_bound(), ++–迭代器</p>
 <p><code>bitset</code> 压位 相比于bool数组省空间<br>    bitset&lt;1000&gt; s;<br>    ~ &amp; | ^<br>    &lt;&lt; &gt;&gt;<br>    == !=<br>    <code>[]</code><br>    count() 返回多少个1<br>    any() 判断是否至少有一个1<br>    none() 判断是否全为0<br>    set() 全设为1<br>    set(k, val), 第k位设为1<br>    reset() 全设为0<br>    flip() 全~<br>    flip(k)</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/C-C/" rel="tag"># C/C++</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2021/09/10/Gossip%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headportrait.jpg">
-      <meta itemprop="name" content="Tigerroarm">
-      <meta itemprop="description" content="Tigerroarm的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tigerroarm's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/09/10/Gossip%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Gossip 算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-09-10 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-10T00:00:00+08:00">2021-09-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="Gossip-算法"><a href="#Gossip-算法" class="headerlink" title="Gossip 算法"></a>Gossip 算法</h2><p>在一个有界网络中，每个node传播message给随机的几个节点，经过杂乱无章的通信，最终所有节点都会达成一致。每个节点有可能知道所有的节点，也可能仅仅知道几个邻居节点，最后状态都是一致的，又称为反熵。</p>
-<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
-<li>可扩展性<ul>
-<li>使用$O(\log N)$ rounds 到达所有nodes，N为node的个数。</li>
-</ul>
-</li>
-<li>容错<ul>
-<li>从源头节点到目的节点路径不止一条，可以在不规则为止连接性的网络中运行。</li>
-</ul>
-</li>
-<li>健壮性<ul>
-<li>故障节点不会阻止其他节点发送消息，每个节点都可以随意加入和退出，不会严重啊影响服务质量</li>
-<li>但是如果消息有关于故障节点或者恶意节点，那么系统就不健壮</li>
-</ul>
-</li>
-<li>收敛速度<ul>
-<li>指数收敛速度</li>
-</ul>
-</li>
-</ul>
-<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>两个概念</p>
-<ul>
-<li>Cycle 传播一个消息的轮数</li>
-<li>Fanout 每轮种node通信的节点数</li>
-</ul>
-<ol>
-<li>周期性散播消息</li>
-<li>每轮随机选择fanout个节点散播消息</li>
-<li>每轮散播消息都选择尚未发送过的节点进行散播</li>
-<li>收到消息的节点不再往send节点散播</li>
-</ol>
-<blockquote>
-<p>Goosip 和 raft<br>raft是强一致性的，而gossip是最终一致</p>
-</blockquote>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
-<li>Riak 使用gossip协议分享并通信ring state和bucket properties</li>
-<li>CASSANDRA 分享周围nodes和自己的信息</li>
-<li><a target="_blank" rel="noopener" href="https://github.com/hashicorp/serf">serf</a>：go实现的服务发现和治理的框架</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2021/05/10/C%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headportrait.jpg">
-      <meta itemprop="name" content="Tigerroarm">
-      <meta itemprop="description" content="Tigerroarm的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tigerroarm's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/05/10/C%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">POSIX thread</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-05-10 00:00:00" itemprop="dateCreated datePublished" datetime="2021-05-10T00:00:00+08:00">2021-05-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/C-C/" itemprop="url" rel="index"><span itemprop="name">C/C++</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="POSIX-thread"><a href="#POSIX-thread" class="headerlink" title="POSIX thread"></a>POSIX thread</h1><blockquote>
-<p>Portable operating system interface (POSIX) 是IEEE Computer Society为维持操作系统兼容性定义的一套标准。</p>
-</blockquote>
-<p>POSIX 线程库规定了C/C++的线程API，相比于fork这种创造新进程的方式，使用线程开销更小。</p>
-<ul>
-<li>多处理器用多线程：效果最好</li>
-<li>单处理器使用多线程： 也有增益（一个线程等IO，另外的执行）</li>
-</ul>
-<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><ul>
-<li>多任务同时进行</li>
-<li>阻止潜在的长时间IO等待</li>
-<li>一些地方很多CPU周期</li>
-<li>必须响应异步</li>
-<li>优先级中断</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/05/10/C%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2021/03/01/HTTP%E5%8D%8F%E8%AE%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headportrait.jpg">
-      <meta itemprop="name" content="Tigerroarm">
-      <meta itemprop="description" content="Tigerroarm的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tigerroarm's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/01/HTTP%E5%8D%8F%E8%AE%AE/" class="post-title-link" itemprop="url">HTTP 协议</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-03-01 00:00:00" itemprop="dateCreated datePublished" datetime="2021-03-01T00:00:00+08:00">2021-03-01</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
-                </span>
-            </span>
-
-          
-  
-  
 
 
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>超文本传输协议（HTTP协议）</p>
-<p>特点：</p>
-<ul>
-<li>简单</li>
-<li>易解析</li>
-<li>可读性好</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://www.w3.org/Protocols/rfc2616/rfc2616.html">RFC 2616 Link (HTTP 1.1)</a></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/01/HTTP%E5%8D%8F%E8%AE%AE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/10/Gossip%E7%AE%97%E6%B3%95/" rel="prev" title="Gossip 算法">
+      <i class="fa fa-chevron-left"></i> Gossip 算法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="next" title="操作系统总结">
+      操作系统总结 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
   
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2021/01/16/MATLAB%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8C%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headportrait.jpg">
-      <meta itemprop="name" content="Tigerroarm">
-      <meta itemprop="description" content="Tigerroarm的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tigerroarm's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/16/MATLAB%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8C%97/" class="post-title-link" itemprop="url">MATLAB编程指北</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-16 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-16T00:00:00+08:00">2021-01-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/MATLAB/" itemprop="url" rel="index"><span itemprop="name">MATLAB</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="常用技巧"><a href="#常用技巧" class="headerlink" title="常用技巧"></a>常用技巧</h1><!-- toc -->
-
-<ol>
-<li>折叠<ul>
-<li>ctrl = 折叠代码</li>
-<li>shift ctrl  =展开代码</li>
-</ul>
-</li>
-<li>缩进整理 ctrl i（==全选+ctrl i==）</li>
-<li>跳转到第几行 ctrl g</li>
-<li>F5运行，F10 debug，shift+F5 退出Debug模式</li>
-<li>doc 取代help，直接跳出文档（由于外网，网络可能不稳定）</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/16/MATLAB%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8C%97/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2021/01/02/fullduplex/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headportrait.jpg">
-      <meta itemprop="name" content="Tigerroarm">
-      <meta itemprop="description" content="Tigerroarm的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tigerroarm's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/01/02/fullduplex/" class="post-title-link" itemprop="url">Inband Full-duplex Wireless Communication System</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-01-02 00:00:00" itemprop="dateCreated datePublished" datetime="2021-01-02T00:00:00+08:00">2021-01-02</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/EE/" itemprop="url" rel="index"><span itemprop="name">EE</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="动机"><a href="#动机" class="headerlink" title="动机"></a>动机</h2><p>全双工系统可以使得频谱利用率为原来的两倍。传统的通信系统一般都是半双工系统，例如在时域区分上下行的TDD和在频域区分上下行信号的FDD，带内全双工（In-Band<br>Full-Duplex）讲的就是在同频率上同时进行收发，这样的话在如今如此紧张的频谱情形下能使频谱利用率加倍，那将十分有用。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/01/02/fullduplex/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2020/12/27/DSP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headportrait.jpg">
-      <meta itemprop="name" content="Tigerroarm">
-      <meta itemprop="description" content="Tigerroarm的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tigerroarm's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/27/DSP/" class="post-title-link" itemprop="url">数字信号处理 -- 基于计算机方法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-27 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-27T00:00:00+08:00">2020-12-27</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>目录：</strong></p>
-<!-- toc -->
-
-
-<blockquote>
-<p>本文是我学习《数字信号处理 – 基于计算机的方法》第四版的笔记</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/27/DSP/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2020/12/20/Wireless%20Physical%20Layer/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headportrait.jpg">
-      <meta itemprop="name" content="Tigerroarm">
-      <meta itemprop="description" content="Tigerroarm的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tigerroarm's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/12/20/Wireless%20Physical%20Layer/" class="post-title-link" itemprop="url">无线网络物理层</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-12-20 00:00:00" itemprop="dateCreated datePublished" datetime="2020-12-20T00:00:00+08:00">2020-12-20</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Communications/" itemprop="url" rel="index"><span itemprop="name">Communications</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>本笔记来源于书籍《MIMO OFDM Wireless Communications with MATLAB》</p>
-</blockquote>
-<h1 id="无线信道"><a href="#无线信道" class="headerlink" title="无线信道"></a>无线信道</h1><h2 id="衰落："><a href="#衰落：" class="headerlink" title="衰落："></a>衰落：</h2><p><em>衰落</em>：信号在时间和频率上的上下浮动</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/12/20/Wireless%20Physical%20Layer/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2020/10/09/TMUX/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/headportrait.jpg">
-      <meta itemprop="name" content="Tigerroarm">
-      <meta itemprop="description" content="Tigerroarm的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Tigerroarm's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/09/TMUX/" class="post-title-link" itemprop="url">TMUX</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-10-09 00:00:00" itemprop="dateCreated datePublished" datetime="2020-10-09T00:00:00+08:00">2020-10-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="常用"><a href="#常用" class="headerlink" title="常用"></a>常用</h2><ul>
-<li><code>tmux new -s window_name</code></li>
-<li>ctrl + b + d : detach 当前的window</li>
-<li><code>tmux a -t window_name</code></li>
-<li>ctrl + b + w : 看一下window， panne</li>
-</ul>
-<h2 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h2><ul>
-<li>维护管理终端正在运行的程序</li>
-<li>执行多个任务</li>
-<li>远程使用时尤其方便，断开连接也不会挂掉正在跑的东西
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/09/TMUX/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1372,6 +613,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BF%AB%E6%8E%92"><span class="nav-number">1.1.</span> <span class="nav-text">快排</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#topK"><span class="nav-number">1.1.1.</span> <span class="nav-text">topK</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%92%E5%B9%B6"><span class="nav-number">1.2.</span> <span class="nav-text">归并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%88%86"><span class="nav-number">1.3.</span> <span class="nav-text">二分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E6%95%B4%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">大整数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BC%80%E5%92%8C"><span class="nav-number">1.5.</span> <span class="nav-text">前缀和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8C%BA%E9%97%B4%E5%90%88%E5%B9%B6"><span class="nav-number">1.6.</span> <span class="nav-text">区间合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#KMP"><span class="nav-number">1.7.</span> <span class="nav-text">KMP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B6%E6%9F%A5%E9%9B%86"><span class="nav-number">1.8.</span> <span class="nav-text">并查集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trie-%E6%A0%91"><span class="nav-number">1.9.</span> <span class="nav-text">Trie 树</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8"><span class="nav-number">2.</span> <span class="nav-text">表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">2.1.</span> <span class="nav-text">链表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">2.1.1.</span> <span class="nav-text">实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BE%8B%E9%A2%98"><span class="nav-number">2.1.2.</span> <span class="nav-text">例题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-number">2.2.</span> <span class="nav-text">哈希表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LRU-amp-amp-LFU"><span class="nav-number">2.3.</span> <span class="nav-text">LRU &amp;&amp; LFU</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">栈与队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F-1"><span class="nav-number">3.1.</span> <span class="nav-text">实现方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E6%A0%88"><span class="nav-number">3.2.</span> <span class="nav-text">单调栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%95%E8%B0%83%E9%98%9F%E5%88%97"><span class="nav-number">3.3.</span> <span class="nav-text">单调队列</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E3%80%81%E5%9B%BE"><span class="nav-number">4.</span> <span class="nav-text">树、图</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A0%86"><span class="nav-number">4.1.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA"><span class="nav-number">4.2.</span> <span class="nav-text">搜索与图论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F-2"><span class="nav-number">4.2.1.</span> <span class="nav-text">实现方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DFS"><span class="nav-number">4.2.2.</span> <span class="nav-text">DFS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BFS"><span class="nav-number">4.2.3.</span> <span class="nav-text">BFS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF"><span class="nav-number">4.2.4.</span> <span class="nav-text">最短路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91"><span class="nav-number">4.2.5.</span> <span class="nav-text">最小生成树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%88%86%E5%9B%BE"><span class="nav-number">4.2.6.</span> <span class="nav-text">二分图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%A6"><span class="nav-number">5.</span> <span class="nav-text">数学</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B4%A8%E6%95%B0"><span class="nav-number">5.1.</span> <span class="nav-text">质数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%A6%E6%95%B0"><span class="nav-number">5.2.</span> <span class="nav-text">约数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#STL"><span class="nav-number">6.1.</span> <span class="nav-text">STL</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1556,59 +798,6 @@
   
 
   
-      
-
-<script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
-      }
-    };
-    (function () {
-      var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-
-    
 
   
 
