@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://blog.difan.tech/images/modern_os_assets/file_structure.png">
 <meta property="og:image" content="https://blog.difan.tech/images/modern_os_assets/file_att.png">
 <meta property="article:published_time" content="2022-01-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-19T12:14:36.904Z">
+<meta property="article:modified_time" content="2022-02-19T12:19:49.417Z">
 <meta property="article:author" content="Tigerroarm">
 <meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
@@ -276,6 +276,7 @@
 <h3 id="进程模型"><a href="#进程模型" class="headerlink" title="进程模型"></a>进程模型</h3><ul>
 <li>多道程序设计（multiprogramming）: 指仅使用一个CPU（单核），在进程中来回切换，造成多个进程同时进行的效果。</li>
 </ul>
+<span id="more"></span>
 <p><strong>进程与程序的区别</strong>：<br>书中类比食谱和做饭的活动，食谱就是程序（program），而做饭的过程（读食谱，拿食材，做饭）就是进程的概念</p>
 <p><strong>进程创建</strong></p>
 <p>引起创建进程的事件：</p>
@@ -309,10 +310,8 @@
 <h3 id="进程实现"><a href="#进程实现" class="headerlink" title="进程实现"></a>进程实现</h3><p>在具体的实现中，OS维持一张进程表：process table，每一个项成为进程控制块（process control block），包含了关于进程的重要信息：PC: program counter，栈指针，内存分配，打开文件的状态，调度信息等等。</p>
 <p>如图所示，IO对于CPU利用率影响很大：<br><img src="/images/modern_os_assets/2.1.png" alt="image"></p>
 <h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><ul>
-<li><p>为什么要有线程</p>
-</li>
-<li><p>线程实现</p>
-</li>
+<li>为什么要有线程</li>
+<li>线程实现</li>
 </ul>
 <p>内存是重要资源，操作系统的存储管理主要是针对内存的管理。</p>
 <p>直接引入内存地址带来的问题（在multiprogramming 计算机中）：</p>

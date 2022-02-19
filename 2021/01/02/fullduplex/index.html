@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://blog.difan.tech/images/media/ca41f139d0ebf6a5d3d7f7e9cb645d96.jpg">
 <meta property="og:image" content="https://blog.difan.tech/images/media/4eb4d1f8c0c6d2ad4a4f7cfaea47ecbd.png">
 <meta property="article:published_time" content="2021-01-01T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-02-19T12:14:55.968Z">
+<meta property="article:modified_time" content="2022-02-19T12:19:58.633Z">
 <meta property="article:author" content="Tigerroarm">
 <meta property="article:tag" content="EE">
 <meta name="twitter:card" content="summary">
@@ -285,20 +285,15 @@
 <p>图1中，我们看到，SIC中线性分量是主要分量，发射机噪声为-40dBm，由于OFDM的PAPR特性所以我们需要预留10dB，即模拟域需要提供60dB的消除能力。</p>
 <h2 id="自干扰分析"><a href="#自干扰分析" class="headerlink" title="自干扰分析"></a>自干扰分析</h2><p>在WiFi场景下，自干扰主要有以下三种（如图1所示）</p>
 <ul>
-<li><p>天线与环行器阻抗不匹配导致的反射分量 RA</p>
-</li>
-<li><p>环行器1端口到3端口的泄露分量 I</p>
-</li>
-<li><p>环境散射分量RC</p>
-</li>
+<li>天线与环行器阻抗不匹配导致的反射分量 RA</li>
+<li>环行器1端口到3端口的泄露分量 I</li>
+<li>环境散射分量RC</li>
 </ul>
 <p><img src="/images/media/4685cb8996f44b2128c3c41a1981c02c.png" alt=""></p>
 <p><strong>图 2</strong> 自干扰分析图</p>
 <h2 id="具体实现方法"><a href="#具体实现方法" class="headerlink" title="具体实现方法"></a>具体实现方法</h2><h3 id="4-1-天线隔离"><a href="#4-1-天线隔离" class="headerlink" title="4.1 天线隔离"></a>4.1 天线隔离</h3><ul>
-<li><p>环行器 Circulator（大部分的方法）</p>
-</li>
-<li><p>电平衡 EBD (×)</p>
-</li>
+<li>环行器 Circulator（大部分的方法）</li>
+<li>电平衡 EBD (×)</li>
 </ul>
 <h3 id="4-2-RF域（模拟域）干扰抵消"><a href="#4-2-RF域（模拟域）干扰抵消" class="headerlink" title="4.2 RF域（模拟域）干扰抵消"></a>4.2 RF域（模拟域）干扰抵消</h3><h4 id="4-2-1-IMT-方法（RF-front）-2"><a href="#4-2-1-IMT-方法（RF-front）-2" class="headerlink" title="4.2.1 IMT 方法（RF front）[2]"></a>4.2.1 IMT 方法（RF front）[2]</h4><p>I和RA因为没有路径损耗，具有主要的能量，是我们在模拟域/RF域主要需要抵消的信号。RC由于其环境反射特性可以在数字域建模消除。</p>
 <p>使用IMT网络控制RA的振幅和相位，直接抵消I。</p>
@@ -332,10 +327,8 @@
 <p>记忆效应分为长记忆效应（线性记忆效应）和短记忆效应（非线性记忆效应），前者与匹配网络有关，后者主要由于功放的低频散射，具体模型如表1所示。</p>
 <p>功放非线性指标</p>
 <ul>
-<li><p>1dB压缩点:相对线性增益降低1dB的输出功率点</p>
-</li>
-<li><p>三阶截断点:IP3</p>
-</li>
+<li>1dB压缩点:相对线性增益降低1dB的输出功率点</li>
+<li>三阶截断点:IP3</li>
 </ul>
 <p><strong>表1</strong> 常用功放模型分类</p>
 <table>
