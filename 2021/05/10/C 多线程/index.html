@@ -30,7 +30,7 @@
 <meta property="og:description" content="POSIX thread Portable operating system interface (POSIX) 是IEEE Computer Society为维持操作系统兼容性定义的一套标准。  POSIX 线程库规定了C&#x2F;C++的线程API，相比于fork这种创造新进程的方式，使用线程开销更小。  多处理器用多线程：效果最好 单处理器使用多线程： 也有增益（一个线程等IO，另外的执行）  适用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-09T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-05-13T08:57:46.729Z">
+<meta property="article:modified_time" content="2022-02-19T12:14:55.968Z">
 <meta property="article:author" content="Tigerroarm">
 <meta property="article:tag" content="多线程">
 <meta property="article:tag" content="Unix">
@@ -131,17 +131,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">13</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">14</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">21</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">23</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">8</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -282,13 +282,12 @@
 <li>必须响应异步</li>
 <li>优先级中断</li>
 </ul>
-<a id="more"></a>
+<span id="more"></span>
 
 <h2 id="线程基础"><a href="#线程基础" class="headerlink" title="线程基础"></a>线程基础</h2><h3 id="线程共享模型"><a href="#线程共享模型" class="headerlink" title="线程共享模型"></a>线程共享模型</h3><p>所有线程都可以访问相同的全局共享内存,但是也有自己的私有数据。</p>
 <h3 id="线程安全"><a href="#线程安全" class="headerlink" title="线程安全"></a>线程安全</h3><p>由多个线程共享资源引起的，如果例程没有使用某种类型的同步结构来防止数据损坏，那么它就不是线程安全的。</p>
 <h3 id="线程限制"><a href="#线程限制" class="headerlink" title="线程限制"></a>线程限制</h3><p>依赖于具体实现（我的WSLunlimit -Hu）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">tigerroarm@Mudifan:~$ <span class="built_in">ulimit</span> -a</span><br><span class="line">core file size          (blocks, -c) 0</span><br><span class="line">data seg size           (kbytes, -d) unlimited</span><br><span class="line">scheduling priority             (-e) 0</span><br><span class="line">file size               (blocks, -f) unlimited</span><br><span class="line">pending signals                 (-i) 50633</span><br><span class="line">max locked memory       (kbytes, -l) 64</span><br><span class="line">max memory size         (kbytes, -m) unlimited</span><br><span class="line">open files                      (-n) 1024</span><br><span class="line">pipe size            (512 bytes, -p) 8</span><br><span class="line">POSIX message queues     (bytes, -q) 819200</span><br><span class="line">real-time priority              (-r) 0</span><br><span class="line">stack size              (kbytes, -s) 8192</span><br><span class="line">cpu time               (seconds, -t) unlimited</span><br><span class="line">max user processes              (-u) 50633</span><br><span class="line">virtual memory          (kbytes, -v) unlimited</span><br><span class="line">file locks                      (-x) unlimited</span><br></pre></td></tr></table></figure>
-
 
 <p>线程共享如下资源</p>
 <ul>
@@ -312,6 +311,7 @@
 <p>编译程序需要用：</p>
 <p><code>gcc -pthread thread_program.c</code></p>
 <h2 id="创建线程"><a href="#创建线程" class="headerlink" title="创建线程"></a>创建线程</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pthread_create</span><span class="params">(<span class="keyword">pthread_t</span> * thread, </span></span></span><br><span class="line"><span class="function"><span class="params">                      <span class="keyword">const</span> <span class="keyword">pthread_attr_t</span> * attr,</span></span></span><br><span class="line"><span class="function"><span class="params">                      <span class="keyword">void</span> * (*start_routine)(<span class="keyword">void</span> *), </span></span></span><br><span class="line"><span class="function"><span class="params">                      <span class="keyword">void</span> *arg)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>thread : 返回的thread ID</li>
 <li>attr: 使用默认thread 就NULL</li>
@@ -326,16 +326,18 @@
 </ul>
 <h3 id="mutex"><a href="#mutex" class="headerlink" title="mutex:"></a>mutex:</h3><p>用<code>pthread_mutex_lock</code>和<code>pthread_mutex_unlock</code>加锁解锁</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">functionC</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">pthread_mutex_t</span> mutex1 = PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"><span class="keyword">int</span>  counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">int</span> rc1, rc2;</span><br><span class="line">   <span class="keyword">pthread_t</span> thread1, thread2;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Create independent threads each of which will execute functionC */</span></span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>( (rc1=pthread_create( &amp;thread1, <span class="literal">NULL</span>, &amp;functionC, <span class="literal">NULL</span>)) )</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;Thread creation failed: %d\n&quot;</span>, rc1);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">if</span>( (rc2=pthread_create( &amp;thread2, <span class="literal">NULL</span>, &amp;functionC, <span class="literal">NULL</span>)) )</span><br><span class="line">   &#123;</span><br><span class="line">      <span class="built_in">printf</span>(<span class="string">&quot;Thread creation failed: %d\n&quot;</span>, rc2);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Wait till threads are complete before main continues. Unless we  */</span></span><br><span class="line">   <span class="comment">/* wait we run the risk of executing an exit which will terminate   */</span></span><br><span class="line">   <span class="comment">/* the process and all threads before the threads have completed.   */</span></span><br><span class="line"></span><br><span class="line">   pthread_join( thread1, <span class="literal">NULL</span>);</span><br><span class="line">   pthread_join( thread2, <span class="literal">NULL</span>); </span><br><span class="line"></span><br><span class="line">   <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">functionC</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   pthread_mutex_lock( &amp;mutex1 );</span><br><span class="line">   counter++;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;Counter value: %d\n&quot;</span>,counter);</span><br><span class="line">   pthread_mutex_unlock( &amp;mutex1 );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="Joins"><a href="#Joins" class="headerlink" title="Joins"></a>Joins</h3><p>等待线程完成。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NTHREADS 10</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">thread_function</span><span class="params">(<span class="keyword">void</span> *)</span></span>;</span><br><span class="line"><span class="keyword">pthread_mutex_t</span> mutex1 = PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"><span class="keyword">int</span>  counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">pthread_t</span> thread_id[NTHREADS];</span><br><span class="line">   <span class="keyword">int</span> i, j;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">for</span>(i=<span class="number">0</span>; i &lt; NTHREADS; i++)</span><br><span class="line">   &#123;</span><br><span class="line">      pthread_create( &amp;thread_id[i], <span class="literal">NULL</span>, thread_function, <span class="literal">NULL</span> );</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">for</span>(j=<span class="number">0</span>; j &lt; NTHREADS; j++)</span><br><span class="line">   &#123;</span><br><span class="line">      pthread_join( thread_id[j], <span class="literal">NULL</span>); </span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">   <span class="comment">/* Now that all threads are complete I can print the final result.     */</span></span><br><span class="line">   <span class="comment">/* Without the join I could be printing a value before all the threads */</span></span><br><span class="line">   <span class="comment">/* have been completed.                                                */</span></span><br><span class="line"></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;Final counter value: %d\n&quot;</span>, counter);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">thread_function</span><span class="params">(<span class="keyword">void</span> *dummyPtr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;Thread number %ld\n&quot;</span>, pthread_self());</span><br><span class="line">   pthread_mutex_lock( &amp;mutex1 );</span><br><span class="line">   counter++;</span><br><span class="line">   pthread_mutex_unlock( &amp;mutex1 );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;pthread.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> NTHREADS 10</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">thread_function</span><span class="params">(<span class="keyword">void</span> *)</span></span>;</span><br><span class="line"><span class="keyword">pthread_mutex_t</span> mutex1 = PTHREAD_MUTEX_INITIALIZER;</span><br><span class="line"><span class="keyword">int</span>  counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">main()</span><br><span class="line">&#123;</span><br><span class="line">   <span class="keyword">pthread_t</span> thread_id[NTHREADS];</span><br><span class="line">   <span class="keyword">int</span> i, j;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">for</span>(i=<span class="number">0</span>; i &lt; NTHREADS; i++)</span><br><span class="line">   &#123;</span><br><span class="line">      pthread_create( &amp;thread_id[i], <span class="literal">NULL</span>, thread_function, <span class="literal">NULL</span> );</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">for</span>(j=<span class="number">0</span>; j &lt; NTHREADS; j++)</span><br><span class="line">   &#123;</span><br><span class="line">      pthread_join( thread_id[j], <span class="literal">NULL</span>); </span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="comment">/* Now that all threads are complete I can print the final result.     */</span></span><br><span class="line">   <span class="comment">/* Without the join I could be printing a value before all the threads */</span></span><br><span class="line">   <span class="comment">/* have been completed.                                                */</span></span><br><span class="line"></span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;Final counter value: %d\n&quot;</span>, counter);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> *<span class="title">thread_function</span><span class="params">(<span class="keyword">void</span> *dummyPtr)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">&quot;Thread number %ld\n&quot;</span>, pthread_self());</span><br><span class="line">   pthread_mutex_lock( &amp;mutex1 );</span><br><span class="line">   counter++;</span><br><span class="line">   pthread_mutex_unlock( &amp;mutex1 );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h3 id="Condition-Variables"><a href="#Condition-Variables" class="headerlink" title="Condition Variables"></a>Condition Variables</h3><h4 id="为什么需要条件变量"><a href="#为什么需要条件变量" class="headerlink" title="为什么需要条件变量"></a>为什么需要条件变量</h4><p>使用互斥锁的时候，如果有一个下面的情况</p>
 <ul>
 <li>线程1: 如果有变化，就把本地buff save 到cloud上</li>
 <li>线程2：改本地buff，标记变化</li>
 </ul>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//thread 1</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    pthread_mutex_lock(lock); </span><br><span class="line">    <span class="keyword">if</span>(is_change) &#123;</span><br><span class="line">        save_to_cloud(buff);</span><br><span class="line">        is_change = <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    pthread_mutex_unlock(lock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//thread 2</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">char</span> = tmp[<span class="number">50</span>];</span><br><span class="line">    read(tmp, <span class="number">50</span>);</span><br><span class="line">    </span><br><span class="line">    pthread_mutex_lock(lock);</span><br><span class="line">    <span class="built_in">strcpy</span>(buff, tmp);</span><br><span class="line">    is_change = <span class="literal">true</span>;</span><br><span class="line">    pthead_mutex_unlock(lock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//thread 2</span></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">char</span> = tmp[<span class="number">50</span>];</span><br><span class="line">    read(tmp, <span class="number">50</span>);</span><br><span class="line"></span><br><span class="line">    pthread_mutex_lock(lock);</span><br><span class="line">    <span class="built_in">strcpy</span>(buff, tmp);</span><br><span class="line">    is_change = <span class="literal">true</span>;</span><br><span class="line">    pthead_mutex_unlock(lock);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>如果这时候is_change 一直是false， 那么thread1一直在执行循环。</p>
 <p>想达到的目的是：<strong>直到某个状态改变，才开始执行</strong></p>
@@ -484,20 +486,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -524,6 +526,10 @@
         
         
           <li>
+            <a href="/2022/01/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="操作系统总结" target="_blank">操作系统总结</a>
+          </li>
+        
+          <li>
             <a href="/2021/09/10/Gossip%E7%AE%97%E6%B3%95/" title="Gossip 算法" target="_blank">Gossip 算法</a>
           </li>
         
@@ -537,10 +543,6 @@
         
           <li>
             <a href="/2021/01/16/MATLAB%E7%BC%96%E7%A8%8B%E6%8C%87%E5%8C%97/" title="MATLAB编程指北" target="_blank">MATLAB编程指北</a>
-          </li>
-        
-          <li>
-            <a href="/2021/01/02/fullduplex/" title="Inband Full-duplex Wireless Communication System" target="_blank">Inband Full-duplex Wireless Communication System</a>
           </li>
         
       </ul>
@@ -565,7 +567,7 @@
 <div class="copyright">
   
   &copy; 2020 – 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
