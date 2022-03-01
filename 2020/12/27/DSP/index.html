@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"blog.difan.tech","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="目录：     本文是我学习《数字信号处理 – 基于计算机的方法》第四版的笔记">
+  <meta name="description" content="目录：    本文是我学习《数字信号处理 – 基于计算机的方法》第四版的笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数字信号处理 -- 基于计算机方法">
 <meta property="og:url" content="https://blog.difan.tech/2020/12/27/DSP/index.html">
 <meta property="og:site_name" content="Tigerroarm&#39;s Blog">
-<meta property="og:description" content="目录：     本文是我学习《数字信号处理 – 基于计算机的方法》第四版的笔记">
+<meta property="og:description" content="目录：    本文是我学习《数字信号处理 – 基于计算机的方法》第四版的笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.difan.tech/images/DSP/2-1-01.png">
 <meta property="og:image" content="https://blog.difan.tech/images/DSP/2-1-02.png">
@@ -134,17 +134,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">16</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">28</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -273,12 +273,10 @@
         <p><strong>目录：</strong></p>
 <!-- toc -->
 
-
 <blockquote>
 <p>本文是我学习《数字信号处理 – 基于计算机的方法》第四版的笔记</p>
 </blockquote>
-<a id="more"></a>
-
+<span id="more"></span>
 
 <h1 id="信号与信号处理"><a href="#信号与信号处理" class="headerlink" title="信号与信号处理"></a>信号与信号处理</h1><h2 id="信号"><a href="#信号" class="headerlink" title="信号"></a>信号</h2><h3 id="信号分类"><a href="#信号分类" class="headerlink" title="信号分类"></a>信号分类</h3><ul>
 <li>振幅</li>
@@ -303,35 +301,37 @@
 <li><p>希尔伯特变换 HT</p>
 <ul>
 <li>$h_{HT} = \frac{1}{\pi t}$</li>
-<li>$H_{HT}(j\Omega) = \begin{cases} -j &amp; \Omega &gt; 0 \\  j &amp;  \Omega &lt; 0  \end{cases} $<!--这里要用\\\来表示换行-->
-<h4 id="实数信号"><a href="#实数信号" class="headerlink" title="实数信号"></a>实数信号</h4></li>
+<li>$H_{HT}(j\Omega) = \begin{cases} -j &amp; \Omega &gt; 0 \\  j &amp;  \Omega &lt; 0  \end{cases} $</li>
 </ul>
 </li>
-<li><p>实数信号</p>
-<ul>
+</ul>
+<!--这里要用\\\来表示换行-->
+
+<h4 id="实数信号"><a href="#实数信号" class="headerlink" title="实数信号"></a>实数信号</h4><ul>
+<li>实数信号<ul>
 <li>FT性质 =&gt; 幅度偶对称，相位奇对称</li>
 <li>正频率 + 负频率 $X(j\Omega) = X_p(j\Omega)+X_n(j\Omega)$</li>
 <li>经过HT =&gt; $\hat{X}(j\Omega) = -j X_p(j\Omega)+jX_n(j\Omega)$  =&gt; $\hat{x}(t)$也是实数信号</li>
 </ul>
 </li>
 </ul>
-<h4 id="解析信号"><a href="#解析信号" class="headerlink" title="解析信号"></a>解析信号</h4><p>=&gt; 解析信号  $y(t) = x(t) + j\hat{x}(t)$ </p>
+<h4 id="解析信号"><a href="#解析信号" class="headerlink" title="解析信号"></a>解析信号</h4><p>=&gt; 解析信号  $y(t) = x(t) + j\hat{x}(t)$</p>
 <p>$x(t), \hat{x}(t)$ 为<strong>同相分量</strong>和<strong>正交分量</strong></p>
 <p>$Y(j\Omega) = X(j\Omega)+j\hat{X}(j\Omega) = 2 X_p(j\Omega)$</p>
 <p>我们可以看出<em>解析信号只包含正频率的部分</em></p>
 <h2 id="信号运算"><a href="#信号运算" class="headerlink" title="信号运算"></a>信号运算</h2><ul>
-<li>简单运算<ul>
+<li><p>简单运算</p>
+<ul>
 <li>衰减</li>
-<li>延迟 $y(t) = x(t-t_0)$ </li>
+<li>延迟 $y(t) = x(t-t_0)$</li>
 <li>相加，相乘</li>
-<li>积分 $y(t) = \int_{-\infty}^{t}x(\tau) d\tau$ </li>
+<li>积分 $y(t) = \int_{-\infty}^{t}x(\tau) d\tau$</li>
 <li>微分 $y(t) = \frac{dx(t)}{dt}$</li>
 <li>傅里叶变换Fourier Transform(FT)  $X(j\Omega) = \int_{-\infty}^{+\infty}x(t) e^{-j\Omega t} dt$</li>
 </ul>
 </li>
-</ul>
+<li><p>滤波</p>
 <ul>
-<li>滤波<ul>
 <li>$y(t) = \int_{-\infty}^{+\infty} h(t-\tau)x(\tau)d\tau$</li>
 <li>低通，高通，带通</li>
 <li>带阻（陷波器3）</li>
@@ -349,21 +349,24 @@
 </ul>
 <h1 id="时域离散时间信号"><a href="#时域离散时间信号" class="headerlink" title="时域离散时间信号"></a>时域离散时间信号</h1><p>离散时间信号， Why？</p>
 <blockquote>
-<p> 现代计算机、微处理器、嵌入式设备都是处理数字信号的，但是我们的物理世界充斥着连续信号（模拟信号），如声音信号等。而直接处理模拟信号是比较困难的（1G通信），设备器件做的很大（大哥大），而且不便于加密（你树根天线就能窃听到隔壁老王在电话里说什么）。这就涉及到<em>模拟信号数字化</em>（<strong>采样，或者抽样</strong>），转换为数字信号进行处理。</p>
+<p>现代计算机、微处理器、嵌入式设备都是处理数字信号的，但是我们的物理世界充斥着连续信号（模拟信号），如声音信号等。而直接处理模拟信号是比较困难的（1G通信），设备器件做的很大（大哥大），而且不便于加密（你树根天线就能窃听到隔壁老王在电话里说什么）。这就涉及到<em>模拟信号数字化</em>（<strong>采样，或者抽样</strong>），转换为数字信号进行处理。</p>
 </blockquote>
 <h2 id="时域表示"><a href="#时域表示" class="headerlink" title="时域表示"></a>时域表示</h2><p>采样： $x[n] = x_a{(t)}|_{t = nT} = x_a(nT)$</p>
 <p>采样频率（抽样频率）： $F_t = \frac{1}{T}$</p>
 <p>采样得到的值由于ADC（数模转换器）的精度问题（例如12 Bit ADC）有<strong>舍入的问题</strong>。</p>
-<h2 id="频域表示"><a href="#频域表示" class="headerlink" title="频域表示"></a>频域表示</h2><p>归一化角频率：$\omega_c$ 为归一化角频率，因为样本$n$是无量纲的，所以应该是弧度/样本，且<br>$$<br>\omega = 2\pi f<br>$$<br>$f$ 是归一化角频率， 单位是周期/样本，即一个样本多少周期</p>
+<h2 id="频域表示"><a href="#频域表示" class="headerlink" title="频域表示"></a>频域表示</h2><p>归一化角频率：$\omega_c$ 为归一化角频率，因为样本$n$是无量纲的，所以应该是弧度/样本，且</p>
+<p>$$<br>\omega = 2\pi f<br>$$</p>
+<p>$f$ 是归一化角频率， 单位是周期/样本，即一个样本多少周期</p>
 <h2 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h2><p><strong>例子2.1：集合平均</strong></p>
 <p>$s[n]=2[n(0.9)^n]$ 和噪声$d(n)$，受干扰后的集合平均可以减少干扰影响</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% Program_2_1</span></span><br><span class="line"><span class="comment">% Generation of the ensemble average</span></span><br><span class="line">N = <span class="number">50</span>; <span class="comment">% total number</span></span><br><span class="line">n = <span class="number">0</span> : N<span class="number">-1</span>;</span><br><span class="line">s = <span class="number">2</span>*(n.*<span class="number">0.9</span>.^n); <span class="comment">% generate the original signal s[n]</span></span><br><span class="line">rng();</span><br><span class="line">d = <span class="built_in">rand</span>(N, <span class="number">1</span>) - <span class="number">0.5</span>; <span class="comment">% generate the noise signal d[n]</span></span><br><span class="line"></span><br><span class="line">x1 = s+d&#x27;; <span class="comment">% the corrupted signal</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the corrupted signal</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">stem(n, x1);</span><br><span class="line">xlabel(<span class="string">&#x27;Time Index n&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;Amplitude&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;The Corrupted Signal&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the Noise Signal</span></span><br><span class="line">subplot(<span class="number">2</span>,<span class="number">1</span>,<span class="number">2</span>)</span><br><span class="line">stem(n, d)</span><br><span class="line">xlabel(<span class="string">&#x27;Time Index n&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;Amplitude&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;The Noise Signal&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">% Ensemble average</span></span><br><span class="line"><span class="keyword">for</span> m = <span class="number">1</span>:<span class="number">50</span></span><br><span class="line">    rng();</span><br><span class="line">    noise = <span class="built_in">rand</span>(N,<span class="number">1</span>) - <span class="number">0.5</span>;</span><br><span class="line">    x = s + noise&#x27;;</span><br><span class="line">    x1 = x1 + x;</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">x1 = x1 / N;</span><br><span class="line"></span><br><span class="line"><span class="comment">% Plot the ensemble average signal</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line">stem(n, x1);</span><br><span class="line">xlabel(<span class="string">&#x27;Time Index n&#x27;</span>)</span><br><span class="line">ylabel(<span class="string">&#x27;Amplitude&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;The Ensemble Average Signal&#x27;</span>)</span><br></pre></td></tr></table></figure>
 
 
 
+
 <p><img src="/images/DSP/2-1-01.png" alt=""></p>
 <p><img src="/images/DSP/2-1-02.png" alt=""></p>
-<h3 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h3><p>使用函数<code>conv</code>即可作为卷积运算</p>
+<h3 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h3><p>使用函数 <code>conv</code>即可作为卷积运算</p>
 <h3 id="抽样率转换"><a href="#抽样率转换" class="headerlink" title="抽样率转换"></a>抽样率转换</h3><p><strong>抽样率转换比:</strong>  $\frac{F_T^{‘}}{F_T} = R$, $F_T$ 是原本的抽样率, 再拿$F_T^{‘}$ 去抽样</p>
 <h3 id="序列分类"><a href="#序列分类" class="headerlink" title="序列分类"></a>序列分类</h3><ul>
 <li>周期、非周期</li>
@@ -471,20 +474,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -515,6 +518,10 @@
           </li>
         
           <li>
+            <a href="/2021/10/20/C++%E5%9F%BA%E7%A1%80%E7%AE%80%E6%98%8E%E6%80%BB%E7%BB%93/" title="C++基础简明总结" target="_blank">C++基础简明总结</a>
+          </li>
+        
+          <li>
             <a href="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="常用数据结构与算法代码" target="_blank">常用数据结构与算法代码</a>
           </li>
         
@@ -524,10 +531,6 @@
         
           <li>
             <a href="/2021/05/10/C%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="POSIX thread" target="_blank">POSIX thread</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/01/HTTP%E5%8D%8F%E8%AE%AE/" title="HTTP 协议" target="_blank">HTTP 协议</a>
           </li>
         
       </ul>

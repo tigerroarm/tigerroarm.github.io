@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.jpg">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.jpg">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <meta name="google-site-verification" content="google7750c428b5128303">
+  <meta name="baidu-site-verification" content="DsamQtmEvVB9mvoD">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.loli.net/css?family=Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.difan.tech","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="基础语法编译 预处理 Preprocessing cpp test.cpp -&gt; test.i 编译 Compilation g++ -g -S test.i 汇编 assembly as -o test.o test.s gcc -g -c test.c; 链接 linker ld -o …  表达式左值右值lvalue, rvalue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++基础简明总结">
+<meta property="og:url" content="https://blog.difan.tech/2021/10/20/C++%E5%9F%BA%E7%A1%80%E7%AE%80%E6%98%8E%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Tigerroarm&#39;s Blog">
+<meta property="og:description" content="基础语法编译 预处理 Preprocessing cpp test.cpp -&gt; test.i 编译 Compilation g++ -g -S test.i 汇编 assembly as -o test.o test.s gcc -g -c test.c; 链接 linker ld -o …  表达式左值右值lvalue, rvalue">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-01T12:12:18.873Z">
+<meta property="article:author" content="Tigerroarm">
+<meta property="article:tag" content="C++">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.difan.tech/2021/10/20/C++%E5%9F%BA%E7%A1%80%E7%AE%80%E6%98%8E%E6%80%BB%E7%BB%93/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>C++基础简明总结 | Tigerroarm's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Tigerroarm's Blog" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Tigerroarm's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay naive, stay simple.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">28</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2021/10/20/C++%E5%9F%BA%E7%A1%80%E7%AE%80%E6%98%8E%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headportrait.jpg">
+      <meta itemprop="name" content="Tigerroarm">
+      <meta itemprop="description" content="Tigerroarm的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tigerroarm's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++基础简明总结
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-20 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-20T00:00:00+08:00">2021-10-20</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+            </span>
+
+          
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/10/20/C++%E5%9F%BA%E7%A1%80%E7%AE%80%E6%98%8E%E6%80%BB%E7%BB%93/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/10/20/C++%E5%9F%BA%E7%A1%80%E7%AE%80%E6%98%8E%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><ul>
+<li>预处理 Preprocessing cpp test.cpp -&gt; test.i</li>
+<li>编译 Compilation g++ -g -S test.i</li>
+<li>汇编 assembly as -o test.o test.s gcc -g -c test.c;</li>
+<li>链接 linker ld -o …</li>
+</ul>
+<h2 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h2><h4 id="左值右值"><a href="#左值右值" class="headerlink" title="左值右值"></a>左值右值</h4><p>lvalue, rvalue</p>
+<span id="more"></span>
+<blockquote>
+<p>In C: 左值可以放在赋值语句左边，右值则不行。</p>
+</blockquote>
+<p>左值利用的主要是对象的身份，右值则利用的是对象的值</p>
+<ul>
+<li>decltype 作用左值时自动变成引用</li>
+<li>取地址符作用于一个左值，返回一个右值（指针）</li>
+<li>赋值运算符左侧作为左值运算对象</li>
+</ul>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><p>一般来说是占用空间小的向占用空间大的方向转换，如果相同则无符号转换。</p>
+<ul>
+<li>数组转换为指针：赋值时</li>
+<li>指针转换</li>
+<li>转换为bool</li>
+<li>non-const 指针或引用 向const 指针或引用转换</li>
+<li>类的类型转换 如 <code>while (cin &gt;&gt; str)</code> IO库中定义了istream转换规则。</li>
+</ul>
+<p>显示转换：</p>
+<ul>
+<li>强制类型转换</li>
+<li>命名的强制类型转换<ul>
+<li>static_cast <code>double db = static_cast&lt;double&gt;(j) /i;</code> 大转小也可以（精度损失）</li>
+<li>dynamic_cast 支持运行时类型识别</li>
+<li>const_cast 改变运算对象的底层const，去掉const，只能改变const属性，无法改动类型</li>
+</ul>
+</li>
+</ul>
+<h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><ul>
+<li><code>throw</code>，结束程序执行，回到函数调用处，抛出一个异常,并做资源清理</li>
+<li><code>try-catch</code></li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyException</span> :</span> <span class="keyword">public</span> exception &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="built_in">string</span> <span class="title">msg</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">&quot;my exception&quot;</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">	<span class="keyword">throw</span> MyException();</span><br><span class="line">&#125; <span class="keyword">catch</span> (MyException&amp; e) &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;MyException\n&quot;</span>;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; e.msg();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h2><h3 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h3><p>头文件</p>
+<ul>
+<li>iostream</li>
+<li>fstream</li>
+<li>sstream</li>
+</ul>
+<p>状态查看</p>
+<ul>
+<li>s.bad()</li>
+<li>s.good()</li>
+<li>s.fail() 数据错误</li>
+<li>s.bad() IO流错误</li>
+<li>s.clear() 状态位复位</li>
+<li>s.eof() 文件结束符</li>
+</ul>
+<h3 id="流"><a href="#流" class="headerlink" title="流"></a>流</h3><p>为什么要有Stream ?</p>
+<pre><code>Stream 是输入输出的抽象，提供了String类型和别的类型数据的相互转换</code></pre><p>Stream分类：</p>
+<ul>
+<li>输入流 InputStream </li>
+<li>输出流 OutputStream</li>
+</ul>
+<h4 id="输出流"><a href="#输出流" class="headerlink" title="输出流"></a>输出流</h4><p>只能用 &lt;&lt; 符号接受数据，将数据转换为String并发送给Stream<br>举例：</p>
+<ul>
+<li>std::cout</li>
+<li>std::ofstream ：file stream是一种type</li>
+<li>ostringstring :把String当成Stream</li>
+</ul>
+<p>fstream <strong>文件的例子</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//You should include fstream</span></span><br><span class="line"><span class="function">ofstream <span class="title">myStream</span><span class="params">(<span class="string">&quot;File.txt&quot;</span>)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>打开文件 <code>void open(const char *filename), ios::openmode mode);</code><ul>
+<li>ios::app 追加到文件末尾</li>
+<li>ios::ate 定位到文件末尾</li>
+<li>ios::in 用于读取</li>
+<li>ios::out 写入文件</li>
+<li>ios::trunc 截断模式,覆盖掉原有</li>
+<li>e.g. <code>ofstm.open(&quot;file.dat&quot;, ios::out|ios::trunc);</code></li>
+</ul>
+</li>
+<li>关闭 void close();</li>
+</ul>
+<p>ostringstream 的例子(stringstream可以读入读出)：<strong>字符串的例子</strong></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sstream&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="function"><span class="built_in">ostringstream</span> <span class="title">oss</span><span class="params">(<span class="string">&quot;Ito En Green Tea&quot;</span>)</span></span>;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; oss.str() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    oss &lt;&lt; <span class="number">16.9</span> &lt;&lt; <span class="string">&quot;Oh&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; oss.str() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Ito En Green Tea</span><br><span class="line">16.9Oh Green Tea</span><br></pre></td></tr></table></figure>
+
+<h4 id="输入流"><a href="#输入流" class="headerlink" title="输入流"></a>输入流</h4><ul>
+<li>std::cin</li>
+<li>ifstream</li>
+</ul>
+<p>fstream 的例子</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//You should include fstream</span></span><br><span class="line"><span class="function">ifstream <span class="title">myFileStream</span><span class="params">(<span class="string">&quot;file.txt&quot;</span>)</span></span>;</span><br><span class="line"><span class="keyword">int</span> integer;</span><br><span class="line">myFileStream &gt;&gt; integer;</span><br><span class="line"><span class="comment">// Or:</span></span><br><span class="line">ifstream myFileStream2;</span><br><span class="line">myFileStream2.open(<span class="string">&quot;file.txt&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><code>mystream.fail()</code>可以检测stream是否fail，例如</p>
+<ul>
+<li>读文件读到结束</li>
+<li>文件不存在</li>
+<li>读入的类型错误</li>
+</ul>
+<h4 id="注意的问题"><a href="#注意的问题" class="headerlink" title="注意的问题"></a>注意的问题</h4><p>cin 一直读到空格，换行符等，如果输入单词可能有问题</p>
+<p>但是要用getline要注意下面的问题</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt; val;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; val2;<span class="comment">// ok</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cin</span> &gt;&gt; val;</span><br><span class="line">getline(<span class="built_in">cin</span>, val2); <span class="comment">// read \n</span></span><br></pre></td></tr></table></figure>
+<p>第二次读入的就是第一次的\n，因为cin 并不会处理后面的\n，只将前面的 \n 空格略去，等于说此时<code>getline</code>在streambuffer里读入的是第一次结尾的\n。</p>
+<h4 id="string"><a href="#string" class="headerlink" title="string"></a>string</h4><ul>
+<li>size(), 返回string::size_type</li>
+<li>empty()</li>
+<li><code>[]</code> 以string::size_type为索引，注意类型是unsigned 的</li>
+<li>字符串相关操作：<ul>
+<li>str1 + str2</li>
+<li>str1 + “字面量”</li>
+<li>os &lt;&lt; str, is &gt;&gt; s</li>
+<li>getline(cin, str)，读取一行，丢弃换行符</li>
+<li>== 按字符序比大小，如果前面相同比长度，长者大</li>
+</ul>
+</li>
+<li>cctype 头文件<ul>
+<li>isupper(), toupper() 大写</li>
+<li>islower(), tolower() 小写</li>
+<li>isdigit(), isalpha() 数字和字幕</li>
+<li>ispunct() 标点</li>
+<li>isspace() 空白</li>
+</ul>
+</li>
+</ul>
+<h3 id="顺序容器"><a href="#顺序容器" class="headerlink" title="顺序容器"></a>顺序容器</h3><p>顺序容器的元素排列顺序与其值无关，而仅仅由元素添加到容器里的次序决定。</p>
+<h4 id="vector"><a href="#vector" class="headerlink" title="vector"></a>vector</h4><p>功能：</p>
+<ul>
+<li>创建<ul>
+<li><code>vector&lt;int&gt; a(v2)</code>; <code>vector&lt;int&gt; a = v2</code>;</li>
+<li><code>vector&lt;int&gt; a&#123;0, 1, 2, 3, 4&#125;</code>;</li>
+<li><code>vector&lt;int&gt; a = &#123;0, 1, 2, 3, 4&#125;</code>;</li>
+<li><code>vector&lt;int&gt; a(n)</code>: 初始化为0</li>
+<li><code>vector&lt;int&gt; a(n, val)</code>: n个以val为值的vector元素</li>
+</ul>
+</li>
+<li>增加<ul>
+<li>push_back(val):在最后增加</li>
+<li>insert(index, val):在index处（或理解为index前面）增加</li>
+</ul>
+</li>
+<li>删除<ul>
+<li>erase(v.begin()+i)：按地址删除</li>
+<li>pop_back();</li>
+<li>clear()：清除所有 </li>
+</ul>
+</li>
+<li>修改<ul>
+<li>v[i] = val:没有边界检查</li>
+<li>v.at(i) = val</li>
+</ul>
+</li>
+<li>查找<ul>
+<li>v.at(i)</li>
+<li>v[i] ：没有边界检查</li>
+<li>v.front();</li>
+<li>v.back();</li>
+</ul>
+</li>
+<li>其他<ul>
+<li>v.empty();</li>
+<li>v.reserve(size): 预留size个地方</li>
+</ul>
+</li>
+</ul>
+<h4 id="deque"><a href="#deque" class="headerlink" title="deque"></a>deque</h4><p>双端队列，跟vector类似，用的比较少，好处在于<strong>大量插入删除操作时速度快</strong></p>
+<p>有和vector一样的函数，还有<strong>front操作</strong>：</p>
+<ul>
+<li>push_front(val)</li>
+<li>pop_front()</li>
+</ul>
+<h4 id="list"><a href="#list" class="headerlink" title="list"></a>list</h4><p>插入删除开销少，但是不能根据index进行快速定位<br>有<strong>front操作</strong>：</p>
+<ul>
+<li>push_front(val)</li>
+<li>pop_front()</li>
+</ul>
+<p>使用技巧</p>
+<ul>
+<li>可以先reserve一定大小</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vec.reserve(<span class="number">1000000</span>);</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; ++i) &#123;</span><br><span class="line"> vec.push_back(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="关联容器"><a href="#关联容器" class="headerlink" title="关联容器"></a>关联容器</h3><h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><h4 id="multiset"><a href="#multiset" class="headerlink" title="multiset"></a>multiset</h4><h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><h4 id="multimap"><a href="#multimap" class="headerlink" title="multimap"></a>multimap</h4><h3 id="基于hash-table的容器"><a href="#基于hash-table的容器" class="headerlink" title="基于hash table的容器"></a>基于hash table的容器</h3><h4 id="unordered-map"><a href="#unordered-map" class="headerlink" title="unordered_map"></a>unordered_map</h4><h4 id="unordered-set"><a href="#unordered-set" class="headerlink" title="unordered_set"></a>unordered_set</h4><h3 id="iterator"><a href="#iterator" class="headerlink" title="iterator"></a>iterator</h3><p>迭代器</p>
+<ul>
+<li>begin(), end() 返回首尾迭代器，是否为const由元素决定</li>
+<li>cbegin(),cend()返回const_iterator</li>
+<li>算术运算+-</li>
+</ul>
+<h2 id="泛型算法"><a href="#泛型算法" class="headerlink" title="泛型算法"></a>泛型算法</h2><p>参考C++Primer第10章</p>
+<h2 id="智能指针"><a href="#智能指针" class="headerlink" title="智能指针"></a>智能指针</h2><p><code>&lt;memory&gt;</code></p>
+<ul>
+<li>unique_ptr : move 语意， 资源只有一个指向它</li>
+<li>shared_ptr : copy 语意， 资源可以有多个指向它，要知道最后一个用的，没有人指向我，那就delete</li>
+<li>weak_ptr</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">unique_ptr</span>&lt;classA&gt; r1 &#123; <span class="built_in">std</span>::make_unique&lt;classA&gt;()&#125;;</span><br><span class="line"><span class="built_in">shared_ptr</span>&lt;classA&gt; r2 &#123; <span class="built_in">std</span>::shared_unique&lt;classA&gt;()&#125;;</span><br><span class="line"><span class="function">weak_ptr&lt;classA&gt; <span class="title">wr</span><span class="params">(r2)</span></span>;</span><br><span class="line"><span class="keyword">if</span> (wr.expired()) <span class="keyword">return</span>; <span class="comment">//过期</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> resource = wr.lock();</span><br></pre></td></tr></table></figure>
+
+<p>常用：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="built_in">unique_ptr</span>&lt;X&gt; <span class="title">make_X</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line"><span class="comment">// etc.</span></span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">unique_ptr</span>&lt;X&gt;&#123;<span class="keyword">new</span> X&#123;i&#125;&#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">user</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; name, ios_base::openmode mode)</span> </span>&#123;</span><br><span class="line">	<span class="built_in">shared_ptr</span>&lt;fstream&gt; fp &#123;<span class="keyword">new</span> fstream(name, mode)&#125;;</span><br><span class="line">	<span class="keyword">if</span>(!*p) <span class="comment">// 确定文件打开</span></span><br><span class="line">		<span class="keyword">throw</span> No_file&#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="RAII"><a href="#RAII" class="headerlink" title="RAII"></a>RAII</h2><p>RAII： Resource acquisition Is Initialization<br>资源获取即初始化</p>
+<h2 id="lambda-表达式"><a href="#lambda-表达式" class="headerlink" title="lambda 表达式"></a>lambda 表达式</h2><ul>
+<li>匿名函数</li>
+<li>capture list 外部变量访问方式说明符<ul>
+<li><code>=</code> 只读</li>
+<li><code>&amp;</code> 可修改</li>
+<li>空的，不用到外面的变量 </li>
+<li><code>[=, &amp;x, &amp;y]</code>，x,y 可改，其余变量不能修改</li>
+<li><code>[&amp;, x, y]</code>除了x,y以外的外部变量都可以修改</li>
+</ul>
+</li>
+<li><code>-&gt;</code>可以省略，让编译器自己推导</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[capture <span class="built_in">list</span>] (parameter <span class="built_in">list</span>) -&gt; <span class="keyword">int</span> &#123;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//e.g.</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">string</span> name = <span class="string">&quot;lambda function&quot;</span>;</span><br><span class="line"><span class="keyword">auto</span> square = [=, &amp;name](<span class="keyword">const</span> <span class="keyword">int</span>&amp; value) &#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; name &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">	name = <span class="string">&quot;inda&quot;</span>;</span><br><span class="line">	<span class="keyword">return</span> value*value;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>C++14 generic lambda</li>
+</ul>
+<h2 id="类型转换-1"><a href="#类型转换-1" class="headerlink" title="类型转换"></a>类型转换</h2><h4 id="显式"><a href="#显式" class="headerlink" title="显式"></a>显式</h4><ul>
+<li>C style: (type) expression</li>
+<li><code>const_cast&lt;type&gt;</code> (expr): 修改类型的const属性</li>
+<li><code>dynamic_cast&lt;type&gt; (expr)</code>: <em>runtime</em> 执行转换，若失败，expr被认定为nullptr，若引用失败catch std::bad_cast</li>
+<li><code>static_cast&lt;type&gt;</code>: 非动态转换，没有运行时类检查来保证转换的安全性，例如int到size_t</li>
+<li><code>reinterpret_cast&lt;type&gt; (expr)</code> : 最好不用</li>
+</ul>
+<h4 id="隐式类型转换"><a href="#隐式类型转换" class="headerlink" title="隐式类型转换"></a>隐式类型转换</h4><ul>
+<li>注意类的隐式类型转换<ul>
+<li>例如有函数combine(const Sale_data &amp;sd),且有构造函数可以接受string, 则combine(string(“str”))则会默认生成一个Sale_data类</li>
+<li>拷贝形式： Sales_data item = string(“str”);</li>
+<li>可以使用<code>explicit</code> 关键字避免不期望的隐式类型转换</li>
+</ul>
+</li>
+</ul>
+<h2 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h2><ul>
+<li>定义一个范围</li>
+<li>类本身就是一个特殊的命名空间</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">namespace</span> My_code &#123;</span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">complex</span> &#123;</span></span><br><span class="line">		<span class="comment">//...</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="built_in">complex</span> <span class="title">sqrt</span><span class="params">(<span class="built_in">complex</span>)</span></span>;</span><br><span class="line">		<span class="comment">//...</span></span><br><span class="line">	<span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用干的时候加上命名空间</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">My_code::main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">complex</span> z&#123;<span class="number">1</span>,<span class="number">2</span>&#125;;</span><br><span class="line">	<span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 全局</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> My_code::main():</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>不要在头文件里使用命名空间（using namespace …)</li>
+</ul>
+<h1 id="OOP"><a href="#OOP" class="headerlink" title="OOP"></a>OOP</h1><p><strong>C struct:</strong></p>
+<ul>
+<li>没有封装</li>
+<li>没有操作</li>
+</ul>
+<p><strong>类Class</strong></p>
+<ul>
+<li>数据抽象</li>
+<li>封装<ul>
+<li>private</li>
+<li>public</li>
+<li>protected (子类)</li>
+</ul>
+</li>
+<li>动态绑定（运行时绑定）</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">X</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	X(Sometype); <span class="comment">// 构造函数</span></span><br><span class="line">	X();<span class="comment">// 默认构造函数</span></span><br><span class="line">	X(<span class="keyword">const</span> X&amp;); <span class="comment">// 复制构造函数</span></span><br><span class="line">	X(<span class="keyword">const</span> X&amp;&amp;); <span class="comment">// 移动构造函数，用std::move()调用</span></span><br><span class="line">	X&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> X&amp;); <span class="comment">// 复制操作符</span></span><br><span class="line">	X&amp; <span class="keyword">operator</span>=(X&amp;&amp;); <span class="comment">// 移动操作符</span></span><br><span class="line">	~X(); <span class="comment">// 析构</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>friend 函数</strong></p>
+<ul>
+<li><p>定义在类外部</p>
+</li>
+<li><p>有权访问累的所有private 成员和protected 成员</p>
+</li>
+<li><p>friend 函数并不是成员函数</p>
+<pre><code>相同Class的各个objects互为friends</code></pre></li>
+</ul>
+<h2 id="const"><a href="#const" class="headerlink" title="const"></a>const</h2><ul>
+<li>常量成员函数</li>
+<li>常量对象 -&gt; 只能调用 const 函数</li>
+</ul>
+<p>const &amp; constexpr</p>
+<ul>
+<li>修饰对象<ul>
+<li>const主要表示这是个常量，不会变动</li>
+<li>constexpr是修饰一个常量表达式</li>
+</ul>
+</li>
+<li>修饰函数<ul>
+<li>const只能用于<strong>非静态成员函数</strong>，保证函数不修改任何<strong>非静态数据</strong></li>
+<li>constexpr适用于常量表达式，通常是简单函数，只允许return语句，参数和返回值必须是字面量。</li>
+</ul>
+</li>
+</ul>
+<h2 id="virtual"><a href="#virtual" class="headerlink" title="virtual"></a>virtual</h2><h3 id="virtual-关键字"><a href="#virtual-关键字" class="headerlink" title="virtual 关键字"></a>virtual 关键字</h3><p>在继承时通过晚绑定和vtable来实现多态，这样就可以用基类指针来操作各种派生类。</p>
+<h3 id="纯虚函数"><a href="#纯虚函数" class="headerlink" title="纯虚函数"></a>纯虚函数</h3><ul>
+<li>vitual double function() = 0;</li>
+</ul>
+<p>声明一个function为接口，接口类不能被实例化，但是可以有成员变量，该类是纯虚类。</p>
+<h2 id="类的不可改性"><a href="#类的不可改性" class="headerlink" title="类的不可改性"></a>类的不可改性</h2><ul>
+<li>const 成员函数</li>
+<li>const 成员变量</li>
+<li>class 为final： class A final {} 不能再被继承了</li>
+</ul>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><ul>
+<li>递归<ul>
+<li>好处：<ul>
+<li>分而治之</li>
+<li>简洁性好</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>迭代<ul>
+<li>好处<ul>
+<li>效率高：编译器在同一个stack里面容易优化代码，cross-stack 优化不容易做</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="prev" title="常用数据结构与算法代码">
+      <i class="fa fa-chevron-left"></i> 常用数据结构与算法代码
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="next" title="操作系统总结">
+      操作系统总结 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">基础语法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E8%AF%91"><span class="nav-number">1.1.</span> <span class="nav-text">编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.2.</span> <span class="nav-text">表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%A6%E5%80%BC%E5%8F%B3%E5%80%BC"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">左值右值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">类型转换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%82%E5%B8%B8"><span class="nav-number">1.3.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#STL"><span class="nav-number">1.4.</span> <span class="nav-text">STL</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IO"><span class="nav-number">1.4.1.</span> <span class="nav-text">IO</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81"><span class="nav-number">1.4.2.</span> <span class="nav-text">流</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%87%BA%E6%B5%81"><span class="nav-number">1.4.2.1.</span> <span class="nav-text">输出流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E6%B5%81"><span class="nav-number">1.4.2.2.</span> <span class="nav-text">输入流</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.2.3.</span> <span class="nav-text">注意的问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#string"><span class="nav-number">1.4.2.4.</span> <span class="nav-text">string</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%A1%BA%E5%BA%8F%E5%AE%B9%E5%99%A8"><span class="nav-number">1.4.3.</span> <span class="nav-text">顺序容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vector"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">vector</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#deque"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">deque</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#list"><span class="nav-number">1.4.3.3.</span> <span class="nav-text">list</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E5%AE%B9%E5%99%A8"><span class="nav-number">1.4.4.</span> <span class="nav-text">关联容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#set"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">set</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#multiset"><span class="nav-number">1.4.4.2.</span> <span class="nav-text">multiset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#map"><span class="nav-number">1.4.4.3.</span> <span class="nav-text">map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#multimap"><span class="nav-number">1.4.4.4.</span> <span class="nav-text">multimap</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Ehash-table%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-number">1.4.5.</span> <span class="nav-text">基于hash table的容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#unordered-map"><span class="nav-number">1.4.5.1.</span> <span class="nav-text">unordered_map</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#unordered-set"><span class="nav-number">1.4.5.2.</span> <span class="nav-text">unordered_set</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#iterator"><span class="nav-number">1.4.6.</span> <span class="nav-text">iterator</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%9B%E5%9E%8B%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.</span> <span class="nav-text">泛型算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="nav-number">1.6.</span> <span class="nav-text">智能指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RAII"><span class="nav-number">1.7.</span> <span class="nav-text">RAII</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lambda-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="nav-number">1.8.</span> <span class="nav-text">lambda 表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-1"><span class="nav-number">1.9.</span> <span class="nav-text">类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%98%BE%E5%BC%8F"><span class="nav-number">1.9.0.1.</span> <span class="nav-text">显式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9A%90%E5%BC%8F%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.9.0.2.</span> <span class="nav-text">隐式类型转换</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="nav-number">1.10.</span> <span class="nav-text">命名空间</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#OOP"><span class="nav-number">2.</span> <span class="nav-text">OOP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">2.1.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const"><span class="nav-number">2.2.</span> <span class="nav-text">const</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#virtual"><span class="nav-number">2.3.</span> <span class="nav-text">virtual</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#virtual-%E5%85%B3%E9%94%AE%E5%AD%97"><span class="nav-number">2.3.1.</span> <span class="nav-text">virtual 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0"><span class="nav-number">2.3.2.</span> <span class="nav-text">纯虚函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%E7%9A%84%E4%B8%8D%E5%8F%AF%E6%94%B9%E6%80%A7"><span class="nav-number">2.4.</span> <span class="nav-text">类的不可改性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Tigerroarm"
+      src="/images/headportrait.jpg">
+  <p class="site-author-name" itemprop="name">Tigerroarm</p>
+  <div class="site-description" itemprop="description">Tigerroarm的博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/tigerroarm" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;tigerroarm" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:difanmu@gmail.com" title="E-Mail → mailto:difanmu@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+      <div class="links-of-blogroll-title">
+        <!-- modify icon to fire by szw -->
+        <i class="fa fa-history fa-" aria-hidden="true"></i>
+        近期文章
+      </div>
+      <ul class="links-of-blogroll-list">
+        
+        
+        
+          <li>
+            <a href="/2022/01/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="操作系统总结" target="_blank">操作系统总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/20/C++%E5%9F%BA%E7%A1%80%E7%AE%80%E6%98%8E%E6%80%BB%E7%BB%93/" title="C++基础简明总结" target="_blank">C++基础简明总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" title="常用数据结构与算法代码" target="_blank">常用数据结构与算法代码</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/10/Gossip%E7%AE%97%E6%B3%95/" title="Gossip 算法" target="_blank">Gossip 算法</a>
+          </li>
+        
+          <li>
+            <a href="/2021/05/10/C%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" title="POSIX thread" target="_blank">POSIX thread</a>
+          </li>
+        
+      </ul>
+    </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2020 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tigerroarm</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/velocity-animate@1/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+  <script>
+    (function(){
+      var canonicalURL, curProtocol;
+      //Get the <link> tag
+      var x=document.getElementsByTagName("link");
+		//Find the last canonical URL
+		if(x.length > 0){
+			for (i=0;i<x.length;i++){
+				if(x[i].rel.toLowerCase() == 'canonical' && x[i].href){
+					canonicalURL=x[i].href;
+				}
+			}
+		}
+    //Get protocol
+	    if (!canonicalURL){
+	    	curProtocol = window.location.protocol.split(':')[0];
+	    }
+	    else{
+	    	curProtocol = canonicalURL.split(':')[0];
+	    }
+      //Get current URL if the canonical URL does not exist
+	    if (!canonicalURL) canonicalURL = window.location.href;
+	    //Assign script content. Replace current URL with the canonical URL
+      !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=canonicalURL,t=document.referrer;if(!e.test(r)){var n=(String(curProtocol).toLowerCase() === 'https')?"https://sp0.baidu.com/9_Q4simg2RQJ8t7jm9iCKT-xh_/s.gif":"//api.share.baidu.com/s.gif";t?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var i=new Image;i.src=n}}(window);})();
+  </script>
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : true,
+      appId      : '9eFpMRHKYdm4ucton4CTUrAd-gzGzoHsz',
+      appKey     : 'EbiAV4uFtmudGKkNbsCTpGCA',
+      placeholder: "输入您的评论",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : 'zh-cn' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
