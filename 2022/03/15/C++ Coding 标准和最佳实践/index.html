@@ -22,18 +22,20 @@
     var CONFIG = {"hostname":"blog.difan.tech","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Tigerroarm的博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Tigerroarm&#39;s Blog">
-<meta property="og:url" content="https://blog.difan.tech/tags/%E8%BF%90%E5%8A%A8%E8%90%A5%E5%85%BB/index.html">
+  <meta name="description" content="要点 编码风格清晰一致 合理命名，并有注释 header干净，除非绝对需要，不在header文件中添加系统头文件 class 的private成员不暴露，所有数据成员都应该是私有的，并加下划线标记 尽可能使用const 可移植性，不依赖特定大小的long或者unsigned类型 内存问题  类 遵循三&#x2F;五法则 不使用全局数据 使用构造函数初始化列表  其他 nullptr而不是null 使用aut">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ Coding标准和最佳实践">
+<meta property="og:url" content="https://blog.difan.tech/2022/03/15/C++%20Coding%20%E6%A0%87%E5%87%86%E5%92%8C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="Tigerroarm&#39;s Blog">
-<meta property="og:description" content="Tigerroarm的博客">
+<meta property="og:description" content="要点 编码风格清晰一致 合理命名，并有注释 header干净，除非绝对需要，不在header文件中添加系统头文件 class 的private成员不暴露，所有数据成员都应该是私有的，并加下划线标记 尽可能使用const 可移植性，不依赖特定大小的long或者unsigned类型 内存问题  类 遵循三&#x2F;五法则 不使用全局数据 使用构造函数初始化列表  其他 nullptr而不是null 使用aut">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-03-15T11:47:57.545Z">
 <meta property="article:author" content="Tigerroarm">
-<meta property="article:tag" content="Tigerroarm的博客">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://blog.difan.tech/tags/%E8%BF%90%E5%8A%A8%E8%90%A5%E5%85%BB/">
+<link rel="canonical" href="https://blog.difan.tech/2022/03/15/C++%20Coding%20%E6%A0%87%E5%87%86%E5%92%8C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">
 
 
 <script id="page-configurations">
@@ -41,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 运动营养 | Tigerroarm's Blog</title>
+  <title>C++ Coding标准和最佳实践 | Tigerroarm's Blog</title>
   
 
 
@@ -194,57 +196,131 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2022/03/15/C++%20Coding%20%E6%A0%87%E5%87%86%E5%92%8C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/headportrait.jpg">
+      <meta itemprop="name" content="Tigerroarm">
+      <meta itemprop="description" content="Tigerroarm的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Tigerroarm's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          C++ Coding标准和最佳实践
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-15 00:00:00" itemprop="dateCreated datePublished" datetime="2022-03-15T00:00:00+08:00">2022-03-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C/" itemprop="url" rel="index"><span itemprop="name">C++</span></a>
+                </span>
+            </span>
+
+          
   
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">运动营养
-          <small>标签</small>
-        </h2>
-      </div>
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2022/03/15/C++%20Coding%20%E6%A0%87%E5%87%86%E5%92%8C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2022/03/15/C++%20Coding%20%E6%A0%87%E5%87%86%E5%92%8C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol>
+<li>编码风格清晰一致</li>
+<li>合理命名，并有注释</li>
+<li>header干净，除非绝对需要，不在header文件中添加系统头文件</li>
+<li>class 的private成员不暴露，所有数据成员都应该是私有的，并加下划线标记</li>
+<li>尽可能使用const</li>
+<li>可移植性，不依赖特定大小的long或者unsigned类型</li>
+<li>内存问题</li>
+</ol>
+<h2 id="类"><a href="#类" class="headerlink" title="类"></a>类</h2><ul>
+<li>遵循三/五法则</li>
+<li>不使用全局数据</li>
+<li>使用构造函数初始化列表</li>
+</ul>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li>nullptr而不是null</li>
+<li>使用auto只要清晰</li>
+<li>统一的初始化语法，使用列表初始化{}</li>
+<li><code>-</code> <code>&amp;</code> 跟变量名称在一起而不是数据类型</li>
+<li>利用STL，通常情况下没有特别理由不要自己定义已经实现了的数据结构和算法</li>
+</ul>
+<pre><code>http://web.mit.edu/6.s096/www/standards.html</code></pre>
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-01-02T00:00:00+08:00"
-              content="2021-01-02">
-          01-02
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/C/" rel="tag"># C++</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/01/02/%E8%BF%90%E5%8A%A8%E8%90%A5%E5%85%BB/" itemprop="url">
-            <span itemprop="name">运动营养、减脂</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="prev" title="操作系统总结">
+      <i class="fa fa-chevron-left"></i> 操作系统总结
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
           </div>
           
+    <div class="comments" id="valine-comments"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -291,6 +367,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A6%81%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">要点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB"><span class="nav-number">2.</span> <span class="nav-text">类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">3.</span> <span class="nav-text">其他</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
