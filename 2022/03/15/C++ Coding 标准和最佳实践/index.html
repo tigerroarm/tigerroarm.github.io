@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"blog.difan.tech","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="要点 编码风格清晰一致 合理命名，并有注释 header干净，除非绝对需要，不在header文件中添加系统头文件 class 的private成员不暴露，所有数据成员都应该是私有的，并加下划线标记 尽可能使用const 可移植性，不依赖特定大小的long或者unsigned类型 内存问题  类 遵循三&#x2F;五法则 不使用全局数据 使用构造函数初始化列表  其他 nullptr而不是null 使用aut">
+  <meta name="description" content="要点 编码风格清晰一致 合理命名，并有注释 header干净，除非绝对需要，不在header文件中添加系统头文件 class 的private成员不暴露，所有数据成员都应该是私有的，并加下划线标记 尽可能使用const 可移植性，不依赖特定大小的long或者unsigned类型 内存问题  类 遵循三&#x2F;五法则 不使用全局数据 使用构造函数初始化列表  其他 nullptr而不是null  使用au">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C++ Coding标准和最佳实践">
 <meta property="og:url" content="https://blog.difan.tech/2022/03/15/C++%20Coding%20%E6%A0%87%E5%87%86%E5%92%8C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="Tigerroarm&#39;s Blog">
-<meta property="og:description" content="要点 编码风格清晰一致 合理命名，并有注释 header干净，除非绝对需要，不在header文件中添加系统头文件 class 的private成员不暴露，所有数据成员都应该是私有的，并加下划线标记 尽可能使用const 可移植性，不依赖特定大小的long或者unsigned类型 内存问题  类 遵循三&#x2F;五法则 不使用全局数据 使用构造函数初始化列表  其他 nullptr而不是null 使用aut">
+<meta property="og:description" content="要点 编码风格清晰一致 合理命名，并有注释 header干净，除非绝对需要，不在header文件中添加系统头文件 class 的private成员不暴露，所有数据成员都应该是私有的，并加下划线标记 尽可能使用const 可移植性，不依赖特定大小的long或者unsigned类型 内存问题  类 遵循三&#x2F;五法则 不使用全局数据 使用构造函数初始化列表  其他 nullptr而不是null  使用au">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-03-14T16:00:00.000Z">
-<meta property="article:modified_time" content="2022-03-15T11:47:57.545Z">
+<meta property="article:modified_time" content="2022-03-30T15:29:15.518Z">
 <meta property="article:author" content="Tigerroarm">
 <meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
@@ -129,17 +129,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">18</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">28</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">11</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -280,13 +280,18 @@
 <li>使用构造函数初始化列表</li>
 </ul>
 <h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
-<li>nullptr而不是null</li>
-<li>使用auto只要清晰</li>
-<li>统一的初始化语法，使用列表初始化{}</li>
-<li><code>-</code> <code>&amp;</code> 跟变量名称在一起而不是数据类型</li>
-<li>利用STL，通常情况下没有特别理由不要自己定义已经实现了的数据结构和算法</li>
+<li><p>nullptr而不是null</p>
+</li>
+<li><p>使用auto只要清晰</p>
+</li>
+<li><p>统一的初始化语法，使用列表初始化{}</p>
+</li>
+<li><p>利用STL，通常情况下没有特别理由不要自己定义已经实现了的数据结构和算法</p>
+<p><a target="_blank" rel="noopener" href="http://web.mit.edu/6.s096/www/standards.html">http://web.mit.edu/6.s096/www/standards.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://google.github.io/styleguide/cppguide.html">https://google.github.io/styleguide/cppguide.html</a></p>
+</li>
 </ul>
-<pre><code>http://web.mit.edu/6.s096/www/standards.html</code></pre>
+
     </div>
 
     
@@ -383,20 +388,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
