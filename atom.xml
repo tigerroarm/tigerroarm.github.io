@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Tigerroarm&#39;s Blog</title>
+  <title>木慕的博客</title>
   <icon>https://www.gravatar.com/avatar/7880b27a93b174bc9a1cbe57a5bba5ff</icon>
   <subtitle>Stay naive, stay simple.</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>https://blog.difan.tech/</id>
   
   <author>
-    <name>Tigerroarm</name>
+    <name>木慕的博客</name>
     <email>difanmu@gmail.com</email>
   </author>
   
