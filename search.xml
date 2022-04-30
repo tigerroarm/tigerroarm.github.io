@@ -105,7 +105,7 @@
 <p>多个这样的Cell一起形成阵列，就可以同时操作多个Bit了，<strong>NAND</strong> Flash（充电的表示0）就是利用这种排列的一种Flash芯片，Page是Flash芯片IO的最小单位。</p>
 <p><strong>从Flash中读</strong></p>
 <p>从Flash中读的时候导通所有Cell的MOS，拉高位线的电平，若FG中有电子存储，那么漏电很慢（栅源电压降低），根据漏极电压大小就知道存储的是0还是1.</p>
-<p><img src="./images/storage/20220407144330.png" alt=""><br>根据上图，当想读出一个page的时候，将其他page的字线电平升高（导通，但不至于影响浮动门的电子存储）， 然后再抬高位线电平，就可以读出page的信息了，放置于SSD的RAM Buffer中保存。</p>
+<p><img src="/images/storage/20220407144330.png" alt=""><br>根据上图，当想读出一个page的时候，将其他page的字线电平升高（导通，但不至于影响浮动门的电子存储）， 然后再抬高位线电平，就可以读出page的信息了，放置于SSD的RAM Buffer中保存。</p>
 <p><strong>从Flash中写</strong><br>流程：放电（Erase）-&gt;充电（0的Cell）</p>
 <p>在修改一个Cell中的位之前需要Erase这个Cell</p>
 <ul>
@@ -114,7 +114,7 @@
 </ul>
 </li>
 <li>当写入数据恰好为1，不动</li>
-<li>为0则将电路对应的Cell字线电压提高（足以让电子穿过绝缘体），FG进行充电，充电后1变为0（有电子了）<br><img src="./images/storage/20220407225040.png" alt=""></li>
+<li>为0则将电路对应的Cell字线电压提高（足以让电子穿过绝缘体），FG进行充电，充电后1变为0（有电子了）<br><img src="/images/storage/20220407225040.png" alt=""></li>
 </ul>
 <p><strong>Flash缺点</strong></p>
 <ul>
@@ -279,7 +279,7 @@
 </li>
 </ul>
 </li>
-<li><p>RAID 5E，5EE ：增加热备盘<br><img src="./images/storage/20220409125823.png" alt=""></p>
+<li><p>RAID 5E，5EE ：增加热备盘<br><img src="/images/storage/20220409125823.png" alt=""></p>
 </li>
 <li><p>RAID 6</p>
 <ul>
