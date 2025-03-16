@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.difan.tech/2023/06/20/C++%E5%B9%B6%E5%8F%91/</loc>
+    <lastmod>2025-03-16</lastmod>
+  </url>
+  <url>
     <loc>https://blog.difan.tech/2022/06/20/%E7%8E%B0%E4%BB%A3C++/</loc>
     <lastmod>2022-07-07</lastmod>
   </url>

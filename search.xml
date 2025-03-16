@@ -1,6 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C++并发</title>
+    <url>/2023/06/20/C++%E5%B9%B6%E5%8F%91/</url>
+    <content><![CDATA[<h1 id="并发概念"><a href="#并发概念" class="headerlink" title="并发概念"></a>并发概念</h1><ul>
+<li>同一个系统中多个活动同时进行</li>
+</ul>
+<h2 id="并发的方式"><a href="#并发的方式" class="headerlink" title="并发的方式"></a>并发的方式</h2><ul>
+<li>多进程<ul>
+<li>进程间通信：<ul>
+<li>设置复杂或者速度慢</li>
+<li>OS有额外保护或者高级通信机制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>多线程<ul>
+<li>共享内存带来隐患</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+<h1 id="C-11-多线程"><a href="#C-11-多线程" class="headerlink" title="C++11 多线程"></a>C++11 多线程</h1><p>C++11 新标准中引入了四个头文件来支持多线程编程，他们分别是<code>&lt;atomic&gt; ,&lt;thread&gt;,&lt;mutex&gt;,&lt;condition_variable&gt;,&lt;future&gt;</code>。</p>
+<ul>
+<li>atomic， 声明了atomic 和atomic_flag 类，原子变量</li>
+<li>thread， std::this_thread类在其中</li>
+<li>condition_variable 条件变量相关的类std::condition_variable 和std::condition_variable_any</li>
+<li>future: std::promise, std::async()</li>
+</ul>
+<h2 id="std-thread"><a href="#std-thread" class="headerlink" title="std::thread"></a>std::thread</h2><p><strong>构造函数：</strong></p>
+<ul>
+<li>thread() noexcept;</li>
+<li><code>template &lt;class Fn, class... Args&gt; explicit thread (Fn&amp;&amp; fn, Args&amp;&amp;... args);</code></li>
+<li>拷贝构造函数delete</li>
+<li>thread (thread&amp;&amp; x) noexcept;</li>
+</ul>
+<p><strong>赋值运算符函数：</strong></p>
+<ul>
+<li>thread&amp; operator= (thread&amp;&amp; rhs) noexcept;<br>仅支持move赋值，<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>;               <span class="comment">// 函数</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">F</span> &#123;</span>              <span class="comment">// 函数对象</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">operator</span><span class="params">()</span><span class="params">()</span></span>;  <span class="comment">// F的调用操作符（§6.3.2）</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">user</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    thread t1 &#123;f&#125;;      <span class="comment">// f() 在单独的线程里和执行</span></span><br><span class="line">    thread t2 &#123;F()&#125;;    <span class="comment">// F()() 在单独的线程里和执行</span></span><br><span class="line"></span><br><span class="line">    t1.join();          <span class="comment">// 等待t1</span></span><br><span class="line">    t2.join();          <span class="comment">// 等待t2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>std::this_thread::get_id() 返回线程号</li>
+<li>std::thread::hardware_concurrency() 返回系统线程数</li>
+</ul>
+<h2 id="std-mutex"><a href="#std-mutex" class="headerlink" title="std::mutex"></a>std::mutex</h2><ul>
+<li>std::mutex</li>
+<li>std::recursive_mutex</li>
+<li>std::time_mutex:    try_lock_for(std::chrono::seconds(1)), try_lock_until()</li>
+<li>std::recursive_timed_mutex</li>
+</ul>
+<p>lock类</p>
+<ul>
+<li>std::lock_guard</li>
+<li>std::unique_lock (std::shared_lock要到14才支持，11里面用读写锁建议用boost)</li>
+</ul>
+<p>其他类型</p>
+<ul>
+<li>std::once_flag</li>
+<li>std::adopt_lock_t</li>
+<li>std::defer_lock_t</li>
+<li>std::try_to_lock_t</li>
+</ul>
+<p>函数</p>
+<ul>
+<li>std::try_lock 尝试同时对多个互斥量上锁， std::lock</li>
+<li>std::call_once 只掉一次</li>
+</ul>
+<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><p>使用call_once 初始化：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">auto</span> f = []()                <span class="comment">// 在线程里运行的lambda表达式</span></span><br><span class="line">&#123;   </span><br><span class="line">    <span class="built_in">std</span>::call_once(flag,      <span class="comment">// 仅一次调用，注意要传flag</span></span><br><span class="line">        []()&#123;                <span class="comment">// 匿名lambda，初始化函数，只会执行一次</span></span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;only once&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;                  <span class="comment">// 匿名lambda结束</span></span><br><span class="line">    );                     <span class="comment">// 在线程里运行的lambda表达式结束</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">thread <span class="title">t1</span><span class="params">(f)</span></span>;            <span class="comment">// 启动两个线程，运行函数f</span></span><br><span class="line"><span class="function">thread <span class="title">t2</span><span class="params">(f)</span></span>;</span><br></pre></td></tr></table></figure>
+
+<h1 id="线程管控"><a href="#线程管控" class="headerlink" title="线程管控"></a>线程管控</h1><ul>
+<li>detach() 分离线程，将std::thread对象同线程分离</li>
+<li>join() 汇合线程：等待线程结束后再结束</li>
+<li>异常境况下可能跳过join()</li>
+</ul>
+<p>利用RAII等待线程完结</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">thread_guard</span> &#123;</span></span><br><span class="line">    <span class="built_in">std</span>::thread&amp; t;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">explicit</span> <span class="title">thread_guard</span><span class="params">(<span class="built_in">std</span>::thread&amp; t_)</span> :<span class="title">t</span><span class="params">(t_)</span></span>&#123;&#125;</span><br><span class="line">    ~thread_guard() &#123;</span><br><span class="line">        <span class="keyword">if</span> (t.joinable()) &#123;</span><br><span class="line">            t.join();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    thread_guard(thread_guard <span class="keyword">const</span>&amp;)=<span class="keyword">delete</span>;</span><br><span class="line">    thread_guard&amp; <span class="keyword">operator</span>=(thread_guard <span class="keyword">const</span>&amp;)=<span class="keyword">delete</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>传递参数</strong></p>
+<blockquote>
+<p>参数会按照默认方式复制到内部存储空间，新创建的线程才能访问它们。然后，这些副本被当成临时变量，<strong>右值</strong>传给新线程的函数或者可调用对象。</p>
+</blockquote>
+<ul>
+<li>传递时尽量减小副本开销</li>
+</ul>
+<p><strong>注意</strong></p>
+<ul>
+<li>java的volatile会让编译器在被修饰变量的写操作后插入写屏障，C++不会</li>
+<li>C++的volatile只是表示变量易变，禁止编译器优化重排指令，跟多线程完全没有关系</li>
+<li>不加锁应该用atomic变量</li>
+</ul>
+<h1 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h1><h2 id="future-amp-promise"><a href="#future-amp-promise" class="headerlink" title="future&amp;promise"></a>future&amp;promise</h2><blockquote>
+<p>[!NOTE] future &amp; promise<br>future和promise侧重点在于，两个任务之间传递值时，它们能避免<strong>锁的显式使用</strong>； “系统”高效地实现这个传递。 </p>
+</blockquote>
+<p> 基本思路很简单：一个任务需要给另一个任务传递值时，就把这个值放进promise。 “大变活值”之后，具体实现会把这个值弄进对应的future里，（通常是该任务的启动者）就能从future里把值读出来了。</p>
+<p>![[C++并发.png]]</p>
+<p>手动创建线程用std::promise，在线程返回的时候，用set_value() 设置返回值。在主线程中用get_future()获得std::future对象，进一步再进行get。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::promise&lt;<span class="keyword">int</span>&gt; pret;</span><br><span class="line"><span class="function"><span class="built_in">std</span>::thread <span class="title">t1</span><span class="params">([&amp;] &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">  <span class="keyword">auto</span> ret = download(<span class="string">&quot;hello.zip&quot;</span>);</span></span></span><br><span class="line"><span class="function"><span class="params">  pret.set_value(ret);</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; fret = pret.get_future();</span><br><span class="line"></span><br><span class="line">...<span class="comment">//dosomething</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ret = fret.get();</span><br><span class="line">t1.join();</span><br></pre></td></tr></table></figure>
+
+<p>只要线程没执行完， wait()会一直等，而wait_for可以设置一个最长等待时间，返回一个std::future_status表示等待是否成功。</p>
+<h2 id="package-task"><a href="#package-task" class="headerlink" title="package_task"></a>package_task</h2><p><code>packaged_task</code>封装了代码，能够把任务的返回值或异常放进<code>promise</code>, 它拥有其promise并且（间接地）要对该任务占有的资源负责。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">accum</span><span class="params">(<span class="keyword">double</span>* beg, <span class="keyword">double</span>* end, <span class="keyword">double</span> init)</span></span></span><br><span class="line"><span class="function">    <span class="comment">// 计算[beg:end)的和，初始值为init</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> accumulate(beg,end,init);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">comp2</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt;&amp; v)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">using</span> Task_type = <span class="keyword">double</span>(<span class="keyword">double</span>*,<span class="keyword">double</span>*,<span class="keyword">double</span>);           <span class="comment">// 任务的类型</span></span><br><span class="line"></span><br><span class="line">    packaged_task&lt;Task_type&gt; pt0 &#123;accum&#125;;                       <span class="comment">// 把任务（即accum）打包</span></span><br><span class="line">    packaged_task&lt;Task_type&gt; pt1 &#123;accum&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">future</span>&lt;<span class="keyword">double</span>&gt; f0 &#123;pt0.get_future()&#125;;                       <span class="comment">// 获取pt0的future</span></span><br><span class="line">    <span class="built_in">future</span>&lt;<span class="keyword">double</span>&gt; f1 &#123;pt1.get_future()&#125;;                       <span class="comment">// 获取pt1的future</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span>* first = &amp;v[<span class="number">0</span>];</span><br><span class="line">    thread t1 &#123;move(pt0),first,first+v.size()/<span class="number">2</span>,<span class="number">0</span>&#125;;             <span class="comment">// 为pt0启动一个线程</span></span><br><span class="line">    thread t2 &#123;move(pt1),first+v.size()/<span class="number">2</span>,first+v.size(),<span class="number">0</span>&#125;;    <span class="comment">// 为pt1启动一个线程</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> f0.get()+f1.get();                                   <span class="comment">// 取结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><p>想发起一个可能异步执行的任务，可以用async()，async()把函数调用的“调用部分”和“获取结果部分”拆开， 并把它们都与实际执行的任务分离开。 使用async()，就不用再去操心线程和锁， 相反，你需要考虑的就只是那个有可能异步执行的任务。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">comp4</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt;&amp; v)</span></span></span><br><span class="line"><span class="function">    <span class="comment">// 如果v足够大，就触发多个任务</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (v.size()&lt;<span class="number">10000</span>)     <span class="comment">// 值得采用并发吗？</span></span><br><span class="line">        <span class="keyword">return</span> accum(v.begin(),v.end(),<span class="number">0.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> v0 = &amp;v[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">auto</span> sz = v.size();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">auto</span> f0 = async(accum,v0,v0+sz/<span class="number">4</span>,<span class="number">0.0</span>);          <span class="comment">// 第一份</span></span><br><span class="line">    <span class="keyword">auto</span> f1 = async(accum,v0+sz/<span class="number">4</span>,v0+sz/<span class="number">2</span>,<span class="number">0.0</span>);     <span class="comment">// 第二份</span></span><br><span class="line">    <span class="keyword">auto</span> f2 = async(accum,v0+sz/<span class="number">2</span>,v0+sz*<span class="number">3</span>/<span class="number">4</span>,<span class="number">0.0</span>);   <span class="comment">// 第三份</span></span><br><span class="line">    <span class="keyword">auto</span> f3 = async(accum,v0+sz*<span class="number">3</span>/<span class="number">4</span>,v0+sz,<span class="number">0.0</span>);     <span class="comment">// 最后一份</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> f0.get()+f1.get()+f2.get()+f3.get();     <span class="comment">// 收集并求和结果</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>std::async接受一个带返回值的lambda，自身返回一个std::future对象。lambda函数体在另一个线程执行。</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; fret = <span class="built_in">std</span>::async([&amp;] &#123;</span><br><span class="line">....</span><br><span class="line">	<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> ret = fret.get();</span><br><span class="line"><span class="comment">// or fret.wait(); // 等待，但是不要返回值</span></span><br><span class="line"><span class="comment">// std::future_status s=fret.wait_for(std::chrono::milliseconds(1000));等1000ms</span></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">future</span>&lt;<span class="keyword">int</span>&gt; fret = <span class="built_in">std</span>::async(<span class="built_in">std</span>::launch::deferred, [&amp;]&#123; <span class="comment">// 函数式编程的异步</span></span><br><span class="line">...</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h1 id="互斥量"><a href="#互斥量" class="headerlink" title="互斥量"></a>互斥量</h1><p><code>std::lock_guard</code> 符合RAII思想的上锁解锁<br><code>std::unique_lock</code> 符合RAII思想，但是自由度高，可以提前解锁</p>
+<ul>
+<li>std::unique_lock grd(mtx, std::defer_lock)</li>
+<li>std::unique_lock grd(mtx, std::try_to_lock) 调用mtx.try_lock</li>
+<li>std::unique_lock grd(mtx, std::adopt_lock) mutex已经上锁</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="built_in">std</span>::unique_lock <span class="title">grd</span><span class="params">(mtx)</span></span>;</span><br><span class="line">...</span><br><span class="line">grd.unlock();</span><br><span class="line">...<span class="comment">// outside the lock</span></span><br></pre></td></tr></table></figure>
+
+<p>使用<code>std::unique_lock grd(mtx, std::defer_lock)</code> 则不会在构造函数中调用mtx.lock，需要手动调用lock才能上锁。</p>
+<p><code>mtx.try_lock()</code> 如果发现已经上锁，返回false，无阻塞<br><code>mtx.try_lock_for(std::chrono::milliseconds(500))</code>  等待一段时间<br><code>mtx.try_lock_until</code></p>
+<h1 id="死锁"><a href="#死锁" class="headerlink" title="死锁"></a>死锁</h1><p>上锁顺序不一致就可能导致死锁，例如thread1先锁了1， t2锁2， 然后这时候t1请求2， t2<br>请求1，就会发生死锁。上锁顺序保持一致即可，或者使用：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::lock(mtx1, mtx2); <span class="comment">//保证上锁顺序一致</span></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  <span class="comment">// lock 的RAII 版本，std::scoped_lock，可以上锁多个lock</span></span><br><span class="line">  <span class="function"><span class="built_in">std</span>::scoped_lock <span class="title">gcd</span><span class="params">(mtx1, mtx2)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="条件变量"><a href="#条件变量" class="headerlink" title="条件变量"></a>条件变量</h1><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="built_in">std</span>::condition_variable cv;</span><br><span class="line"><span class="built_in">std</span>::mutex mtx;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> ready = <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="built_in">std</span>::thread <span class="title">t1</span><span class="params">( [&amp;] &#123;</span></span></span><br><span class="line"><span class="function"><span class="params"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;t1&quot;</span> &lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span></span></span><br><span class="line"><span class="function"><span class="params"><span class="built_in">std</span>::unique_lock lck(mtx);</span></span></span><br><span class="line"><span class="function"><span class="params">cv.wait(lck, [&amp;] &#123;<span class="keyword">return</span> ready;&#125;);</span></span></span><br><span class="line"><span class="function"><span class="params"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;t1 is awake&quot;</span> &lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::this_thread::sleep_for(<span class="built_in">std</span>::chrono::seconds(<span class="number">1</span>));</span><br><span class="line"></span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;notifying..&quot;</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">cv.notify_one();</span><br><span class="line"></span><br><span class="line">ready = <span class="literal">true</span>;</span><br><span class="line">cv.notify_one();</span><br><span class="line"></span><br><span class="line">t1.join();</span><br></pre></td></tr></table></figure>
+
+<p>多个等待者：cv.notify_all()唤醒全部</p>
+<h1 id="原子变量"><a href="#原子变量" class="headerlink" title="原子变量"></a>原子变量</h1><p>两种概念：</p>
+<ul>
+<li>获得：一个内存的读操作，当前线程的任<strong>后面</strong>的读写操作不能重排到前面（否则就读错了）<code>x.load(memory_order_acquire)</code> </li>
+<li>释放：一个内存的写操作，当前线程<strong>前面</strong>的读写操作不允许重拍到后面（以防读到写过的值）。<code>x.store(2, memory_order_release)</code></li>
+</ul>
+<p>acquire 和 release 通常都是配对出现的，目的是保证如果对同一个原子对象的 release 发生在 acquire 之前的话，release 之前发生的内存修改能够被 acquire 之后的内存读取全部看到。</p>
+<p>mutex上锁需要通过系统调用，线程阻塞后可能会调度到其他线程进行执行，开销很大。</p>
+<p>atomic 会锁住内存总线，放弃乱序优化等策略</p>
+<ul>
+<li>fetch_add : +=，返回增加前的值</li>
+<li>store : =</li>
+<li>exchange : 返回旧值</li>
+<li>compare_exchange_strong 比较是否相等，相等则写入</li>
+</ul>
+]]></content>
+      <categories>
+        <category>C++</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>现代C++</title>
     <url>/2022/06/20/%E7%8E%B0%E4%BB%A3C++/</url>
     <content><![CDATA[<h2 id="1-语言特性"><a href="#1-语言特性" class="headerlink" title="1.  语言特性"></a>1.  语言特性</h2><h3 id="1-1-常量"><a href="#1-1-常量" class="headerlink" title="1.1 常量"></a>1.1 常量</h3><p><strong>nullptr代替NULL</strong><br>传统C++会把NULL，0视为同一个东西，有些定义((void*)0)，有些会定义为0，但是有问题：</p>
