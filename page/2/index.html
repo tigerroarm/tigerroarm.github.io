@@ -127,12 +127,12 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">21</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">30</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -196,6 +196,207 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2021/09/10/Gossip%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.jpg">
+      <meta itemprop="name" content="木慕的博客">
+      <meta itemprop="description" content="木慕的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木慕的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/09/10/Gossip%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">Gossip 算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-09-10 00:00:00" itemprop="dateCreated datePublished" datetime="2021-09-10T00:00:00+08:00">2021-09-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Network/" itemprop="url" rel="index"><span itemprop="name">Network</span></a>
+                </span>
+            </span>
+
+          
+  
+  
+
+
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="Gossip-算法"><a href="#Gossip-算法" class="headerlink" title="Gossip 算法"></a>Gossip 算法</h2><p>在一个有界网络中，每个node传播message给随机的几个节点，经过杂乱无章的通信，最终所有节点都会达成一致。每个节点有可能知道所有的节点，也可能仅仅知道几个邻居节点，最后状态都是一致的，又称为反熵。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>可扩展性<ul>
+<li>使用$O(\log N)$ rounds 到达所有nodes，N为node的个数。</li>
+</ul>
+</li>
+<li>容错<ul>
+<li>从源头节点到目的节点路径不止一条，可以在不规则为止连接性的网络中运行。</li>
+</ul>
+</li>
+<li>健壮性<ul>
+<li>故障节点不会阻止其他节点发送消息，每个节点都可以随意加入和退出，不会严重啊影响服务质量</li>
+<li>但是如果消息有关于故障节点或者恶意节点，那么系统就不健壮</li>
+</ul>
+</li>
+<li>收敛速度<ul>
+<li>指数收敛速度</li>
+</ul>
+</li>
+</ul>
+<h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>两个概念</p>
+<ul>
+<li>Cycle 传播一个消息的轮数</li>
+<li>Fanout 每轮种node通信的节点数</li>
+</ul>
+<ol>
+<li>周期性散播消息</li>
+<li>每轮随机选择fanout个节点散播消息</li>
+<li>每轮散播消息都选择尚未发送过的节点进行散播</li>
+<li>收到消息的节点不再往send节点散播</li>
+</ol>
+<blockquote>
+<p>Goosip 和 raft<br>raft是强一致性的，而gossip是最终一致</p>
+</blockquote>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><ul>
+<li>Riak 使用gossip协议分享并通信ring state和bucket properties</li>
+<li>CASSANDRA 分享周围nodes和自己的信息</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hashicorp/serf">serf</a>：go实现的服务发现和治理的框架</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2021/05/10/C%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.jpg">
+      <meta itemprop="name" content="木慕的博客">
+      <meta itemprop="description" content="木慕的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木慕的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/05/10/C%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/" class="post-title-link" itemprop="url">POSIX thread</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-05-10 00:00:00" itemprop="dateCreated datePublished" datetime="2021-05-10T00:00:00+08:00">2021-05-10</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/C-C/" itemprop="url" rel="index"><span itemprop="name">C/C++</span></a>
+                </span>
+            </span>
+
+          
+  
+  
+
+
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="POSIX-thread"><a href="#POSIX-thread" class="headerlink" title="POSIX thread"></a>POSIX thread</h1><blockquote>
+<p>Portable operating system interface (POSIX) 是IEEE Computer Society为维持操作系统兼容性定义的一套标准。</p>
+</blockquote>
+<p>POSIX 线程库规定了C/C++的线程API，相比于fork这种创造新进程的方式，使用线程开销更小。</p>
+<ul>
+<li>多处理器用多线程：效果最好</li>
+<li>单处理器使用多线程： 也有增益（一个线程等IO，另外的执行）</li>
+</ul>
+<h2 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h2><ul>
+<li>多任务同时进行</li>
+<li>阻止潜在的长时间IO等待</li>
+<li>一些地方很多CPU周期</li>
+<li>必须响应异步</li>
+<li>优先级中断</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/05/10/C%20%E5%A4%9A%E7%BA%BF%E7%A8%8B/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -871,167 +1072,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/favicon.jpg">
-      <meta itemprop="name" content="木慕的博客">
-      <meta itemprop="description" content="木慕的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木慕的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/" class="post-title-link" itemprop="url">微软新 Edge 浏览器--带给你Chrome一致的体验 安装教程和上手体验</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-12-16 10:52:37" itemprop="dateCreated datePublished" datetime="2019-12-16T10:52:37+08:00">2019-12-16</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>Edge是微软新一代浏览器。 微软新的 IE 浏览器项目 Project Spartan 在 Build 2015 上正式更名为 Microsoft Edge。最新的 Edge<br><strong>采用了 Chromium 内核</strong>，当然也兼容以前 IE 的功能。</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/12/16/%E5%BE%AE%E8%BD%AF%E6%96%B0%20Edge%20%E6%B5%8F%E8%A7%88%E5%99%A8--%E5%B8%A6%E7%BB%99%E4%BD%A0Chrome%E4%B8%80%E8%87%B4%E7%9A%84%E4%BD%93%E9%AA%8C%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B%E5%92%8C%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2019/07/09/git%20%E5%AE%9E%E6%88%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/favicon.jpg">
-      <meta itemprop="name" content="木慕的博客">
-      <meta itemprop="description" content="木慕的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木慕的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2019/07/09/git%20%E5%AE%9E%E6%88%98/" class="post-title-link" itemprop="url">Git 实战</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2019-07-09 00:00:00" itemprop="dateCreated datePublished" datetime="2019-07-09T00:00:00+08:00">2019-07-09</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="版本控制系统"><a href="#版本控制系统" class="headerlink" title="版本控制系统"></a>版本控制系统</h2><ul>
-<li>集中式 ： 版本库存放在中央服务器，先从中央服务器取得最新的版本，然后开始工作</li>
-<li>分布式 ： 每个人电脑都是一个完整的版本库，安全性高，一台坏掉了也不要紧</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2019/07/09/git%20%E5%AE%9E%E6%88%98/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1103,7 +1143,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">23</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1116,7 +1156,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-count">32</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1147,19 +1187,19 @@
           </li>
         
           <li>
+            <a href="/2023/03/20/APUE/" title="APUE" target="_blank">APUE</a>
+          </li>
+        
+          <li>
+            <a href="/2023/01/20/FUSE/" title="FUSE访问流程图" target="_blank">FUSE访问流程图</a>
+          </li>
+        
+          <li>
             <a href="/2022/06/20/%E7%8E%B0%E4%BB%A3C++/" title="现代C++" target="_blank">现代C++</a>
           </li>
         
           <li>
             <a href="/2022/04/10/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A81/" title="存储读书笔记 01" target="_blank">存储读书笔记 01</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/07/CMU-15441%20%E5%85%B3%E7%B3%BB%E5%9E%8B%E6%95%B0%E6%8D%AE%E5%BA%93(Buffer_Pool)/" title="CMU-15441 关系型数据库实现-Buffer Pool" target="_blank">CMU-15441 关系型数据库实现-Buffer Pool</a>
-          </li>
-        
-          <li>
-            <a href="/2022/03/15/C++%20Coding%20%E6%A0%87%E5%87%86%E5%92%8C%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/" title="C++ Coding标准和最佳实践" target="_blank">C++ Coding标准和最佳实践</a>
           </li>
         
       </ul>

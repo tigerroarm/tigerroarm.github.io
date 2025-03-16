@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.difan.tech/2023/01/20/FUSE/</loc>
+    
+    <lastmod>2025-03-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.difan.tech/2023/03/20/APUE/</loc>
+    
+    <lastmod>2025-03-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.difan.tech/2022/04/10/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A81/</loc>
+    
+    <lastmod>2025-03-16</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://blog.difan.tech/2022/06/20/%E7%8E%B0%E4%BB%A3C++/</loc>
+    
+    <lastmod>2025-03-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.difan.tech/2023/06/20/C++%E5%B9%B6%E5%8F%91/</loc>
     
     <lastmod>2025-03-16</lastmod>
@@ -12,20 +40,6 @@
     <loc>https://blog.difan.tech/about/index.html</loc>
     
     <lastmod>2025-03-13</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.difan.tech/2022/06/20/%E7%8E%B0%E4%BB%A3C++/</loc>
-    
-    <lastmod>2022-07-07</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.difan.tech/2022/04/10/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A81/</loc>
-    
-    <lastmod>2022-04-30</lastmod>
     
   </url>
   
@@ -397,6 +411,20 @@
   
   <url>
     <loc>https://blog.difan.tech/tags/%E8%BF%90%E5%8A%A8%E8%90%A5%E5%85%BB/</loc>
+    <lastmod>2025-03-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.difan.tech/tags/APUE/</loc>
+    <lastmod>2025-03-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.difan.tech/tags/FUSE/</loc>
     <lastmod>2025-03-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
