@@ -1,6 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>如何快速遍历对象存储Bucket中的海量对象</title>
+    <url>/2025/03/16/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8Bucket%E4%B8%AD%E7%9A%84%E6%B5%B7%E9%87%8F%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<p>对象存储由于其价格低廉、结构简单易用、可扩展性强等特点被大量应用，几乎已经成为云存储的代名词，例如AWS S3，Google Cloud、阿里云OSS等。</p>
+<p>与传统的文件存储不同，对象存储是一种基于HTTP的存储服务，需要通过例如<code>GetObject</code>、<code>ListObjects</code>、<code>PutObject</code>、<code>DeleteObject</code>、<code>HeadObject</code> 等接口完成类似文件系统<code>read</code>,<code>write</code>,<code>readdir</code>,<code>getattr</code>的操作。而HTTP接口的网络时延很大，一般在几十到几百毫秒之间，所以其存储服务是一种带宽型的业务。</p>
+<p>这其中，<code>ListObject</code>是一种可以列举Bucket中对象的接口，类似文件系统的<code>readdir</code>：</p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html">ListObjectsV2 - Amazon Simple Storage Service</a></li>
+<li><a href="https://www.alibabacloud.com/help/en/oss/developer-reference/listobjectsv2">ListObjectV2 - Alibaba Cloud Documentation Center</a> </li>
+</ul>
+<p>虽然在通常的业务中不常用，但是在例如对象存储文件网关、或者GCSFuse、Mountpoint这种对象存储POSIX客户端中被大量使用。在AI场景中也有大量的遍历数据集文件的操作（例如把数据从对象存储拉到例如高性能的并行文件系统中做训练/推理），ListObject速度就成为一个问题：</p>
+<span id="more"></span>
+
+<blockquote>
+<p>例如一个ListObject请求是100ms，配置每次请求的对象个数为最大1000，对于一个1亿文件的Bucket，就需要166min，大概2.7个小时</p>
+</blockquote>
+<p>这还仅仅是遍历一遍的接口用时，如果加上其他的业务逻辑处理，那时间就更多了。</p>
+<h2 id="任务并行化"><a href="#任务并行化" class="headerlink" title="任务并行化"></a>任务并行化</h2><p>一个很简单的想法是将任务并行化，正如AWS这个博客中提到的：<a href="https://aws.amazon.com/cn/blogs/china/how-to-traverse-amazon-s3-billion-object-buckets-in-a-short-time-principle/">五行俱下 – 如何在短时间里遍历 Amazon S3 亿级对象桶（原理篇） | 亚马逊AWS官方博客</a> ，具体的工具代码库在：<a href="https://github.com/aws-samples/s3-fast-list">GitHub - aws-samples/s3-fast-list: Concurrently list Amazon S3 bucket</a></p>
+<p>其基本思想是将整个 S3 存储桶的 Object Key 空间切分，然后用并发的任务取List每个部分。对于一个良好组织的Bucket，这当然很容易。但很多时候遇到的情况是，Bucket过于庞大和复杂，根本无法很清楚地了解下面Object Key是如何分布的，特定prefix下面有多少对象。</p>
+<h2 id="启发式的并发List算法"><a href="#启发式的并发List算法" class="headerlink" title="启发式的并发List算法"></a>启发式的并发List算法</h2><p>针对这一个问题，Google Cloud Storage提出了一个启发式的方法，在牺牲一些冗余的API请求的前提下实现了更好的并发List。</p>
+<p>具体的代码仓库是：<a href="https://github.com/GoogleCloudPlatform/dataflux-client-python/">GoogleCloudPlatform/dataflux-client-python</a>，是Google Pytorch数据集的客户端库，可以快速列出和下载GCS中的数据，主要用于机器学习应用。根据他们的评测结果，针对海量对象的Bucket，该算法能够大大提升List速度，且使用时无需针对存储桶的Object Key进行手动空间切分：</p>
+<table>
+<thead>
+<tr>
+<th>File Count</th>
+<th>VM Core Count</th>
+<th>List Time Without Dataflux</th>
+<th>List Time With Dataflux</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>17944239 Obj</td>
+<td>48 Core</td>
+<td>1630.75s</td>
+<td>79.55s</td>
+</tr>
+<tr>
+<td>5000000 Obj</td>
+<td>48 Core</td>
+<td>289.95s</td>
+<td>23.43s</td>
+</tr>
+<tr>
+<td>1999002 Obj</td>
+<td>48 Core</td>
+<td>117.61s</td>
+<td>12.45s</td>
+</tr>
+<tr>
+<td>578411 Obj</td>
+<td>48 Core</td>
+<td>30.70s</td>
+<td>9.39s</td>
+</tr>
+<tr>
+<td>10013 Obj</td>
+<td>48 Core</td>
+<td>2.35s</td>
+<td>6.06s</td>
+</tr>
+</tbody></table>
+<h3 id="ListWorker实例"><a href="#ListWorker实例" class="headerlink" title="ListWorker实例"></a>ListWorker实例</h3><p>其基本实现是利用Python多进程机制创建多个<code>ListWorker</code>实例执行任务：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListingController</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">	...</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">run</span>(<span class="params">self</span>) -&gt; list[tuple[str, int]]:</span></span><br><span class="line">        processes = []</span><br><span class="line">        results: <span class="built_in">set</span>[<span class="built_in">tuple</span>[<span class="built_in">str</span>, <span class="built_in">int</span>]] = <span class="built_in">set</span>()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.max_parallelism):</span><br><span class="line">            p = multiprocessing.Process(</span><br><span class="line">                target=run_list_worker,</span><br><span class="line">                ...</span><br><span class="line">            )</span><br><span class="line">            processes.append(p)</span><br><span class="line">            p.start()</span><br><span class="line">	...</span><br></pre></td></tr></table></figure>
+
+<p>而每个<code>ListWoker</code>定义如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListWorker</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>():</span></span><br><span class="line">		...</span><br><span class="line">        self.send_work_stealing_needed_queue = send_work_stealing_needed_queue</span><br><span class="line">        self.heartbeat_queue = heartbeat_queue</span><br><span class="line">        self.direct_work_available_queue = direct_work_available_queue</span><br><span class="line">        self.idle_queue = idle_queue</span><br><span class="line">        self.unidle_queue = unidle_queue</span><br><span class="line">        self.results_queue = results_queue</span><br><span class="line">        self.metadata_queue = metadata_queue</span><br><span class="line">        self.error_queue = error_queue</span><br><span class="line">        self.max_results = <span class="number">5000</span></span><br><span class="line">        self.results: <span class="built_in">set</span>[<span class="built_in">tuple</span>[<span class="built_in">str</span>, <span class="built_in">int</span>]] = <span class="built_in">set</span>()</span><br><span class="line">	    </span><br><span class="line">	    self.start_range = start_range</span><br><span class="line">        self.end_range = end_range</span><br><span class="line">        self.default_alph = <span class="string">&quot;ab&quot;</span></span><br><span class="line">        ...</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用各种队列来协调worker之间的任务分配和状态同步，完成当前任务后，它会尝试从队列中<em>窃取(steal)</em> 新的任务：</p>
+<ul>
+<li>idle队列：等待需要steal一些工作来做的队列</li>
+<li>unidle队列：如果worker成功steal了，就推送到unidle队列</li>
+<li>heartbeat队列：正常工作队列</li>
+<li>direct_work_available：可用的steal任务队列</li>
+<li>send_work_stealing_needed：需要更多的工作的队列<br><code>start_range</code>,<code>end_range</code> 是范围切分的首尾。</li>
+</ul>
+<h3 id="ListWorker流程"><a href="#ListWorker流程" class="headerlink" title="ListWorker流程"></a>ListWorker流程</h3><p>ListWorker工作的主要流程是：</p>
+<ol>
+<li>执行ListObject操作，个数为max_results（默认5000）</li>
+<li>判断返回结果是否达到max_results，并记录下来</li>
+<li>如果没达到（==说明已经到头了，不用继续List了，本次任务可以结束了==），则继续从别的worker那里steal任务来做</li>
+<li>如果达到max_results了（==说明还可以继续List==），且有别的worker可以执行steal任务，则<strong>继续划分剩余空间</strong>，第一部分还是自己干，剩下的生成steal任务交给别人干</li>
+</ol>
+<p>核心代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">	<span class="keyword">try</span>:</span><br><span class="line">		blobs = self.client.bucket(self.bucket).list_blobs(**list_blob_args)</span><br><span class="line">		self.api_call_count += <span class="number">1</span></span><br><span class="line">		i = <span class="number">0</span></span><br><span class="line">		self.heartbeat_queue.put(self.name)</span><br><span class="line">		<span class="keyword">for</span> blob <span class="keyword">in</span> blobs:</span><br><span class="line">			...</span><br><span class="line">			i += <span class="number">1</span></span><br><span class="line">			self.results.add((blob.name, blob.size))</span><br><span class="line">			self.start_range = remove_prefix(blob.name, self.prefix)</span><br><span class="line">			<span class="keyword">if</span> i == self.max_results:</span><br><span class="line">				has_results = <span class="literal">True</span></span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			...</span><br><span class="line">	<span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">		...</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> has_results:</span><br><span class="line">		<span class="comment"># 达到max_results了，检查send_work_stealing队列，这个队列</span></span><br><span class="line">		<span class="comment"># 不空说明有别的worker执行stealing任务，否则就自己干，跳过</span></span><br><span class="line">		<span class="keyword">try</span>:</span><br><span class="line">			self.send_work_stealing_needed_queue.get_nowait()</span><br><span class="line">		<span class="keyword">except</span> queue.Empty:</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">		<span class="comment"># 继续划分空间，为两部分，将第二部分当成steal_range，生成steal任务</span></span><br><span class="line">		split_points = self.splitter.split_range(</span><br><span class="line">			self.start_range, self.end_range, <span class="number">1</span>)</span><br><span class="line">		steal_range = (split_points[<span class="number">0</span>], self.end_range)</span><br><span class="line">		self.direct_work_available_queue.put(steal_range)</span><br><span class="line">		self.end_range = split_points[<span class="number">0</span>]</span><br><span class="line">		self.max_results = <span class="number">5000</span></span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(self.results) &gt; <span class="number">0</span>:</span><br><span class="line">			self.results_queue.put(self.results)</span><br><span class="line">			self.results = <span class="built_in">set</span>()</span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">not</span> self.wait_for_work():</span><br><span class="line">			<span class="keyword">return</span></span><br></pre></td></tr></table></figure>
+
+<p><code>wait_for_work的处理逻辑</code>：当走到这里时，说明这个<code>worker</code> 自己的任务已经做完了，可以steal一些任务来做了：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">wait_for_work</span>(<span class="params">self</span>) -&gt; bool:</span></span><br><span class="line">      self.send_work_stealing_needed_queue.put(self.name)</span><br><span class="line">      self.idle_queue.put(self.name)</span><br><span class="line">      logging.debug(<span class="string">f&quot;Process <span class="subst">&#123;self.name&#125;</span> waiting for work...&quot;</span>)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">      <span class="keyword">if</span> new_range[<span class="number">0</span>] <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">          logging.debug(<span class="string">f&quot;Process <span class="subst">&#123;self.name&#125;</span> didn&#x27;t receive work&quot;</span>)</span><br><span class="line">	...</span><br><span class="line">          <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">      self.start_range = new_range[<span class="number">0</span>]</span><br><span class="line">      self.end_range = new_range[<span class="number">1</span>]</span><br><span class="line">      logging.debug(<span class="string">f&quot;Process <span class="subst">&#123;self.name&#125;</span> got new range [<span class="subst">&#123;self.start_range&#125;</span>,&quot;</span></span><br><span class="line">                    <span class="string">f&quot; <span class="subst">&#123;self.end_range&#125;</span>]&quot;</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure>
+
+<p>一言以蔽之，算法的核心就是生成Worker放到多个Process中去并行执行List操作，通过不断动态拆分Object Key空间来生成不同的steal任务给worker去steal。</p>
+<h3 id="Object-Key-Range划分"><a href="#Object-Key-Range划分" class="headerlink" title="Object Key Range划分"></a>Object Key Range划分</h3><p>根据上一节的分析，我们可以发现算法中很重要的部分就是Object Key空间的动态划分，其核心逻辑是：</p>
+<ol>
+<li>初始化字母表集合</li>
+<li>根据List结果中的<code>start_range</code>和<code>end_range</code>重新构建字母表集合，并将字符串映射为<code>int</code>，便于分割</li>
+<li>根据数字的起始位置划分范围，并划分为不同的分割点</li>
+<li>将分割点转化成字符串</li>
+</ol>
+<p>核心代码如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">split_range</span>(<span class="params"></span></span></span><br><span class="line"><span class="function"><span class="params">       self,</span></span></span><br><span class="line"><span class="function"><span class="params">       start_range: <span class="built_in">str</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">       end_range: <span class="built_in">str</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">       num_splits: <span class="built_in">int</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">   </span>) -&gt; Sequence[str]:</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(end_range) != <span class="number">0</span> <span class="keyword">and</span> start_range &gt;= end_range:</span><br><span class="line">	<span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> self.is_range_equal_with_padding(start_range, end_range):</span><br><span class="line">	<span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加入当前字母表</span></span><br><span class="line">self.add_characters_to_alphabet(start_range + end_range)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 转化为int range</span></span><br><span class="line">min_int_range = self.string_to_minimal_int_range(</span><br><span class="line">	start_range, end_range, num_splits)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将int range分割点转化为字符串分割点</span></span><br><span class="line">split_points = self.generate_splits(</span><br><span class="line">	GenerateSplitsOpts(min_int_range, num_splits, start_range,</span><br><span class="line">					   end_range))</span><br><span class="line"><span class="keyword">return</span> split_points</span><br></pre></td></tr></table></figure>
+
+<p>这里需要注意的是，开始时的<code>start_range</code>和<code>end_range</code>可以都为””，然后根据List的结果动态更新字母表，产生新的分割点自动赋值给新的<code>start_range</code>和<code>end_range</code>。如此，可以将整个Object Key空间不断地动态划分，并交给不同的ListWorker执行List任务，且自动产生steal任务以供空闲的worker执行。</p>
+]]></content>
+      <categories>
+        <category>云存储</category>
+      </categories>
+      <tags>
+        <tag>对象存储</tag>
+        <tag>云存储</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>C++并发</title>
     <url>/2023/06/20/C++%E5%B9%B6%E5%8F%91/</url>
     <content><![CDATA[<h1 id="并发概念"><a href="#并发概念" class="headerlink" title="并发概念"></a>并发概念</h1><ul>

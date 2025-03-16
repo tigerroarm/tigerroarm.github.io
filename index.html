@@ -127,17 +127,17 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">24</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">32</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">34</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -196,6 +196,91 @@
 
           <div class="content index posts-expand">
             
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2025/03/16/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8Bucket%E4%B8%AD%E7%9A%84%E6%B5%B7%E9%87%8F%E5%AF%B9%E8%B1%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/favicon.jpg">
+      <meta itemprop="name" content="木慕的博客">
+      <meta itemprop="description" content="木慕的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="木慕的博客">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/03/16/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8Bucket%E4%B8%AD%E7%9A%84%E6%B5%B7%E9%87%8F%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">如何快速遍历对象存储Bucket中的海量对象</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-03-16 00:00:00" itemprop="dateCreated datePublished" datetime="2025-03-16T00:00:00+08:00">2025-03-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%91%E5%AD%98%E5%82%A8/" itemprop="url" rel="index"><span itemprop="name">云存储</span></a>
+                </span>
+            </span>
+
+          
+  
+  
+
+
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>对象存储由于其价格低廉、结构简单易用、可扩展性强等特点被大量应用，几乎已经成为云存储的代名词，例如AWS S3，Google Cloud、阿里云OSS等。</p>
+<p>与传统的文件存储不同，对象存储是一种基于HTTP的存储服务，需要通过例如<code>GetObject</code>、<code>ListObjects</code>、<code>PutObject</code>、<code>DeleteObject</code>、<code>HeadObject</code> 等接口完成类似文件系统<code>read</code>,<code>write</code>,<code>readdir</code>,<code>getattr</code>的操作。而HTTP接口的网络时延很大，一般在几十到几百毫秒之间，所以其存储服务是一种带宽型的业务。</p>
+<p>这其中，<code>ListObject</code>是一种可以列举Bucket中对象的接口，类似文件系统的<code>readdir</code>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/AmazonS3/latest/API/API_ListObjectsV2.html">ListObjectsV2 - Amazon Simple Storage Service</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.alibabacloud.com/help/en/oss/developer-reference/listobjectsv2">ListObjectV2 - Alibaba Cloud Documentation Center</a> </li>
+</ul>
+<p>虽然在通常的业务中不常用，但是在例如对象存储文件网关、或者GCSFuse、Mountpoint这种对象存储POSIX客户端中被大量使用。在AI场景中也有大量的遍历数据集文件的操作（例如把数据从对象存储拉到例如高性能的并行文件系统中做训练/推理），ListObject速度就成为一个问题：</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2025/03/16/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8Bucket%E4%B8%AD%E7%9A%84%E6%B5%B7%E9%87%8F%E5%AF%B9%E8%B1%A1/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -1000,105 +1085,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.difan.tech/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/favicon.jpg">
-      <meta itemprop="name" content="木慕的博客">
-      <meta itemprop="description" content="木慕的博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="木慕的博客">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-title-link" itemprop="url">常用数据结构与算法代码</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-10 00:00:00" itemprop="dateCreated datePublished" datetime="2021-10-10T00:00:00+08:00">2021-10-10</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" itemprop="url" rel="index"><span itemprop="name">数据结构</span></a>
-                </span>
-            </span>
-
-          
-  
-  
-
-
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="模板练习"><a href="#模板练习" class="headerlink" title="模板练习"></a>模板练习</h2><p><strong>数组</strong></p>
-<ul>
-<li>快排 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sort-an-array/">912 排序</a></li>
-<li>堆 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/840/">838. 堆排序</a></li>
-<li>归并 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/sort-an-array/">912 排序</a></li>
-<li>二分 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/791/">789. 数的范围</a> <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/792/">790. 数的三次方根</a></li>
-<li>大整数 +-* /</li>
-<li>前缀和<ul>
-<li>二维前缀和 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/O4NDxx/">剑指 Offer II 013. 二维子矩阵的和</a></li>
-</ul>
-</li>
-<li>差分 <a target="_blank" rel="noopener" href="https://www.acwing.com/problem/content/799/">797. 差分</a><ul>
-<li>二维差分</li>
-</ul>
-</li>
-<li>位运算 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/er-jin-zhi-zhong-1de-ge-shu-lcof/">剑指 Offer 15. 二进制中1的个数</a></li>
-<li>离散化 <a target="_blank" rel="noopener" href="https://www.acwing.com/blog/content/1778/">区间和</a></li>
-<li>双指针 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/longest-substring-without-repeating-characters/">3. 无重复字符的最长子串</a><ul>
-<li>KMP <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/implement-strstr/">28. 实现 strStr()</a></li>
-</ul>
-</li>
-<li>区间合并 <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/merge-intervals/">56. 合并区间</a> 两种写法
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/10/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1170,20 +1156,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">32</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1210,6 +1196,10 @@
         
         
           <li>
+            <a href="/2025/03/16/%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E9%81%8D%E5%8E%86%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8Bucket%E4%B8%AD%E7%9A%84%E6%B5%B7%E9%87%8F%E5%AF%B9%E8%B1%A1/" title="如何快速遍历对象存储Bucket中的海量对象" target="_blank">如何快速遍历对象存储Bucket中的海量对象</a>
+          </li>
+        
+          <li>
             <a href="/2023/06/20/C++%E5%B9%B6%E5%8F%91/" title="C++并发" target="_blank">C++并发</a>
           </li>
         
@@ -1223,10 +1213,6 @@
         
           <li>
             <a href="/2022/06/20/%E7%8E%B0%E4%BB%A3C++/" title="现代C++" target="_blank">现代C++</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/10/%E5%A4%A7%E8%AF%9D%E5%AD%98%E5%82%A81/" title="存储读书笔记 01" target="_blank">存储读书笔记 01</a>
           </li>
         
       </ul>
